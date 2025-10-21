@@ -1,6 +1,11 @@
-export { auth as middleware } from '@/lib/auth';
+import { auth } from '@/lib/auth';
 
-// Don't invoke Middleware on some paths
+export default auth;
+
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
+  // Proteger todas las rutas excepto las de la API, las de Next.js,
+  // los assets públicos y la propia página de login.
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|login|placeholder-user.jpg).*)'
+  ]
 };
