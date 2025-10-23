@@ -12,13 +12,9 @@ import {
   CardTitle,
   CardFooter
 } from '@/components/ui/card';
+import Dashboard from './Inicio/page';
 export default function ProductsPage() {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Inicio</CardTitle>
-      </CardHeader>
-      <CardContent></CardContent>
-    </Card>
+    <Dashboard />
   );
 }
