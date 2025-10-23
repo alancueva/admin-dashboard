@@ -7,7 +7,10 @@ import {
   PanelLeft,
   Settings,
   ShoppingCart,
-  Users2
+  Users2,
+  ArrowLeftRight,
+  ShieldPlus,
+  SlidersVertical
 } from 'lucide-react';
 
 import DashboardBreadcrumb from './breadcrumb';
@@ -22,7 +25,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { User } from './user';
 import { VercelLogo } from '@/components/icons';
 import Providers from './providers';
-import { NavItem } from './nav-item'; 
+import { NavItem } from './nav-item';
 
 export default function DashboardLayout({
   children
@@ -57,46 +60,44 @@ function DesktopNav() {
     <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
       <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
         <Link
-          href="https://vercel.com/templates/next.js/admin-dashboard-tailwind-postgres-react-nextjs"
+          href="/"
           className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
         >
-          <VercelLogo className="h-3 w-3 transition-all group-hover:scale-110" />
-          <span className="sr-only">Acme Inc</span>
+          <VercelLogo className="h-8 w-8 transition-all group-hover:scale-110" />
+          <span className="sr-only">Stokontrol</span>
         </Link>
 
         <NavItem href="/" label="Dashboard">
           <Home className="h-5 w-5" />
         </NavItem>
 
-        {/* <NavItem href="#" label="Orders">
-          <ShoppingCart className="h-5 w-5" />
-        </NavItem> */}
+        <NavItem href="#" label="Administrativo">
+          <ShieldPlus className="h-5 w-5" />
+        </NavItem>
 
-        <NavItem href="/productos" label="Products">
+        <NavItem href="#" label="Inventario & Catálogo">
           <Package className="h-5 w-5" />
         </NavItem>
-
-        <NavItem href="/customers" label="Customers">
-          <Users2 className="h-5 w-5" />
+        <NavItem href="#" label="Operativos">
+          <ArrowLeftRight className="h-5 w-5" />
         </NavItem>
-
-        {/* <NavItem href="#" label="Analytics">
-          <LineChart className="h-5 w-5" />
-        </NavItem> */}
+        <NavItem href="#" label="Control">
+          <SlidersVertical className="h-5 w-5" />
+        </NavItem>
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
-        <Tooltip>
+        {/* <Tooltip>
           <TooltipTrigger asChild>
             <Link
               href="#"
               className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
             >
               <Settings className="h-5 w-5" />
-              <span className="sr-only">Settings</span>
+              <span className="sr-only">Configuracion</span>
             </Link>
           </TooltipTrigger>
           <TooltipContent side="right">Settings</TooltipContent>
-        </Tooltip>
+        </Tooltip> */}
       </nav>
     </aside>
   );
@@ -117,8 +118,8 @@ function MobileNav() {
             href="#"
             className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
           >
-            <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
-            <span className="sr-only">Vercel</span>
+            <VercelLogo className="h-10 w-10 transition-all group-hover:scale-110" />
+          <span className="sr-only">Stokontrol</span>
           </Link>
           <Link
             href="#"
@@ -127,33 +128,33 @@ function MobileNav() {
             <Home className="h-5 w-5" />
             Dashboard
           </Link>
-          {/* <Link
+          <Link
             href="#"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
-            <ShoppingCart className="h-5 w-5" />
-            Orders
-          </Link> */}
+            <ShieldPlus className="h-5 w-5" />
+            Administrativo
+          </Link>
           <Link
             href="#"
             className="flex items-center gap-4 px-2.5 text-foreground"
           >
             <Package className="h-5 w-5" />
-            Products
+            Inventario & Catálogo
           </Link>
-          {/* <Link
-            href="#"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <Users2 className="h-5 w-5" />
-            Customers
-          </Link> */}
           <Link
             href="#"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
-            <LineChart className="h-5 w-5" />
-            Settings
+            <ArrowLeftRight className="h-5 w-5" />
+            Operativos
+          </Link>
+          <Link
+            href="#"
+            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+          >
+            <SlidersVertical className="h-5 w-5" />
+            Control
           </Link>
         </nav>
       </SheetContent>
