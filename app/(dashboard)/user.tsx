@@ -1,5 +1,6 @@
+'use client';
 import { Button } from '@/components/ui/button';
-import { auth, signOut } from '@/lib/auth';
+// import { auth, signOut } from '@/lib/auth';
 import Image from 'next/image';
 import {
   DropdownMenu,
@@ -9,11 +10,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import Link from 'next/link';
 
-export async function User() {
-  let session = await auth();
-  let user = session?.user;
+import { useRouter } from 'next/navigation';
+
+export function User() {
+  // let session = await auth();
+  // let user = session?.user;
+  const router = useRouter();
+
+  function handleLogout() {
+    localStorage.removeItem('session');
+    router.push('/login');
+  }
 
   return (
     <DropdownMenu>
@@ -24,7 +32,7 @@ export async function User() {
           className="overflow-hidden rounded-full"
         >
           <Image
-            src={user?.image ?? '/placeholder-user.jpg'}
+            src={'/placeholder-user.jpg'}
             width={36}
             height={36}
             alt="Avatar"
@@ -33,12 +41,12 @@ export async function User() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Settings</DropdownMenuItem>
-        <DropdownMenuItem>Support</DropdownMenuItem>
+        <DropdownMenuItem>Configuración</DropdownMenuItem>
+        {/* <DropdownMenuItem>Support</DropdownMenuItem> */}
         <DropdownMenuSeparator />
-        {user ? (
+        {/* {user ? (
           <DropdownMenuItem>
             <form
               action={async () => {
@@ -49,11 +57,13 @@ export async function User() {
               <button type="submit">Sign Out</button>
             </form>
           </DropdownMenuItem>
-        ) : (
-          <DropdownMenuItem>
-            <Link href="/login">Sign In</Link>
-          </DropdownMenuItem>
-        )}
+        ) : ( */}
+        <DropdownMenuItem asChild>
+          <button onClick={handleLogout} className="cursor-pointer hover:bg-red-200 w-full text-left">
+            Cerrar sesión
+          </button>
+        </DropdownMenuItem>
+        {/* )} */}
       </DropdownMenuContent>
     </DropdownMenu>
   );
