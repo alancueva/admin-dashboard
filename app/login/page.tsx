@@ -29,6 +29,17 @@ export default function LoginPage() {
     }, 1500);
   };
 
+  function logearse(e: any) {
+    const sessionData = {
+      user: 'alan',
+      role: 'admin',
+      loginTime: new Date().toISOString()
+    };
+    localStorage.setItem('session', JSON.stringify(sessionData));
+
+    handleSubmit(e);
+  }
+
   return (
     <div className="min-h-screen bg-black text-white flex">
       {/* Panel Izquierdo - Ilustración */}
@@ -121,7 +132,7 @@ export default function LoginPage() {
 
             {/* Botón Submit */}
             <button
-              onClick={handleSubmit}
+              onClick={logearse}
               disabled={isLoading}
               className="w-full bg-white text-black font-medium py-3 rounded-md hover:bg-gray-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
