@@ -10,9 +10,10 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { MoreHorizontal } from 'lucide-react';
 import { TableCell, TableRow } from '@/components/ui/table';
+import Link from 'next/link';
 
 export function Users({ user }: { user: any }) {
- 
+
   return (
     <TableRow>
       <TableCell className="font-medium">{user.nombres}</TableCell>
@@ -35,13 +36,15 @@ export function Users({ user }: { user: any }) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem>Edit</DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuLabel>Accion</DropdownMenuLabel>
+            <Link href={`/Administracion/usuarios/modificar-usuarios/${user.id}`}>
+              <DropdownMenuItem>Editar</DropdownMenuItem>
+            </Link>
+            {/*<DropdownMenuItem>
               <form>
                 <button type="submit">Delete</button>
               </form>
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
       </TableCell>
