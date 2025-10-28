@@ -22,7 +22,10 @@ const formatSegment = (segment: string) => {
 
 export default function DashboardBreadcrumb() {
   const pathname = usePathname();
-  const segments = pathname.split('/').filter(Boolean); // Filtra segmentos vacíos
+  // Filtra segmentos vacíos y aquellos que son solo números (IDs)
+  const segments = pathname
+    .split('/')
+    .filter((segment) => segment && isNaN(Number(segment)));
 
   return (
     <Breadcrumb className="hidden md:flex">
