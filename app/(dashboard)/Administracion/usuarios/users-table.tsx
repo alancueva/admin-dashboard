@@ -76,37 +76,37 @@ export function UsersTable({
     return (
         <div>
             <CardHeader>
-                <div className="flex items-center gap-4">
-                    <div className="relative flex-1 md:grow-0">
-                        {/* <label htmlFor="estado">Usuarios</label> */}
-                        <div className="relative">
-                            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                            <Input
-                                placeholder="Buscar usuarios..."
-                                className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[300px]"
-                            onChange={handleSearchChange} />
-                        </div>
+                <div className='grid grid-cols-12 gap-4 mt-2'>
+                    <div className="col-span-12 md:col-span-4">
+                        <label className="block mb-1 font-medium">
+                            Usuarios
+                        </label>
+                        <Input
+                            type="text"
+                            placeholder="Buscar usuarios..."
+                            className="w-full border border-gray-300 rounded-md p-2"
+                            onChange={handleSearchChange}
+                        />
                     </div>
-                    <div className="relative flex-1 md:grow-0">
-                        {/* <label htmlFor="estado">Estado</label> */}
-                        <DropdownMenu>
-                            <DropdownMenuTrigger asChild  >
-                                <Button aria-haspopup="false" size="lg" variant="outline">
-                                    {selectedStatus}
-                                    <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="-mr-1 size-5 text-gray-400">
-                                        <path d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" fillRule="evenodd" />
-                                    </svg>
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent align="end">
-                                {estado.map((est) => (
-                                    <DropdownMenuItem key={est.id} onSelect={() => handleStatusChange(est.status)}>{est.status}</DropdownMenuItem>
-                                ))}
-                            </DropdownMenuContent>
-                        </DropdownMenu>
+                    <div className="col-span-12 md:col-span-3">
+                        <label className="block mb-1 font-medium">
+                            Estado
+                        </label>
+                        <select 
+                            className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                            value={selectedStatus}
+                            onChange={(e) => handleStatusChange(e.target.value)}
+                        >
+                            {estado.map((est) => (
+                                <option key={est.id} value={est.status}>
+                                    {est.status}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                 </div>
             </CardHeader>
+
             <CardContent>
                 <Table>
                     <TableHeader>
