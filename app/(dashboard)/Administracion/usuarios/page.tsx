@@ -10,7 +10,7 @@ import { UsersTable } from './users-table';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { File, PlusCircle } from 'lucide-react';
-import RegistrarUsuario from './registrar-usuarios/page';
+import Link from 'next/link';
 
 const users = [
     {
@@ -65,26 +65,28 @@ export default function UsuarioPage() {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Usuarios</CardTitle>
-                {/* <CardDescription>Usuarios..</CardDescription> */}
-                <Tabs defaultValue="all">
-                    <div className="flex items-center">
-                        <div className="ml-auto flex items-center gap-2">
-                            {/* <Button
+                <div className="flex items-center gap-2">
+                    <div>
+                        <CardTitle>Usuarios</CardTitle>
+                        <CardDescription>Listado de Usuarios</CardDescription>
+                    </div>
+                    <div className="ml-auto flex items-center gap-2">
+                        <Link href="/Administracion/usuarios/registrar-usuarios">
+                            <Button
                                 size="sm"
                                 className="h-8 gap-1"
                             >
                                 <PlusCircle className="h-3.5 w-3.5" />
                                 <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                                     Agregar
-                                </span> 
-                            </Button>*/}
-                            <RegistrarUsuario/>
-                        </div>
+                                </span>
+                            </Button>
+                        </Link>
                     </div>
-                </Tabs>
+                </div>
+
             </CardHeader>
-                <UsersTable users={users} offset={totalusuarios} totalUsers={totalusuarios} />
+            <UsersTable users={users} offset={totalusuarios} totalUsers={totalusuarios} />
             {/* <CardContent>
             </CardContent> */}
 
