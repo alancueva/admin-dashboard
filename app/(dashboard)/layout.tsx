@@ -9,6 +9,7 @@ import {
   ShoppingCart,
   Users2,
   ArrowLeftRight,
+  BookText,
   ShieldPlus,
   SlidersVertical
 } from 'lucide-react';
@@ -67,7 +68,7 @@ function DesktopNav() {
           <span className="sr-only">Stokontrol</span>
         </Link>
 
-        <NavItem href="/" label="Dashboard">
+        <NavItem href="/" label="Inicio">
           <Home className="h-5 w-5" />
         </NavItem>
 
@@ -75,12 +76,18 @@ function DesktopNav() {
           <ShieldPlus className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="#" label="Inventario & Catálogo">
+        <NavItem href="/Catalogo" label="Catálogo">
+          <BookText className="h-5 w-5" />
+        </NavItem>
+
+        <NavItem href="#" label="Almacén e Inventario">
           <Package className="h-5 w-5" />
         </NavItem>
-        <NavItem href="#" label="Operativos">
+
+        <NavItem href="#" label="Operaciones Comerciales">
           <ArrowLeftRight className="h-5 w-5" />
         </NavItem>
+
         <NavItem href="#" label="Control">
           <SlidersVertical className="h-5 w-5" />
         </NavItem>
@@ -126,7 +133,7 @@ function MobileNav() {
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <Home className="h-5 w-5" />
-            Dashboard
+            Inicio
           </Link>
           <Link
             href="#"
@@ -140,14 +147,21 @@ function MobileNav() {
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <Package className="h-5 w-5" />
-            Inventario & Catálogo
+            Catálogo
+          </Link>
+          <Link
+            href="#"
+            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+          >
+            <Package className="h-5 w-5" />
+            Almacén e Inventario
           </Link>
           <Link
             href="#"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <ArrowLeftRight className="h-5 w-5" />
-            Operativos
+            Operaciones Comerciales
           </Link>
           <Link
             href="#"
