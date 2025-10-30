@@ -21,48 +21,6 @@ export default function AdministracionPage() {
     };
 
     return (
-        // <div>
-        //     <Tabs defaultValue="all">
-        //         <div className="flex items-center">
-        //             <TabsList>
-        //                 <Link href="/Administracion/usuarios">
-        //                     <TabsTrigger value="Usuarios" >
-        //                         <User className="h-4 w-4" />
-        //                         Usuario
-        //                     </TabsTrigger>
-        //                 </Link>
-        //                 <Link href="/Administracion/organizaciones">
-        //                     <TabsTrigger value="Organizacion">
-        //                         <Building2 className="h-4 w-4" />
-        //                         Organizacion
-        //                     </TabsTrigger>
-        //                 </Link>
-        //                 <Link href="/Administracion/tipos-negocio">
-        //                     <TabsTrigger value="tipos-negocio">
-        //                         <BriefcaseBusiness className="h-4 w-4" />
-        //                         Tipo de Negicio
-        //                     </TabsTrigger>
-        //                 </Link>
-        //             </TabsList>
-
-        //         </div>
-
-        //     </Tabs>
-        //     <Card>
-        //         <CardHeader>
-        //             <CardTitle>Administracion</CardTitle>
-        //             <CardDescription>
-        //                 Administracion de general..
-        //             </CardDescription>
-        //         </CardHeader>
-        //         <CardContent></CardContent>
-
-        //     </Card>
-        // </div>
-
-
-
-
         <div className="space-y-6">
             <Tabs defaultValue="all">
                 <div className="flex items-center">
