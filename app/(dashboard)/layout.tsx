@@ -80,7 +80,7 @@ function DesktopNav() {
           <BookText className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="#" label="Almacén e Inventario">
+        <NavItem href="/Almacen-e-Inventario" label="Almacén e Inventario">
           <Package className="h-5 w-5" />
         </NavItem>
 
@@ -143,14 +143,14 @@ function MobileNav() {
             Administrativo
           </Link>
           <Link
-            href="#"
+            href="/Catalogo"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <Package className="h-5 w-5" />
             Catálogo
           </Link>
           <Link
-            href="#"
+            href="/Almacen-e-Inventario"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <Package className="h-5 w-5" />
