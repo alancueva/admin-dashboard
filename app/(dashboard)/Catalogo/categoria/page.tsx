@@ -77,7 +77,7 @@ export default function CategoriaPage() {
                 </div>
 
             </CardHeader>
-           <CategoriaTable categoria={categoria} offset={2} totalCatogoria={categoria.length} />
+            <CategoriaTable categoria={categoria} offset={2} totalCatogoria={categoria.length} />
 
         </Card>
     );
