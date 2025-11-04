@@ -1,6 +1,16 @@
 'use client';
 
 import { useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card';
+import Link from 'next/link';
 
 export default function Error({
   error,
@@ -10,37 +20,32 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
   }, [error]);
 
   return (
-    <main className="p-4 md:p-6">
-      <div className="mb-8 space-y-4">
-        <h1 className="font-semibold text-lg md:text-2xl">
-          Please complete setup
-        </h1>
-        <p>
-          Inside the Vercel Postgres dashboard, create a table based on the
-          schema defined in this repository.
-        </p>
-        <pre className="my-4 px-3 py-4 bg-black text-white rounded-lg max-w-2xl overflow-scroll flex text-wrap">
-          <code>
-            {`CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  email VARCHAR(255) NOT NULL,
-  name VARCHAR(255),
-  username VARCHAR(255)
-);`}
-          </code>
-        </pre>
-        <p>Insert a row for testing:</p>
-        <pre className="my-4 px-3 py-4 bg-black text-white rounded-lg max-w-2xl overflow-scroll flex text-wrap">
-          <code>
-            {`INSERT INTO users (id, email, name, username) VALUES (1, 'me@site.com', 'Me', 'username');`}
-          </code>
-        </pre>
-      </div>
+    <main className="flex min-h-[calc(100vh-theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10 justify-center items-center">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle>¡Ups! Algo salió mal</CardTitle>
+          <CardDescription>
+            Se ha producido un error inesperado. Puedes intentar recargar la
+            página o volver al inicio.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          {/* En desarrollo, es útil mostrar el mensaje de error. En producción, podrías ocultarlo. */}
+          <pre className="text-xs text-destructive bg-red-50 dark:bg-red-950 p-2 rounded-md overflow-auto">
+            {error.message}
+          </pre>
+        </CardContent>
+        <CardFooter className="flex justify-end gap-2">
+          <Link href="/">
+            <Button variant="outline">Ir al Inicio</Button>
+          </Link>
+          <Button onClick={() => reset()}>Intentar de nuevo</Button>
+        </CardFooter>
+      </Card>
     </main>
   );
 }
