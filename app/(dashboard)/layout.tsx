@@ -84,7 +84,7 @@ function DesktopNav() {
           <Package className="h-5 w-5" />
         </NavItem>
 
-        <NavItem href="#" label="Operaciones Comerciales">
+        <NavItem href="/Operaciones-Comerciales" label="Operaciones Comerciales">
           <ArrowLeftRight className="h-5 w-5" />
         </NavItem>
 
@@ -157,7 +157,7 @@ function MobileNav() {
             Almacén e Inventario
           </Link>
           <Link
-            href="#"
+            href="/Operaciones-Comerciales"
             className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
           >
             <ArrowLeftRight className="h-5 w-5" />
