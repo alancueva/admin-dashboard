@@ -42,31 +42,31 @@ export default function AlmaceneInventarioPage() {
                 <div className="flex items-center">
                     <TabsList>
                         <Link href="/Almacen-e-Inventario/Productos">
-                            <TabsTrigger value="Usuarios">
+                            <TabsTrigger value="Productos">
                                 <Package2 className="h-4 w-4 mr-2" />
                                 Productos
                             </TabsTrigger>
                         </Link>
                         <Link href="/Almacen-e-Inventario/Almacenes">
-                            <TabsTrigger value="Organizacion">
+                            <TabsTrigger value="Almacenes">
                                 <Warehouse className="h-4 w-4 mr-2" />
                                 Almacenes
                             </TabsTrigger>
                         </Link>
                         <Link href="/Almacen-e-Inventario/Zonas">
-                            <TabsTrigger value="Organizacion">
+                            <TabsTrigger value="Zonas">
                                 <Map className="h-4 w-4 mr-2" />
                                 Zonas
                             </TabsTrigger>
                         </Link>
                         <Link href="/Almacen-e-Inventario/Ubicaciones">
-                            <TabsTrigger value="Organizacion">
+                            <TabsTrigger value="Ubicación">
                                 <HousePlus className="h-4 w-4 mr-2" />
                                 Ubicación
                             </TabsTrigger>
                         </Link>
                         <Link href="/Almacen-e-Inventario/Inventario">
-                            <TabsTrigger value="Organizacion">
+                            <TabsTrigger value="Inventario">
                                 <Package className="h-4 w-4 mr-2" />
                                 Inventario
                             </TabsTrigger>
