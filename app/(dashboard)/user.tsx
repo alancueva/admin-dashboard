@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export function User() {
   // let session = await auth();
@@ -43,7 +44,9 @@ export function User() {
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Configuración</DropdownMenuItem>
+        <Link href="/configuracion">
+          <DropdownMenuItem>Configuración</DropdownMenuItem>
+        </Link>
         {/* <DropdownMenuItem>Support</DropdownMenuItem> */}
         <DropdownMenuSeparator />
         {/* {user ? (
