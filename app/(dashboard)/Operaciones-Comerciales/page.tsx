@@ -52,19 +52,19 @@ export default function OperacionComercialesPage() {
                                 Movimientos
                             </TabsTrigger>
                         </Link>
-                        <Link href="/Catalogo/unidad-medida">
+                        <Link href="/Operaciones-Comerciales/Entidad">
                             <TabsTrigger value="Entidad">
                                 <BriefcaseBusiness className="h-4 w-4 mr-2" />
                                 Entidad
                             </TabsTrigger>
                         </Link>
-                        <Link href="/Catalogo/unidad-medida">
+                        <Link href="/Operaciones-Comerciales/Orden-de-Compra">
                             <TabsTrigger value="Orden-de-Compra">
                                 <ClipboardCheck className="h-4 w-4 mr-2" />
                                 Orden de Compra
                             </TabsTrigger>
                         </Link>
-                        <Link href="/Catalogo/unidad-medida">
+                        <Link href="/Operaciones-Comerciales/Solicitud-de-Materiales">
                             <TabsTrigger value="Solicitar-Materiales">
                                 <ClipboardPenLine className="h-4 w-4 mr-2" />
                                 Solicitar Materiales
@@ -133,7 +133,7 @@ export default function OperacionComercialesPage() {
                         <p className="text-xs text-muted-foreground mt-1">
                             Entidad registradas
                         </p>
-                        <Link href="/Catalogo/unidad-medida">
+                        <Link href="/Operaciones-Comerciales/Entidad">
                             <Button variant="ghost" size="sm" className="mt-3 w-full">
                                 Gestionar Entidad
                                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -153,7 +153,7 @@ export default function OperacionComercialesPage() {
                         <p className="text-xs text-muted-foreground mt-1">
                             Orden De Compra registradas
                         </p>
-                        <Link href="/Catalogo/unidad-medida">
+                        <Link href="/Operaciones-Comerciales/Orden-de-Compra">
                             <Button variant="ghost" size="sm" className="mt-3 w-full">
                                 Gestionar Orden De Compra
                                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -172,7 +172,7 @@ export default function OperacionComercialesPage() {
                         <p className="text-xs text-muted-foreground mt-1">
                             Solicitar Materiales registradas
                         </p>
-                        <Link href="/Catalogo/unidad-medida">
+                        <Link href="/Operaciones-Comerciales/Solicitud-de-Materiales">
                             <Button variant="ghost" size="sm" className="mt-3 w-full">
                                 Gestionar Solicitar Materiales
                                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -203,19 +203,19 @@ export default function OperacionComercialesPage() {
                             crear Movimientos
                         </Button>
                     </Link>
-                    <Link href="/Administracion/tipos-negocio/nuevo">
+                    <Link href="/Operaciones-Comerciales/Entidad/registrar-entidad">
                         <Button variant="outline" className="w-full justify-start">
                             <BriefcaseBusiness className="mr-2 h-4 w-4" />
                             Nuevo Entidad
                         </Button>
                     </Link>
-                    <Link href="/Administracion/tipos-negocio/nuevo">
+                    <Link href="/Operaciones-Comerciales/Orden-de-Compra/registrar-orden-de-compra">
                         <Button variant="outline" className="w-full justify-start">
                             <ClipboardCheck className="mr-2 h-4 w-4" />
                             Crear Orden de Compra
                         </Button>
                     </Link>
-                    <Link href="/Administracion/tipos-negocio/nuevo">
+                    <Link href="/Operaciones-Comerciales/Solicitud-de-Materiales/registrar-solicitud-de-materiales">
                         <Button variant="outline" className="w-full justify-start">
                             <ClipboardPenLine className="mr-2 h-4 w-4" />
                             Crear Solicitar Materiales
