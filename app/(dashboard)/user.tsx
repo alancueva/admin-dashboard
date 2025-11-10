@@ -21,8 +21,10 @@ export function User() {
 
   function handleLogout() {
     localStorage.removeItem('session');
+    document.cookie = "token=; Max-Age=0; path=/"; // elimina cookie
     router.push('/login');
   }
+
 
   return (
     <DropdownMenu>
