@@ -11,6 +11,7 @@ import {
   ArrowLeftRight,
   BookText,
   ShieldPlus,
+  File,
   SlidersVertical
 } from 'lucide-react';
 
@@ -57,6 +58,15 @@ export default function DashboardLayout({
 }
 
 function DesktopNav() {
+  const navItems:any[] = [
+    { href: '/', label: 'Inicio', icon: Home },
+    { href: '/Administracion', label: 'Administrativo', icon: ShieldPlus },
+    { href: '/Catalogo', label: 'Catálogo', icon: BookText },
+    { href: '/Almacen-e-Inventario', label: 'Almacén e Inventario', icon: Package },
+    { href: '/Operaciones-Comerciales', label: 'Operaciones Comerciales', icon: ArrowLeftRight },
+    { href: '#', label: 'Reporte', icon: File },
+    // { href: '#', label: 'Control', icon: SlidersVertical },
+  ];
   return (
     <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
       <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
@@ -67,30 +77,12 @@ function DesktopNav() {
           <VercelLogo className="h-8 w-8 transition-all group-hover:scale-110" />
           <span className="sr-only">Stokontrol</span>
         </Link>
+        {navItems.map((item) => (
+          <NavItem key={item.href} href={item.href} label={item.label}>
+            <item.icon className="h-5 w-5" />
+          </NavItem>
+        ))}
 
-        <NavItem href="/" label="Inicio">
-          <Home className="h-5 w-5" />
-        </NavItem>
-
-        <NavItem href="/Administracion" label="Administrativo">
-          <ShieldPlus className="h-5 w-5" />
-        </NavItem>
-
-        <NavItem href="/Catalogo" label="Catálogo">
-          <BookText className="h-5 w-5" />
-        </NavItem>
-
-        <NavItem href="/Almacen-e-Inventario" label="Almacén e Inventario">
-          <Package className="h-5 w-5" />
-        </NavItem>
-
-        <NavItem href="/Operaciones-Comerciales" label="Operaciones Comerciales">
-          <ArrowLeftRight className="h-5 w-5" />
-        </NavItem>
-
-        <NavItem href="#" label="Control">
-          <SlidersVertical className="h-5 w-5" />
-        </NavItem>
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
         {/* <Tooltip>
@@ -111,6 +103,15 @@ function DesktopNav() {
 }
 
 function MobileNav() {
+  const nav:any[] = [
+    { href: '/', label: 'Inicio', icon: Home },
+    { href: '/Administracion', label: 'Administrativo', icon: ShieldPlus },
+    { href: '/Catalogo', label: 'Catálogo', icon: Package },
+    { href: '/Almacen-e-Inventario', label: 'Almacén e Inventario', icon: Package },
+    { href: '/Operaciones-Comerciales', label: 'Operaciones Comerciales', icon: ArrowLeftRight },
+    { href: '#', label: 'Reporte', icon: File },
+    // { href: '#', label: 'Control', icon: SlidersVertical },
+  ];
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -128,48 +129,17 @@ function MobileNav() {
             <VercelLogo className="h-10 w-10 transition-all group-hover:scale-110" />
           <span className="sr-only">Stokontrol</span>
           </Link>
-          <Link
-            href="#"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <Home className="h-5 w-5" />
-            Inicio
-          </Link>
-          <Link
-            href="#"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <ShieldPlus className="h-5 w-5" />
-            Administrativo
-          </Link>
-          <Link
-            href="/Catalogo"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <Package className="h-5 w-5" />
-            Catálogo
-          </Link>
-          <Link
-            href="/Almacen-e-Inventario"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <Package className="h-5 w-5" />
-            Almacén e Inventario
-          </Link>
-          <Link
-            href="/Operaciones-Comerciales"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeftRight className="h-5 w-5" />
-            Operaciones Comerciales
-          </Link>
-          <Link
-            href="#"
-            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-          >
-            <SlidersVertical className="h-5 w-5" />
-            Control
-          </Link>
+          {nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
+            >
+              <item.icon className="h-5 w-5" />
+            {item.label}
+            </Link>
+          ))}
+          
         </nav>
       </SheetContent>
     </Sheet>
