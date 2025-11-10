@@ -1,6 +1,5 @@
 import './globals.css';
 import { Analytics } from '@vercel/analytics/react';
-import RedirectIfNoSession from './redirect-if-no-session';
 
 export const metadata = {
   title: 'Control de Stock',
@@ -16,7 +15,6 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="flex min-h-screen w-full flex-col">
-        <RedirectIfNoSession/>
         {children}
       </body>
       <Analytics />
