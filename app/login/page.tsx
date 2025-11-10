@@ -26,7 +26,8 @@ export default function LoginPage() {
     // Simular login
     setTimeout(() => {
       setIsLoading(false);
-      router.push('/');
+      handleLogin(e);
+      // router.push('/');
     }, 1500);
   };
 
@@ -40,6 +41,14 @@ export default function LoginPage() {
 
     handleSubmit(e);
   }
+
+   const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Simulación: guardar cookie
+    document.cookie = "token=12345; path=/"; // en un caso real, JWT o similar
+
+    router.push("/"); // Redirige al home (dashboard)
+  };
 
   return (
     <div className="min-h-screen bg-black text-white flex">
