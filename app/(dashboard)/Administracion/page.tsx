@@ -1,5 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { User, Building2, BriefcaseBusiness, ArrowRight, Users, Building, Briefcase } from 'lucide-react';
+import { User, Building2, BriefcaseBusiness, ArrowRight, Users, Building, Briefcase
+    , FileSearch
+ } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import {
@@ -17,15 +19,45 @@ export default function AdministracionPage() {
     const stats = {
         usuarios: 24,
         organizaciones: 8,
-        tiposNegocio: 12
+        tiposNegocio: 12,
+        auditoria: 100,
     };
+
+    const listado_tabs:any[]=[
+        {name:"Usuarios",icon:<User className="h-4 w-4 mr-2" />,link:"/Administracion/usuarios"},
+        {name:"Organizacion",icon:<Building2 className="h-4 w-4 mr-2" />,link:"/Administracion/organizaciones"},
+        {name:"Tipo de Negocio",icon:<BriefcaseBusiness className="h-4 w-4 mr-2" />,link:"/Administracion/tipos-negocio"},
+        {name:"Auditoria",icon:<FileSearch className="h-4 w-4 mr-2" />,link:"/Administracion/auditoria"},
+    ];
+
+    const card_:any[]=[
+        {title:"Usuarios",icon:<Users className="h-4 w-4 text-muted-foreground" />,value:stats.usuarios,description:"Usuarios registrados en el sistema",link:"/Administracion/usuarios",link_text:"Gestionar usuarios"},
+        {title:"Organizaciones",icon:<Building className="h-4 w-4 text-muted-foreground" />,value:stats.organizaciones,description:"Empresas registradas",link:"/Administracion/organizaciones",link_text:"Gestionar organizaciones"},
+        {title:"Tipos de Negocio",icon:<Briefcase className="h-4 w-4 text-muted-foreground" />,value:stats.tiposNegocio,description:"Industrias disponibles",link:"/Administracion/tipos-negocio",link_text:"Gestionar tipos"},
+        {title:"Auditorias",icon:<FileSearch className="h-4 w-4 text-muted-foreground" />,value:stats.auditoria,description:"Registros de auditoria",link:"/Administracion/auditoria",link_text:"Gestionar auditorias"},
+    ];
+
+    const AccesosRapidos:any[]=[
+        {name:"Crear usuario",icon:<User className="mr-2 h-4 w-4" />,link:"/Administracion/usuarios/nuevo"},
+        {name:"Nueva organización",icon:<Building2 className="mr-2 h-4 w-4" />,link:"/Administracion/organizaciones/nueva"},
+        {name:"Nuevo tipo de negocio",icon:<BriefcaseBusiness className="mr-2 h-4 w-4" />,link:"/Administracion/tipos-negocio/nuevo"},
+    ];
 
     return (
         <div className="space-y-6">
             <Tabs defaultValue="all">
                 <div className="flex items-center">
                     <TabsList>
-                        <Link href="/Administracion/usuarios">
+                        {listado_tabs.map((tab)=>(
+                            <Link key={tab.name} href={tab.link}>
+                                <TabsTrigger value={tab.name}>
+                                    {tab.icon}
+                                    {tab.name}
+                                </TabsTrigger>
+                            </Link>
+                        ))}
+
+                        {/* <Link href="/Administracion/usuarios">
                             <TabsTrigger value="Usuarios">
                                 <User className="h-4 w-4 mr-2" />
                                 Usuario
@@ -43,6 +75,12 @@ export default function AdministracionPage() {
                                 Tipo de Negocio
                             </TabsTrigger>
                         </Link>
+                        <Link href="/Administracion/auditoria">
+                            <TabsTrigger value="auditoria">
+                                <BriefcaseBusiness className="h-4 w-4 mr-2" />
+                                Auditoria
+                            </TabsTrigger>
+                        </Link> */}
                     </TabsList>
                 </div>
             </Tabs>
@@ -55,8 +93,27 @@ export default function AdministracionPage() {
             </div>
 
             <div className="grid gap-4 md:grid-cols-3">
-                {/* Card Usuarios */}
-                <Card className="hover:shadow-lg transition-shadow">
+
+                {card_.map((card)=>(
+                    <Card key={card.title} className="hover:shadow-lg transition-shadow">
+                        <CardHeader className="flex flex-row items-center justify-between pb-2">
+                            <CardTitle className="text-sm font-medium">{card.title}</CardTitle>
+                            {card.icon}
+                        </CardHeader>
+                        <CardContent>
+                            <div className="text-2xl font-bold">{card.value}</div>
+                            <p className="text-xs text-muted-foreground mt-1">{card.description}</p>
+                            <Link href={card.link}>
+                                <Button variant="ghost" size="sm" className="mt-3 w-full">
+                                    {card.link_text}
+                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                </Button>
+                            </Link>
+                        </CardContent>
+                    </Card>
+                ))}
+
+                {/* <Card className="hover:shadow-lg transition-shadow">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium">Usuarios</CardTitle>
                         <Users className="h-4 w-4 text-muted-foreground" />
@@ -75,7 +132,7 @@ export default function AdministracionPage() {
                     </CardContent>
                 </Card>
 
-                {/* Card Organizaciones */}
+
                 <Card className="hover:shadow-lg transition-shadow">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium">Organizaciones</CardTitle>
@@ -95,7 +152,7 @@ export default function AdministracionPage() {
                     </CardContent>
                 </Card>
 
-                {/* Card Tipos de Negocio */}
+
                 <Card className="hover:shadow-lg transition-shadow">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium">Tipos de Negocio</CardTitle>
@@ -113,7 +170,7 @@ export default function AdministracionPage() {
                             </Button>
                         </Link>
                     </CardContent>
-                </Card>
+                </Card> */}
             </div>
 
             {/* Card de acceso rápido */}
@@ -125,26 +182,17 @@ export default function AdministracionPage() {
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-2 md:grid-cols-3">
-                    <Link href="/Administracion/usuarios/nuevo">
-                        <Button variant="outline" className="w-full justify-start">
-                            <User className="mr-2 h-4 w-4" />
-                            Crear usuario
-                        </Button>
-                    </Link>
-                    <Link href="/Administracion/organizaciones/nueva">
-                        <Button variant="outline" className="w-full justify-start">
-                            <Building2 className="mr-2 h-4 w-4" />
-                            Nueva organización
-                        </Button>
-                    </Link>
-                    <Link href="/Administracion/tipos-negocio/nuevo">
-                        <Button variant="outline" className="w-full justify-start">
-                            <BriefcaseBusiness className="mr-2 h-4 w-4" />
-                            Nuevo tipo de negocio
-                        </Button>
-                    </Link>
+                    {AccesosRapidos.map((acceso)=>(
+                        <Link key={acceso.name} href={acceso.link}>
+                            <Button variant="outline" className="w-full justify-start">
+                                {acceso.icon}
+                                {acceso.name}
+                            </Button>
+                        </Link>
+                    ))}
                 </CardContent>
             </Card>
+
         </div>
     );
 }
