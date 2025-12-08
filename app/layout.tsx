@@ -1,7 +1,8 @@
 import './globals.css';
+import type { Metadata } from "next";
 import { Analytics } from '@vercel/analytics/react';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Control de Stock',
   description:
     'Administra tus productos y controla el stock de manera eficiente.'
