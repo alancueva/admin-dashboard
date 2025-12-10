@@ -39,13 +39,13 @@ export default function AdministracionPage() {
 
     const AccesosRapidos:any[]=[
         {name:"Crear usuario",icon:<User className="mr-2 h-4 w-4" />,link:"/Administracion/usuarios/nuevo"},
-        {name:"Nueva organización",icon:<Building2 className="mr-2 h-4 w-4" />,link:"/Administracion/organizaciones/nueva"},
+        {name:"Nueva organización",icon:<Building2 className="mr-2 h-4 w-4" />,link:"/Administracion/organizaciones/registrar-organizacion"},
         {name:"Nuevo tipo de negocio",icon:<BriefcaseBusiness className="mr-2 h-4 w-4" />,link:"/Administracion/tipos-negocio/nuevo"},
     ];
 
     return (
         <div className="space-y-6">
-            <Tabs defaultValue="all">
+            {/* <Tabs defaultValue="all">
                 <div className="flex items-center">
                     <TabsList>
                         {listado_tabs.map((tab)=>(
@@ -56,34 +56,9 @@ export default function AdministracionPage() {
                                 </TabsTrigger>
                             </Link>
                         ))}
-
-                        {/* <Link href="/Administracion/usuarios">
-                            <TabsTrigger value="Usuarios">
-                                <User className="h-4 w-4 mr-2" />
-                                Usuario
-                            </TabsTrigger>
-                        </Link>
-                        <Link href="/Administracion/organizaciones">
-                            <TabsTrigger value="Organizacion">
-                                <Building2 className="h-4 w-4 mr-2" />
-                                Organización
-                            </TabsTrigger>
-                        </Link>
-                        <Link href="/Administracion/tipos-negocio">
-                            <TabsTrigger value="tipos-negocio">
-                                <BriefcaseBusiness className="h-4 w-4 mr-2" />
-                                Tipo de Negocio
-                            </TabsTrigger>
-                        </Link>
-                        <Link href="/Administracion/auditoria">
-                            <TabsTrigger value="auditoria">
-                                <BriefcaseBusiness className="h-4 w-4 mr-2" />
-                                Auditoria
-                            </TabsTrigger>
-                        </Link> */}
                     </TabsList>
                 </div>
-            </Tabs>
+            </Tabs> */}
 
             <div>
                 <h1 className="text-3xl font-bold">Administración</h1>

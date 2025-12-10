@@ -38,7 +38,7 @@ export default function AlmaceneInventarioPage() {
 
     return (
         <div className="space-y-6">
-            <Tabs defaultValue="all">
+            {/* <Tabs defaultValue="all">
                 <div className="flex items-center">
                     <TabsList>
                         <Link href="/Almacen-e-Inventario/Productos">
@@ -73,7 +73,7 @@ export default function AlmaceneInventarioPage() {
                         </Link>
                     </TabsList>
                 </div>
-            </Tabs>
+            </Tabs> */}
 
             <div>
                 <h1 className="text-3xl font-bold">Almacén E Inventario</h1>

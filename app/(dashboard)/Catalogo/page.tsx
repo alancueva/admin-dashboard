@@ -30,7 +30,7 @@ export default function CatalogoPage() {
 
     return (
         <div className="space-y-6">
-            <Tabs defaultValue="all">
+            {/* <Tabs defaultValue="all">
                 <div className="flex items-center">
                     <TabsList>
                         <Link href="/Catalogo/categoria">
@@ -48,7 +48,7 @@ export default function CatalogoPage() {
 
                     </TabsList>
                 </div>
-            </Tabs>
+            </Tabs> */}
 
             <div>
                 <h1 className="text-3xl font-bold">Catálogo</h1>

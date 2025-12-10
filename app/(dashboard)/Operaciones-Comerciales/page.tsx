@@ -37,7 +37,7 @@ export default function OperacionComercialesPage() {
 
     return (
         <div className="space-y-6">
-            <Tabs defaultValue="all">
+            {/* <Tabs defaultValue="all">
                 <div className="flex items-center">
                     <TabsList>
                         <Link href="/Operaciones-Comerciales/Tipos-Movimientos">
@@ -72,7 +72,7 @@ export default function OperacionComercialesPage() {
                         </Link>
                     </TabsList>
                 </div>
-            </Tabs>
+            </Tabs> */}
 
             <div>
                 <h1 className="text-3xl font-bold">Operaciones Comerciales</h1>
