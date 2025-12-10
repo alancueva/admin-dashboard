@@ -22,7 +22,6 @@ import { MoreHorizontal } from 'lucide-react';
 import DataTable, { createTheme } from 'react-data-table-component';
 import Link from 'next/link';
 import { useState } from 'react';
-import Select from 'react-tailwindcss-select';
 import { Selected } from '@/components/ui/Select';
 
 interface movimientos {
