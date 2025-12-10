@@ -22,7 +22,7 @@ import { MoreHorizontal } from 'lucide-react';
 import DataTable, { createTheme } from 'react-data-table-component';
 import Link from 'next/link';
 import { useState } from 'react';
-import { Selected } from '@/components/ui/Select';
+// import { Selected } from '@/components/ui/Select';
 
 interface auditoria {
     id: number;
