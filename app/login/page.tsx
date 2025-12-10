@@ -26,29 +26,47 @@ export default function LoginPage() {
     // Simular login
     setTimeout(() => {
       setIsLoading(false);
-      handleLogin(e);
-      // router.push('/');
+      // handleLogin(e);
+      router.push('/');
     }, 1500);
   };
 
-  function logearse(e: any) {
-    const sessionData = {
-      user: 'alan',
-      role: 'admin',
-      loginTime: new Date().toISOString()
-    };
-    localStorage.setItem('session', JSON.stringify(sessionData));
+  // function logearse(e: any) {
+  //   const sessionData = {
+  //     user: 'alan',
+  //     role: 'admin',
+  //     loginTime: new Date().toISOString()
+  //   };
+  //   localStorage.setItem('session', JSON.stringify(sessionData));
 
-    handleSubmit(e);
-  }
+  //   handleSubmit(e);
+  // }
 
-   const handleLogin = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulación: guardar cookie
-    document.cookie = "token=12345; path=/"; // en un caso real, JWT o similar
+  //  const handleLogin = async(e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   // Simulación: guardar cookie
+  //   // document.cookie = "token=12345; path=/"; // en un caso real, JWT o similar
 
-    router.push("/"); // Redirige al home (dashboard)
-  };
+  //   // router.push("/"); // Redirige al home (dashboard)
+  //   // router.refresh();
+
+
+
+  //   const res = await signIn('credentials', {
+  //     email: "123",
+  //     password: "123",
+  //     redirect: false,
+  //   });
+
+  //   if (res?.ok) {
+  //     router.push('/inicio');
+  //     router.refresh();
+  //   } else {
+  //     alert('Credenciales incorrectas');
+  //     setIsLoading(false);
+  //   }
+  // };
+
 
   return (
     <div className="min-h-screen bg-black text-white flex">
@@ -86,7 +104,8 @@ export default function LoginPage() {
           </p>
 
           {/* Formulario */}
-          <div className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* <div className="space-y-6"> */}
             {/* Email */}
             <div>
               <label htmlFor="email" className="block text-sm font-medium mb-2">
@@ -96,6 +115,7 @@ export default function LoginPage() {
                 id="email"
                 type="email"
                 value={email}
+                autoComplete="email"
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="tu@email.com"
                 className="w-full px-4 py-3 bg-black border border-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all placeholder-gray-600"
@@ -114,6 +134,7 @@ export default function LoginPage() {
                 id="password"
                 type="password"
                 value={password}
+                autoComplete="current-password"
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 className="w-full px-4 py-3 bg-black border border-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all placeholder-gray-600"
@@ -142,14 +163,14 @@ export default function LoginPage() {
 
             {/* Botón Submit */}
             <button
-              onClick={logearse}
+              // onClick={logearse}
               disabled={isLoading}
               className="w-full bg-white text-black font-medium py-3 rounded-md hover:bg-gray-100 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? 'Ingresando...' : 'Iniciar Sesión'}
             </button>
-          </div>
-
+            {/* </div> */}
+          </form>
           {/* Divider */}
           {/* <div className="my-8 flex items-center">
             <div className="flex-1 border-t border-gray-800"></div>
