@@ -1,6 +1,6 @@
 'use client';
 import { Button } from '@/components/ui/button';
-// import { auth, signOut } from '@/lib/auth';
+import { auth, signOut } from '@/lib/auth';
 import Image from 'next/image';
 import {
   DropdownMenu,
@@ -10,13 +10,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export function User() {
   // let session = await auth();
   // let user = session?.user;
+
   const router = useRouter();
 
   function handleLogout() {
@@ -24,7 +24,6 @@ export function User() {
     document.cookie = "token=; Max-Age=0; path=/"; // elimina cookie
     router.push('/login');
   }
-
 
   return (
     <DropdownMenu>
