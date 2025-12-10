@@ -64,8 +64,8 @@ const Dashboard = () => {
   ];
 
   const expiringProducts = [
-    { product: 'Pegamento LÃ­quido 250ml', lote: 'L2024-089', days: 15, qty: 24 },
-    { product: 'Corrector LÃ­quido', lote: 'L2024-056', days: 22, qty: 18 },
+    { product: 'Pegamento Líquido 250ml', lote: 'L2024-089', days: 15, qty: 24 },
+    { product: 'Corrector Líquido', lote: 'L2024-056', days: 22, qty: 18 },
     { product: 'Marcador Permanente Negro', lote: 'L2024-103', days: 28, qty: 35 }
   ];
 
@@ -113,7 +113,7 @@ const Dashboard = () => {
       </header> */}
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-4">
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {stats.map((stat, index) => (
