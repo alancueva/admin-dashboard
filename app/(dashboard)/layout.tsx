@@ -14,8 +14,6 @@ import {
   File,
   SlidersVertical
 } from 'lucide-react';
-
-import DashboardBreadcrumb from './breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import {
@@ -28,6 +26,7 @@ import { User } from './user';
 import { VercelLogo } from '@/components/icons';
 import Providers from './providers';
 import { NavItem } from './nav-item';
+import DashboardBreadcrumb from './breadcrumb';
 
 export default function DashboardLayout({
   children
@@ -58,7 +57,7 @@ export default function DashboardLayout({
 }
 
 function DesktopNav() {
-  const navItems:any[] = [
+   const navItems:any[] = [
     { href: '/', label: 'Inicio', icon: Home },
     { href: '/Administracion', label: 'Administrativo', icon: ShieldPlus },
     { href: '/Catalogo', label: 'Catálogo', icon: BookText },
@@ -67,6 +66,7 @@ function DesktopNav() {
     { href: '#', label: 'Reporte', icon: File },
     // { href: '#', label: 'Control', icon: SlidersVertical },
   ];
+
   return (
     <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
       <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
@@ -85,18 +85,18 @@ function DesktopNav() {
 
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
-        {/* <Tooltip>
+        <Tooltip>
           <TooltipTrigger asChild>
             <Link
               href="#"
               className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
             >
               <Settings className="h-5 w-5" />
-              <span className="sr-only">Configuracion</span>
+              <span className="sr-only">Settings</span>
             </Link>
           </TooltipTrigger>
           <TooltipContent side="right">Settings</TooltipContent>
-        </Tooltip> */}
+        </Tooltip>
       </nav>
     </aside>
   );
@@ -145,3 +145,27 @@ function MobileNav() {
     </Sheet>
   );
 }
+
+// function DashboardBreadcrumb() {
+//   return (
+//     <Breadcrumb className="hidden md:flex">
+//       <BreadcrumbList>
+//         <BreadcrumbItem>
+//           <BreadcrumbLink asChild>
+//             <Link href="#">Dashboard</Link>
+//           </BreadcrumbLink>
+//         </BreadcrumbItem>
+//         <BreadcrumbSeparator />
+//         <BreadcrumbItem>
+//           <BreadcrumbLink asChild>
+//             <Link href="#">Products</Link>
+//           </BreadcrumbLink>
+//         </BreadcrumbItem>
+//         <BreadcrumbSeparator />
+//         <BreadcrumbItem>
+//           <BreadcrumbPage>All Products</BreadcrumbPage>
+//         </BreadcrumbItem>
+//       </BreadcrumbList>
+//     </Breadcrumb>
+//   );
+// }
