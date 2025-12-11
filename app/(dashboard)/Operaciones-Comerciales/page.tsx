@@ -143,7 +143,7 @@ export default function OperacionComercialesPage() {
                 </Card>
 
                 {/* Card Orden De Compra */}
-                <Card className="hover:shadow-lg transition-shadow">
+                {/* <Card className="hover:shadow-lg transition-shadow">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium">Orden De Compra</CardTitle>
                         <ClipboardCheck className="h-4 w-4 text-muted-foreground" />
@@ -160,9 +160,9 @@ export default function OperacionComercialesPage() {
                             </Button>
                         </Link>
                     </CardContent>
-                </Card>
+                </Card> */}
                 {/* Card Solicitar Materiales */}
-                <Card className="hover:shadow-lg transition-shadow">
+                {/* <Card className="hover:shadow-lg transition-shadow">
                     <CardHeader className="flex flex-row items-center justify-between pb-2">
                         <CardTitle className="text-sm font-medium">Solicitar Materiales</CardTitle>
                         <ClipboardPenLine className="h-4 w-4 text-muted-foreground" />
@@ -179,7 +179,7 @@ export default function OperacionComercialesPage() {
                             </Button>
                         </Link>
                     </CardContent>
-                </Card>
+                </Card> */}
             </div>
 
             {/* Card Entidad */}
@@ -209,7 +209,7 @@ export default function OperacionComercialesPage() {
                             Nuevo Entidad
                         </Button>
                     </Link>
-                    <Link href="/Operaciones-Comerciales/Orden-de-Compra/registrar-orden-de-compra">
+                    {/* <Link href="/Operaciones-Comerciales/Orden-de-Compra/registrar-orden-de-compra">
                         <Button variant="outline" className="w-full justify-start">
                             <ClipboardCheck className="mr-2 h-4 w-4" />
                             Crear Orden de Compra
@@ -220,7 +220,7 @@ export default function OperacionComercialesPage() {
                             <ClipboardPenLine className="mr-2 h-4 w-4" />
                             Crear Solicitar Materiales
                         </Button>
-                    </Link>
+                    </Link> */}
                 </CardContent>
             </Card>
         </div>
