@@ -37,8 +37,8 @@ import DataTable from 'react-data-table-component';
  * Tipo de Movimiento
  */
 const tipo_movimientos: any[] = [
-    { id: 1, nombre: 'Ingreso por Compra' },
-    { id: 2, nombre: 'Ingreso por Devolución' }
+    { value: 1, label: 'Ingreso por Compra' },
+    { value: 2, label: 'Ingreso por Devolución' }
 ]
 
 const Almacen: any[] = [
