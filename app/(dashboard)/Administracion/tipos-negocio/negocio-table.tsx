@@ -58,8 +58,8 @@ export function NegocioTable({
 
     const estado = [
         { id: "Todos", status: 'Todos' },
-        { id: "Activo", status: 'Activo' },
-        { id: "Inactivo", status: 'Inactivo' }
+        { id: "SI", status: 'SI' },
+        { id: "NO", status: 'NO' }
     ];
 
     const handleStatusChange = (status: string) => {
@@ -90,7 +90,7 @@ export function NegocioTable({
                     </div>
                     <div className="col-span-12 md:col-span-3">
                         <label className="block mb-1 font-medium">
-                            Estado
+                            Vigencia
                         </label>
                         <select 
                             className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
@@ -113,7 +113,7 @@ export function NegocioTable({
                         <TableRow>
                             <TableHead>Nombres</TableHead>
                             <TableHead>Descripcion</TableHead>
-                            <TableHead className="hidden md:table-cell">Estado</TableHead>
+                            <TableHead className="hidden md:table-cell">Vigencia</TableHead>
                             <TableHead>
                                 <span className="sr-only">Acciones</span>
                             </TableHead>

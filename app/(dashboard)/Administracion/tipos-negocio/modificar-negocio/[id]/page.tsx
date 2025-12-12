@@ -27,7 +27,7 @@ export default function ModificarTipoNegocio() {
             <Card className="sticky top-0 z-50 mb-4">
                 <CardHeader>
                     <div className="flex items-center gap-2">
-                        <CardTitle>Modificar Organización (Ver Registro)</CardTitle>
+                        <CardTitle>Modificar Negocio (Ver Registro)</CardTitle>
                         <p>ID recibido: {id}</p>
                         <div className="ml-auto flex items-center gap-2">
                             <Button
@@ -81,7 +81,15 @@ export default function ModificarTipoNegocio() {
                                 className="w-full border border-gray-300 rounded-md p-2"
                             />
                         </div>
-
+                        <div className="col-span-12 md:col-span-3">
+                            <label className="block mb-1 font-medium">
+                                Vigencia
+                            </label>
+                            <select className="w-full border border-gray-300 rounded-md p-2" disabled={false} defaultValue="SI">
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                            </select>
+                        </div>
                     </form>
                 </CardContent>
             </Card>

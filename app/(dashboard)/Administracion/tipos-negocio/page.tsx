@@ -16,31 +16,31 @@ const negocios = [
         id: 1,
         nombre: "Restaurante",
         descripcion: "Ofrece comidas y bebidas para consumo en el local o para llevar.",
-        estado: "Activo"
+        vigencia: "SI"
     },
     {
         id: 2,
         nombre: "Tienda de Ropa",
         descripcion: "Venta de prendas de vestir y accesorios para hombres, mujeres y niños.",
-        estado: "Activo"
+        vigencia: "SI"
     },
     {
         id: 3,
         nombre: "Ferretería",
         descripcion: "Comercializa herramientas, materiales de construcción y artículos para el hogar.",
-        estado: "Activo"
+        vigencia: "SI"
     },
     {
         id: 4,
         nombre: "Panadería",
         descripcion: "Elabora y vende productos de panificación, pasteles y postres.",
-        estado: "Inactivo"
+        vigencia: "NO"
     },
     {
         id: 5,
         nombre: "Salón de Belleza",
         descripcion: "Ofrece servicios de peluquería, manicura, maquillaje y tratamientos estéticos.",
-        estado: "Activo"
+        vigencia: "SI"
     }
 
 ]

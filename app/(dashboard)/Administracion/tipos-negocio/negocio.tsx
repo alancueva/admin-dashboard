@@ -20,7 +20,7 @@ export function Negocio({ negocio }: { negocio: any }) {
             <TableCell className="font-medium">{negocio.descripcion}</TableCell>
             <TableCell className="hidden md:table-cell">
                 <Badge variant="outline" className="capitalize  font-medium">
-                    {negocio.estado}
+                    {negocio.vigencia}
                 </Badge>
             </TableCell>
 

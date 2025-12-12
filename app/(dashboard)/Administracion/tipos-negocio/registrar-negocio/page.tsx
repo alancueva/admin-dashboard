@@ -45,7 +45,7 @@ export default function RegistrarTipoNegocio() {
             <Card className="sticky top-0 z-50 mb-4">
                 <CardHeader>
                     <div className="flex items-center gap-2">
-                        <CardTitle>Registrar Organización</CardTitle>
+                        <CardTitle>Registrar Negocio</CardTitle>
 
                         <div className="ml-auto flex items-center gap-2">
                             <Button
@@ -98,6 +98,15 @@ export default function RegistrarTipoNegocio() {
                                 placeholder="Descripción de Negocio"
                                 className="w-full border border-gray-300 rounded-md p-2"
                             />
+                        </div>
+                        <div className="col-span-12 md:col-span-3">
+                            <label className="block mb-1 font-medium">
+                                Vigencia
+                            </label>
+                            <select className="w-full border border-gray-300 rounded-md p-2" disabled={true} defaultValue="SI">
+                                <option value="SI">SI</option>
+                                <option value="NO">NO</option>
+                            </select>
                         </div>
 
                     </form>
