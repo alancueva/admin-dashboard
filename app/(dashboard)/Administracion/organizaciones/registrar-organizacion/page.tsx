@@ -40,12 +40,18 @@ export default function RegistrarOrganizacion() {
         { value: '4', label: 'PASAPORTE' },
     ];
 
+    const tiene_almacen: any[] = [
+        { value: 'SI', label: 'SI' },
+        { value: 'NO', label: 'NO' },
+    ]
+
     return (
         <div>
             <Card className="sticky top-0 z-50 mb-4">
                 <CardHeader>
                     <div className="flex items-center gap-2">
-                        <CardTitle>Registrar Organización</CardTitle>
+                        {/* Registrar */}
+                        <CardTitle> Organización</CardTitle>
 
                         <div className="ml-auto flex items-center gap-2">
                             <Button
@@ -80,17 +86,6 @@ export default function RegistrarOrganizacion() {
                         {/* Nombre del Usuario */}
                         <div className="col-span-12 md:col-span-3">
                             <label className="block mb-1 font-medium">
-                                Nombre de la Organización
-                            </label>
-                            <Input
-                                type="text"
-                                placeholder="Nombre de la Organización"
-                                className="w-full border border-gray-300 rounded-md p-2"
-                            />
-                        </div>
-
-                        <div className="col-span-12 md:col-span-3">
-                            <label className="block mb-1 font-medium">
                                 Tipo de Negocio
                             </label>
                             <select className="w-full border border-gray-300 rounded-md p-2">
@@ -102,6 +97,18 @@ export default function RegistrarOrganizacion() {
                                 ))}
                             </select>
                         </div>
+                        <div className="col-span-12 md:col-span-6">
+                            <label className="block mb-1 font-medium">
+                                Nombre de la Organización
+                            </label>
+                            <Input
+                                type="text"
+                                placeholder="Nombre de la Organización"
+                                className="w-full border border-gray-300 rounded-md p-2"
+                            />
+                        </div>
+
+                        <div className="col-span-12 md:col-span-3"></div>
 
                         <div className="col-span-12 md:col-span-3">
                             <label className="block mb-1 font-medium">
@@ -158,7 +165,19 @@ export default function RegistrarOrganizacion() {
                                 className="w-full border border-gray-300 rounded-md p-2"
                             />
                         </div>
-
+                        <div className="col-span-12 md:col-span-3">
+                            <label className="block mb-1 font-medium">
+                                Tiene Almacén
+                            </label>
+                            <select className="w-full border border-gray-300 rounded-md p-2">
+                                <option value="">Seleccione</option>
+                                {tiene_almacen.map((ta) => (
+                                    <option key={ta.value} value={ta.value}>
+                                        {ta.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
 
                     </form>
                 </CardContent>
