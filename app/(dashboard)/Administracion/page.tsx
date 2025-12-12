@@ -24,23 +24,23 @@ export default function AdministracionPage() {
     };
 
     const listado_tabs:any[]=[
-        {name:"Usuarios",icon:<User className="h-4 w-4 mr-2" />,link:"/Administracion/usuarios"},
-        {name:"Organizacion",icon:<Building2 className="h-4 w-4 mr-2" />,link:"/Administracion/organizaciones"},
         {name:"Tipo de Negocio",icon:<BriefcaseBusiness className="h-4 w-4 mr-2" />,link:"/Administracion/tipos-negocio"},
+        {name:"Organizacion",icon:<Building2 className="h-4 w-4 mr-2" />,link:"/Administracion/organizaciones"},
+        {name:"Usuarios",icon:<User className="h-4 w-4 mr-2" />,link:"/Administracion/usuarios"},
         {name:"Auditoria",icon:<FileSearch className="h-4 w-4 mr-2" />,link:"/Administracion/auditoria"},
     ];
 
     const card_:any[]=[
-        {title:"Usuarios",icon:<Users className="h-4 w-4 text-muted-foreground" />,value:stats.usuarios,description:"Usuarios registrados en el sistema",link:"/Administracion/usuarios",link_text:"Gestionar usuarios"},
+        {title:"Tipos de Negocio",icon:<Briefcase className="h-4 w-4 text-muted-foreground" />,value:stats.tiposNegocio,description:"Tipos de Negocios",link:"/Administracion/tipos-negocio",link_text:"Gestionar tipos"},
         {title:"Organizaciones",icon:<Building className="h-4 w-4 text-muted-foreground" />,value:stats.organizaciones,description:"Empresas registradas",link:"/Administracion/organizaciones",link_text:"Gestionar organizaciones"},
-        {title:"Tipos de Negocio",icon:<Briefcase className="h-4 w-4 text-muted-foreground" />,value:stats.tiposNegocio,description:"Industrias disponibles",link:"/Administracion/tipos-negocio",link_text:"Gestionar tipos"},
+        {title:"Usuarios",icon:<Users className="h-4 w-4 text-muted-foreground" />,value:stats.usuarios,description:"Usuarios registrados en el sistema",link:"/Administracion/usuarios",link_text:"Gestionar usuarios"},
         {title:"Auditorias",icon:<FileSearch className="h-4 w-4 text-muted-foreground" />,value:stats.auditoria,description:"Registros de auditoria",link:"/Administracion/auditoria",link_text:"Gestionar auditorias"},
     ];
 
     const AccesosRapidos:any[]=[
         {name:"Crear usuario",icon:<User className="mr-2 h-4 w-4" />,link:"/Administracion/usuarios/nuevo"},
-        {name:"Nueva organización",icon:<Building2 className="mr-2 h-4 w-4" />,link:"/Administracion/organizaciones/registrar-organizacion"},
-        {name:"Nuevo tipo de negocio",icon:<BriefcaseBusiness className="mr-2 h-4 w-4" />,link:"/Administracion/tipos-negocio/nuevo"},
+        // {name:"Nueva organización",icon:<Building2 className="mr-2 h-4 w-4" />,link:"/Administracion/organizaciones/registrar-organizacion"},
+        // {name:"Nuevo tipo de negocio",icon:<BriefcaseBusiness className="mr-2 h-4 w-4" />,link:"/Administracion/tipos-negocio/nuevo"},
     ];
 
     return (
@@ -88,64 +88,7 @@ export default function AdministracionPage() {
                     </Card>
                 ))}
 
-                {/* <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Usuarios</CardTitle>
-                        <Users className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.usuarios}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Usuarios registrados en el sistema
-                        </p>
-                        <Link href="/Administracion/usuarios">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar usuarios
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card>
-
-
-                <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Organizaciones</CardTitle>
-                        <Building className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.organizaciones}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Empresas registradas
-                        </p>
-                        <Link href="/Administracion/organizaciones">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar organizaciones
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card>
-
-
-                <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Tipos de Negocio</CardTitle>
-                        <Briefcase className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.tiposNegocio}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Industrias disponibles
-                        </p>
-                        <Link href="/Administracion/tipos-negocio">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar tipos
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card> */}
+               
             </div>
 
             {/* Card de acceso rápido */}
