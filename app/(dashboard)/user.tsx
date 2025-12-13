@@ -45,9 +45,9 @@ export function User() {
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <Link href="/configuracion">
+        {/* <Link href="/configuracion">
           <DropdownMenuItem>Configuración</DropdownMenuItem>
-        </Link>
+        </Link> */}
         {/* <DropdownMenuItem>Support</DropdownMenuItem> */}
         <DropdownMenuSeparator />
         {/* {user ? (
