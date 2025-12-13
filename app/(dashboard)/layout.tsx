@@ -63,7 +63,7 @@ function DesktopNav() {
     { href: '/Catalogo', label: 'Catálogo', icon: BookText },
     { href: '/gestion-de-existencia', label: 'Gestión de Existenia', icon: Package },
     { href: '/Operaciones-Comerciales', label: 'Operaciones Comerciales', icon: ArrowLeftRight },
-    { href: '#', label: 'Reporte', icon: File },
+    // { href: '#', label: 'Reporte', icon: File },
     // { href: '#', label: 'Control', icon: SlidersVertical },
   ];
 
@@ -109,7 +109,7 @@ function MobileNav() {
     { href: '/Catalogo', label: 'Catálogo', icon: Package },
     { href: '/gestion-de-existencia', label: 'Gestión de Existenia', icon: Package },
     { href: '/Operaciones-Comerciales', label: 'Operaciones Comerciales', icon: ArrowLeftRight },
-    { href: '#', label: 'Reporte', icon: File },
+    // { href: '#', label: 'Reporte', icon: File },
     // { href: '#', label: 'Control', icon: SlidersVertical },
   ];
   return (
