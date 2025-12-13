@@ -18,8 +18,19 @@ import {
 } from 'lucide-react';
 
 const Dashboard = () => {
-  // const [selectedOrg] = useState('LibrerÃ­a Central');
-  // const [timeRange] = useState('Hoy');
+  const datos_usuario = {
+    nombre: 'Alan Cueva',
+    organizacion: 'SIstema Inventario'
+  };
+  const [selectedwelcome] = useState(`Bienvenido ${datos_usuario.nombre}`);
+  const [selectedOrg] = useState(`Bienvenido ${datos_usuario.organizacion}`);
+  const fecha = new Date();
+  const dia = fecha.getDate().toString().padStart(2, '0');
+  const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+  const anio = fecha.getFullYear();
+  const fechaFormateada = `${dia}/${mes}/${anio}`;
+  const [timeRange] = useState(fechaFormateada);
+
 
   // Datos de ejemplo
   const stats = [
@@ -36,23 +47,23 @@ const Dashboard = () => {
       value: '1,234',
       change: '+8',
       trend: 'up',
-      icon: ShoppingCart,
+      icon: Warehouse,
       color: 'bg-green-500'
     },
     {
-      title: 'Alertas Activas',
+      title: 'Entidad (Cliente)',
       value: '23',
       change: '-5',
       trend: 'down',
-      icon: AlertTriangle,
+      icon: Users,
       color: 'bg-orange-500'
     },
     {
-      title: 'Movimientos Hoy',
-      value: '45',
+      title: 'Entidad (Proveedor)',
+      value: '12',
       change: '+15%',
       trend: 'up',
-      icon: Activity,
+      icon: TrendingUp,
       color: 'bg-purple-500'
     }
   ];
@@ -85,14 +96,14 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
-      {/* <header className="bg-white border-b border-gray-200 shadow-sm">
+      <header className="bg-white border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <Package className="w-8 h-8 text-blue-600" />
                 <div>
-                  <h1 className="text-2xl font-bold text-gray-900">OMNISTOCK</h1>
+                  <h1 className="text-3xl font-bold text-gray-900">{selectedwelcome}</h1>
                   <p className="text-sm text-gray-500">{selectedOrg}</p>
                 </div>
               </div>
@@ -102,15 +113,15 @@ const Dashboard = () => {
                 <Calendar className="w-4 h-4 text-gray-600" />
                 <span className="text-sm font-medium text-gray-700">{timeRange}</span>
               </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+              {/* <div className="flex items-center space-x-2">
+                <div className="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center">
                   <Users className="w-5 h-5 text-white" />
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
-      </header> */}
+      </header>
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 py-4">
@@ -123,8 +134,8 @@ const Dashboard = () => {
                   <stat.icon className="w-6 h-6 text-white" />
                 </div>
                 <div className={`flex items-center space-x-1 text-sm font-medium ${stat.trend === 'up' ? 'text-green-600' : 'text-red-600'}`}>
-                  {stat.trend === 'up' ? <ArrowUpRight className="w-4 h-4" /> : <ArrowDownRight className="w-4 h-4" />}
-                  <span>{stat.change}</span>
+                  {/* {stat.trend === 'up' ? <ArrowUpRight className="w-4 h-4" /> : <ArrowDownRight className="w-4 h-4" />} */}
+                  {/* <span>{stat.change}</span> */}
                 </div>
               </div>
               <h3 className="text-gray-600 text-sm font-medium mb-1">{stat.title}</h3>
@@ -136,7 +147,7 @@ const Dashboard = () => {
         {/* Two Column Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           {/* Stock Alerts */}
-          <div className="lg:col-span-2 bg-white rounded-xl shadow-sm p-6">
+          {/* <div className="lg:col-span-2 bg-white rounded-xl shadow-sm p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-bold text-gray-900 flex items-center">
                 <AlertTriangle className="w-5 h-5 mr-2 text-orange-500" />
@@ -162,11 +173,11 @@ const Dashboard = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Quick Actions */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
+          {/* <div className="bg-white rounded-xl shadow-sm p-6">
             <h2 className="text-lg font-bold text-gray-900 mb-6">Acciones Rapidas</h2>
             <div className="space-y-3">
               <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center">
@@ -187,12 +198,12 @@ const Dashboard = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Bottom Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Recent Movements */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
+          {/* <div className="bg-white rounded-xl shadow-sm p-6">
             <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center">
               <Activity className="w-5 h-5 mr-2 text-purple-500" />
               Movimientos Recientes
@@ -219,10 +230,10 @@ const Dashboard = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Expiring Products */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
+          {/* <div className="bg-white rounded-xl shadow-sm p-6">
             <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center">
               <Clock className="w-5 h-5 mr-2 text-red-500" />
               Próximos a Vencer
@@ -239,10 +250,10 @@ const Dashboard = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Top Products */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
+          {/* <div className="bg-white rounded-xl shadow-sm p-6">
             <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center">
               <TrendingUp className="w-5 h-5 mr-2 text-green-500" />
               Productos Más Vendidos
@@ -263,7 +274,7 @@ const Dashboard = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </main>
     </div>
