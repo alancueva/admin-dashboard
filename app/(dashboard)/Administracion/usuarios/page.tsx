@@ -18,42 +18,42 @@ const users = [
         nombres: 'Juan Perez',
         email: 'juan.perez@example.com',
         rol: 'Administrador',
-        status: 'Activo'
+        vigencia: 'SI'
     },
     {
         id: 2,
         nombres: 'Maria Gomez',
         email: 'maria.gomez@example.com',
         rol: 'Usuario',
-        status: 'Inactivo'
+        vigencia: 'NO'
     },
     {
         id: 3,
         nombres: 'Carlos Sanchez',
         email: 'carlos.sanchez@example.com',
         rol: 'Administrador',
-        status: 'Activo'
+        vigencia: 'SI'
     },
     {
         id: 4,
         nombres: 'Ana Martinez',
         email: 'ana.martinez@example.com',
         rol: 'Usuario',
-        status: 'Inactivo'
+        vigencia: 'NO'
     },
     {
         id: 5,
         nombres: 'Luis Rodriguez',
         email: 'luis.rodriguez@example.com',
         rol: 'Administrador',
-        status: 'Activo'
+        vigencia: 'SI'
     },
     {
         id: 6,
         nombres: 'Sofia Lopez',
         email: 'sofia.lopez@example.com',
         rol: 'Usuario',
-        status: 'Inactivo'
+        vigencia: 'NO'
     },
 
 

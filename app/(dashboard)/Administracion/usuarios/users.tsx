@@ -21,7 +21,7 @@ export function Users({ user }: { user: any }) {
       <TableCell className="hidden md:table-cell">{user.rol}</TableCell>
       <TableCell className="hidden md:table-cell">
         <Badge variant="outline" className="capitalize  font-medium">
-          {user.status}
+          {user.vigencia}
         </Badge>
 
 

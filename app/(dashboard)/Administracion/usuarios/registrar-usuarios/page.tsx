@@ -63,6 +63,19 @@ export default function RegistrarUsuario() {
       <Card>
         <CardContent>
           <form className="grid grid-cols-12 gap-4 mt-2">
+            <div className="col-span-12 md:col-span-3">
+              <label className="block mb-1 font-medium">
+                Rol
+              </label>
+              <select className="w-full border border-gray-300 rounded-md p-2">
+                <option value="">Seleccione</option>
+                {rol.map((cat) => (
+                  <option key={cat.value} value={cat.value}>
+                    {cat.label}
+                  </option>
+                ))}
+              </select>
+            </div>
             {/* Nombre del Usuario */}
             <div className="col-span-12 md:col-span-4">
               <label className="block mb-1 font-medium">
@@ -116,19 +129,7 @@ export default function RegistrarUsuario() {
               />
             </div>
 
-            <div className="col-span-12 md:col-span-6">
-              <label className="block mb-1 font-medium">
-                Rol
-              </label>
-              <select className="w-full border border-gray-300 rounded-md p-2">
-                <option value="">Seleccione</option>
-                {rol.map((cat) => (
-                  <option key={cat.value} value={cat.value}>
-                    {cat.label}
-                  </option>
-                ))}
-              </select>
-            </div>
+
           </form>
         </CardContent>
       </Card>

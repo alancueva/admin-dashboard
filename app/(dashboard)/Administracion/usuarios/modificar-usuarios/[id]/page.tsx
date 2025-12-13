@@ -34,7 +34,7 @@ export default function ModificarUsuario() {
                 <CardHeader>
                     <div className="flex items-center gap-2">
                         <CardTitle>Modificar Usuario (Ver Registro)</CardTitle>
-                         <p>ID recibido: {id}</p>
+                        <p>ID recibido: {id}</p>
                         <div className="ml-auto flex items-center gap-2">
                             <Button
                                 size="sm"
@@ -65,6 +65,19 @@ export default function ModificarUsuario() {
             <Card>
                 <CardContent>
                     <form className="grid grid-cols-12 gap-4 mt-2">
+                        <div className="col-span-12 md:col-span-3">
+                            <label className="block mb-1 font-medium">
+                                Rol
+                            </label>
+                            <select className="w-full border border-gray-300 rounded-md p-2">
+                                <option value="">Seleccione</option>
+                                {rol.map((cat) => (
+                                    <option key={cat.value} value={cat.value}>
+                                        {cat.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                         {/* Nombre del Usuario */}
                         <div className="col-span-12 md:col-span-4">
                             <label className="block mb-1 font-medium">
@@ -118,7 +131,7 @@ export default function ModificarUsuario() {
                             />
                         </div>
 
-                        <div className="col-span-12 md:col-span-6">
+                        <div className="col-span-12 md:col-span-3">
                             <label className="block mb-1 font-medium">
                                 Rol
                             </label>
