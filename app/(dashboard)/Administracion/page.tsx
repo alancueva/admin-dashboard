@@ -21,6 +21,7 @@ export default function AdministracionPage() {
         organizaciones: 8,
         tiposNegocio: 12,
         auditoria: 100,
+        roles: 3
     };
 
     const listado_tabs:any[]=[
@@ -33,6 +34,7 @@ export default function AdministracionPage() {
     const card_:any[]=[
         {title:"Tipos de Negocio",icon:<Briefcase className="h-4 w-4 text-muted-foreground" />,value:stats.tiposNegocio,description:"Tipos de Negocios",link:"/Administracion/tipos-negocio",link_text:"Gestionar tipos"},
         {title:"Organizaciones",icon:<Building className="h-4 w-4 text-muted-foreground" />,value:stats.organizaciones,description:"Empresas registradas",link:"/Administracion/organizaciones",link_text:"Gestionar organizaciones"},
+        {title:"Rol",icon:<Users className="h-4 w-4 text-muted-foreground" />,value:stats.roles,description:"Roles del sistema",link:"/Administracion/roles",link_text:"Gestionar roles"},
         {title:"Usuarios",icon:<Users className="h-4 w-4 text-muted-foreground" />,value:stats.usuarios,description:"Usuarios registrados en el sistema",link:"/Administracion/usuarios",link_text:"Gestionar usuarios"},
         {title:"Auditorias",icon:<FileSearch className="h-4 w-4 text-muted-foreground" />,value:stats.auditoria,description:"Registros de auditoria",link:"/Administracion/auditoria",link_text:"Gestionar auditorias"},
     ];
