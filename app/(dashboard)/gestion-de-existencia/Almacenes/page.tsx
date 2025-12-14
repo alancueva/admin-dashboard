@@ -119,7 +119,7 @@ export default function AlmacenesPage() {
         <div className='grid grid-cols-12 gap-4 mt-2'>
           <div className="col-span-12 md:col-span-4">
             <label className="block mb-1 font-medium">
-              Almacenes o Ubicación
+              Almacenes
             </label>
             <Input
               type="text"
