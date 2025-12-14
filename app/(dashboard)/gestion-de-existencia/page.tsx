@@ -36,6 +36,23 @@ export default function AlmaceneInventarioPage() {
         inventario: 100
     };
 
+
+    const card_: any[] = [
+        { title: "Almacenes", icon: <Warehouse className="h-4 w-4 text-muted-foreground" />, value: stats.almacen, description: "Almacenes registrados", link: "/gestion-de-existencia/Almacenes", link_text: "Gestionar almacenes" },
+        { title: "Zonas", icon: <Map className="h-4 w-4 text-muted-foreground" />, value: stats.zona, description: "Zonas registradas", link: "/gestion-de-existencia/Zonas", link_text: "Gestionar zonas" },
+        { title: "Ubicaciones", icon: <HousePlus className="h-4 w-4 text-muted-foreground" />, value: stats.ubicacion, description: "Ubicaciones registradas", link: "/gestion-de-existencia/Ubicaciones", link_text: "Gestionar ubicaciones" },
+        { title: "Productos", icon: <Package2 className="h-4 w-4 text-muted-foreground" />, value: stats.producto, description: "Productos registrados", link: "/gestion-de-existencia/Productos", link_text: "Gestionar productos" },
+        { title: "Inventario", icon: <Package className="h-4 w-4 text-muted-foreground" />, value: stats.inventario, description: "Inventarios registrados", link: "/gestion-de-existencia/Inventario", link_text: "Gestionar inventario" },
+    ];
+
+    const AccesosRapidos:any[]=[
+        {name:"crear Almacenes",icon:<Warehouse className="mr-2 h-4 w-4" />,link:"/gestion-de-existencia/Inventario/registrar-inventario"},
+        {name:"Crear Zonas",icon:<Map className="mr-2 h-4 w-4" />,link:"/gestion-de-existencia/Zonas/registrar-zonas"},
+        {name:"Crear Ubicaciones",icon:<HousePlus className="mr-2 h-4 w-4" />,link:"/gestion-de-existencia/Inventario/registrar-ubicacion"},
+        {name:"Crear Productos",icon:<Package2 className="mr-2 h-4 w-4" />,link:"/gestion-de-existencia/Productos/registrar-producto"},
+        {name:"Nuevo Inventario",icon:<Package className="mr-2 h-4 w-4" />,link:"/gestion-de-existencia/Inventario/registrar-inventario"},
+    ];
+
     return (
         <div className="space-y-6">
             {/* <Tabs defaultValue="all">
@@ -83,106 +100,24 @@ export default function AlmaceneInventarioPage() {
             </div>
 
             <div className="grid gap-4 md:grid-cols-3">
-                {/* Card Productos */}
-                <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Productos</CardTitle>
-                        <Package2 className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.producto}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Productos registrados en el sistema
-                        </p>
-                        <Link href="/gestion-de-existencia/Productos">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar Productos
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card>
-
-                {/* Card Almacenes */}
-                <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Almacenes</CardTitle>
-                        <Warehouse className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.almacen}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Almacenes registrados en el sistema
-                        </p>
-                        <Link href="/gestion-de-existencia/Almacenes">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar Almacenes
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card>
-
-                {/* Card Zonas */}
-                <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Zonas</CardTitle>
-                        <Map className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.zona}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Zonas registradas en el sistema
-                        </p>
-                        <Link href="/gestion-de-existencia/Zonas">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar Zonas
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card>
-
-                {/* Card Ubicación */}
-                <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Ubicaciones</CardTitle>
-                        <HousePlus className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.ubicacion}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Ubicaciones registradas en el sistema
-                        </p>
-                        <Link href="/gestion-de-existencia/Ubicaciones">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar Ubicaciones
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card>
-
-                {/* Card Inventario */}
-                <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Inventario</CardTitle>
-                        <Package className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.inventario}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Inventarios registrados en el sistema
-                        </p>
-                        <Link href="/gestion-de-existencia/Inventario">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar Inventarios
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card>
-
+                {card_.map((card) => (
+                    <Card key={card.title} className="hover:shadow-lg transition-shadow">
+                        <CardHeader className="flex flex-row items-center justify-between pb-2">
+                            <CardTitle className="text-sm font-medium">{card.title}</CardTitle>
+                            {card.icon}
+                        </CardHeader>
+                        <CardContent>
+                            <div className="text-2xl font-bold">{card.value}</div>
+                            <p className="text-xs text-muted-foreground mt-1">{card.description}</p>
+                            <Link href={card.link}>
+                                <Button variant="ghost" size="sm" className="mt-3 w-full">
+                                    {card.link_text}
+                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                </Button>
+                            </Link>
+                        </CardContent>
+                    </Card>
+                ))}
 
             </div>
 
@@ -195,36 +130,14 @@ export default function AlmaceneInventarioPage() {
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-2 md:grid-cols-3">
-                    <Link href="/gestion-de-existencia/Productos/registrar-producto">
-                        <Button variant="outline" className="w-full justify-start">
-                            <Package2 className="mr-2 h-4 w-4" />
-                            Crear Productos
-                        </Button>
-                    </Link>
-                    <Link href="/gestion-de-existencia/Inventario/registrar-inventario">
-                        <Button variant="outline" className="w-full justify-start">
-                            <Warehouse className="mr-2 h-4 w-4" />
-                            crear Almacenes
-                        </Button>
-                    </Link>
-                    <Link href="/gestion-de-existencia/Zonas/registrar-zonas">
-                        <Button variant="outline" className="w-full justify-start">
-                            <Map className="mr-2 h-4 w-4" />
-                            Crear Zonas
-                        </Button>
-                    </Link>
-                    <Link href="/gestion-de-existencia/Inventario/registrar-ubicacion">
-                        <Button variant="outline" className="w-full justify-start">
-                            <HousePlus className="mr-2 h-4 w-4" />
-                            Crear Ubicaciones
-                        </Button>
-                    </Link>
-                    <Link href="/gestion-de-existencia/Inventario/registrar-inventario">
-                        <Button variant="outline" className="w-full justify-start">
-                            <Package className="mr-2 h-4 w-4" />
-                            Nuevo Inventario
-                        </Button>
-                    </Link>
+                    {AccesosRapidos.map((acceso) => (
+                        <Link key={acceso.name} href={acceso.link}>
+                            <Button variant="outline" className="w-full justify-start">
+                                {acceso.icon}
+                                {acceso.name}
+                            </Button>
+                        </Link>
+                    ))}
                 </CardContent>
             </Card>
         </div>
