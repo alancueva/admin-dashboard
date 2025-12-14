@@ -235,7 +235,16 @@ export default function RegistrarMovimientoPage() {
             <Card>
                 <CardContent>
                     <form className="grid grid-cols-12 gap-4 mt-2">
-                        {/* Código */}
+                        <div className="col-span-12 md:col-span-3">
+                            <label className="block mb-1 font-medium">Fecha Movimiento</label>
+                            <div className="relative">
+                                <Input
+                                    type="date"
+                                    className="w-full px-4 py-2.5 pr-12 text-sm text-gray-900 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 hover:border-gray-300 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                                />
+                                <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                            </div>
+                        </div>
                         <div className="col-span-12 md:col-span-3">
                             <label className="block mb-1 font-medium">
                                 Tipos de Movimientos
@@ -250,6 +259,16 @@ export default function RegistrarMovimientoPage() {
                         </div>
 
                         <div className="col-span-12 md:col-span-3">
+                            <label className="block mb-1 font-medium">Fecha Documento</label>
+                            <div className="relative">
+                                <Input
+                                    type="date"
+                                    className="w-full px-4 py-2.5 pr-12 text-sm text-gray-900 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 hover:border-gray-300 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                                />
+                                <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                            </div>
+                        </div>
+                        <div className="col-span-12 md:col-span-3">
                             <label className="block mb-1 font-medium">
                                 Número De Documento
                             </label>
@@ -259,7 +278,6 @@ export default function RegistrarMovimientoPage() {
                                 className="w-full border border-gray-300 rounded-md p-2"
                             />
                         </div>
-
 
                         <div className="col-span-12 md:col-span-3">
                             <label className="block mb-1 font-medium">
@@ -276,27 +294,14 @@ export default function RegistrarMovimientoPage() {
                         </div>
                         <div className="col-span-12 md:col-span-3">
                             <label className="block mb-1 font-medium">
-                                Almacen Destino
+                                Destino (Ubicación)
                             </label>
 
-                            <Selected
-                                value={almacenDestino}
-                                onChange={almacenChange}
-                                options={Almacen}
-                                placeholder='Seleccione'
-                                isDisabled={false}
+                            <Input
+                                type="text"
+                                placeholder="Destino (Ubicación)"
+                                className="w-full border border-gray-300 rounded-md p-2"
                             />
-                        </div>
-
-                        <div className="col-span-12 md:col-span-3">
-                            <label className="block mb-1 font-medium">Fecha Movimiento</label>
-                            <div className="relative">
-                                <Input
-                                    type="date"
-                                    className="w-full px-4 py-2.5 pr-12 text-sm text-gray-900 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 hover:border-gray-300 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
-                                />
-                                <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
-                            </div>
                         </div>
 
                         <div className="col-span-12 md:col-span-3">

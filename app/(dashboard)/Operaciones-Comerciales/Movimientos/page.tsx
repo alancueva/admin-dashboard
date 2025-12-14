@@ -27,9 +27,8 @@ import { Selected } from '@/components/ui/Select';
 interface movimientos {
     id: number;
     tipo_movimiento: string;
+    fecha_documento: string;
     numero_documento: string;
-    almacen_origen: string;
-    almacen_destino: string;
     fecha_movimiento: string;
 }
 
@@ -37,17 +36,15 @@ const movimientos: movimientos[] = [
     {
         id: 1,
         tipo_movimiento: 'Ingreso por Compra',
+        fecha_documento: '2023-01-01',
         numero_documento: 'MOV-001',
-        almacen_origen: 'Almacén A',
-        almacen_destino: 'Almacén B',
         fecha_movimiento: '2023-01-01'
     }, 
     {
         id: 2,
         tipo_movimiento: 'Salida por Venta',
+        fecha_documento: '2023-01-02',
         numero_documento: 'MOV-002',
-        almacen_origen: 'Almacén B',
-        almacen_destino: 'Almacén C',
         fecha_movimiento: '2023-01-02'
     }
 ];
@@ -65,18 +62,13 @@ const columnas = [
         sortable: true
     },
     {
+        name: 'Fecha de Documento',
+        selector: (row: movimientos) => row.fecha_documento,
+        sortable: true
+    },
+    {
         name: 'Numeros de Documento',
         selector: (row: movimientos) => row.numero_documento,
-        sortable: true
-    },
-    {
-        name: 'Almacén Origen',
-        selector: (row: movimientos) => row.almacen_origen,
-        sortable: true
-    },
-    {
-        name: 'Almacén Destino',
-        selector: (row: movimientos) => row.almacen_destino,
         sortable: true
     },
     {
@@ -113,20 +105,12 @@ const paginacionOpciones = {
 };
 export default function MovimientosPage() {
 
-    const [almacenDestino, setAlmacenDestino] = useState(null);
-
     const [filtro, setFiltro] = useState('');
     const datosFiltrados = movimientos.filter((u) =>
         u.numero_documento.toLowerCase().includes(filtro.toLowerCase()) ||
         u.tipo_movimiento.toLowerCase().includes(filtro.toLowerCase())
 
     );
-
-    const almacenChange = (value: any) => {
-        console.log("value:", value);
-        setAlmacenDestino(value);
-    };
-
 
     return (
         <Card className="p-0 overflow-hidden">
@@ -175,32 +159,7 @@ export default function MovimientosPage() {
                             onChange={(e) => setFiltro(e.target.value)}
                         />
                     </div>
-                    <div className="col-span-12 md:col-span-3">
-                        <label className="block mb-1 font-medium">
-                            Almacen Origen
-                        </label>
-                        <Selected
-                            value={almacenDestino}
-                            onChange={almacenChange}
-                            options={Almacen}
-                            placeholder='Seleccione'
-                            isDisabled={false}
-                        />
-
-                    </div>
-                    <div className="col-span-12 md:col-span-3">
-                        <label className="block mb-1 font-medium">
-                            Almacen Destino
-                        </label>
-
-                        <Selected
-                            value={almacenDestino}
-                            onChange={almacenChange}
-                            options={Almacen}
-                            placeholder='Seleccione'
-                            isDisabled={false}
-                        />
-                    </div>
+                    
                 </div>
             </CardHeader>
             <CardContent>
