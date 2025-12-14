@@ -32,6 +32,12 @@ const producto: any[] = [
     { value: 'producto3', label: 'Producto 3' }
 ];
 
+const zonas: any[] = [
+    { value: 'zona1', label: 'Zona 1' },
+    { value: 'zona2', label: 'Zona 2' },
+    { value: 'zona3', label: 'Zona 3' }
+];
+
 const ubicacion: any[] = [
     { value: 'ubicacion1', label: 'Ubicación 1' },
     { value: 'ubicacion2', label: 'Ubicación 2' },
@@ -112,6 +118,19 @@ export default function ModificarInventarioForm() {
                         </div>
                         <div className="col-span-12 md:col-span-3">
                             <label className="block mb-1 font-medium">
+                                Zonas
+                            </label>
+                            <select className="w-full border border-gray-300 rounded-md p-2">
+                                <option value="">Seleccione</option>
+                                {zonas.map((zona) => (
+                                    <option key={zona.value} value={zona.value}>
+                                        {zona.label}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="col-span-12 md:col-span-3">
+                            <label className="block mb-1 font-medium">
                                 Ubicación
                             </label>
                             <select className="w-full border border-gray-300 rounded-md p-2">
@@ -177,6 +196,38 @@ export default function ModificarInventarioForm() {
                             </select>
                         </div>
 
+                        <div className="col-span-12 md:col-span-2">
+                            <label className="block mb-1 font-medium">Stock Minimo</label>
+                            <Input
+                                type="text"
+                                placeholder="0"
+                                className="w-full border border-gray-300 rounded-md p-2"
+                            />
+                        </div>
+                        <div className="col-span-12 md:col-span-2">
+                            <label className="block mb-1 font-medium">Stock Maximo</label>
+                            <Input
+                                type="text"
+                                placeholder="0"
+                                className="w-full border border-gray-300 rounded-md p-2"
+                            />
+                        </div>
+                        <div className="col-span-12 md:col-span-2">
+                            <label className="block mb-1 font-medium">Cantidad Fisica (Invent. Fisico)</label>
+                            <Input
+                                type="text"
+                                placeholder="0"
+                                className="w-full border border-gray-300 rounded-md p-2"
+                            />
+                        </div>
+                        <div className="col-span-12 md:col-span-2">
+                            <label className="block mb-1 font-medium">Diferencia (Invent. Fisico)</label>
+                            <Input
+                                type="text"
+                                placeholder="0"
+                                className="w-full border border-gray-300 rounded-md p-2"
+                            />
+                        </div>
                     </form>
                 </CardContent>
             </Card>

@@ -27,26 +27,26 @@ import { useState } from 'react';
 interface Inventario {
     id: number;
     producto: string;
-    almacen: string;
-    ubicacion: string;
     cantidad: number;
+    numero_serie?: string;
+    estado?: string;
 }
 
 const inventario: Inventario[] = [
     {
         id: 1,
         producto: 'Producto A',
-        almacen: 'Almacén 1',
-        ubicacion: 'Ubicación 1',
-        cantidad: 100
+        cantidad: 100,
+        numero_serie: 'PA-12345',
+        estado: 'Disponible'
     },
     {
         id: 2,
         producto: 'Producto B',
-        almacen: 'Almacén 2',
-        ubicacion: 'Ubicación 2',
-        cantidad: 200
-    }
+        cantidad: 50,
+        numero_serie: 'PB-67890',
+        estado: 'Reservado'
+    },
 ];
 
 const columnas = [
@@ -56,13 +56,18 @@ const columnas = [
         sortable: true
     },
     {
-        name: 'Almacén',
-        selector: (row: Inventario) => row.almacen,
+        name: 'Numero Serie',
+        selector: (row: Inventario) => row.numero_serie,
         sortable: true
     },
     {
-        name: 'Ubicación',
-        selector: (row: Inventario) => row.ubicacion,
+        name: 'Cantidad',
+        selector: (row: Inventario) => row.cantidad,
+        sortable: true
+    },
+    {
+        name: 'Estado',
+        selector: (row: Inventario) => row.estado,
         sortable: true
     },
     {
@@ -105,27 +110,18 @@ const paginacionOpciones = {
     selectAllRowsItemText: 'Todos',
 };
 export default function InventarioPage() {
-     // Estados para los filtros
-        const [filtroProducto, setFiltroProducto] = useState('');
-        const [filtroAlmacen, setFiltroAlmacen] = useState('');
-        const [filtroUbicacion, setFiltroUbicacion] = useState('');
+    // Estados para los filtros
+    const [filtroProducto, setFiltroProducto] = useState('');
+    const [filtroNumeroSerie, setFiltroNumeroSerie] = useState('');
 
-        // Filtrado con ambos criterios
-        const datosFiltrados = inventario.filter((u) => {
-            const coincideProducto =
-                u.producto.toLowerCase().includes(filtroProducto.toLowerCase());
+    // Filtrado con ambos criterios
+    const datosFiltrados = inventario.filter((u) => {
+        const coincideProducto =
+            u.producto.toLowerCase().includes(filtroProducto.toLowerCase());
 
-            const coincideAlmacen = u.almacen
-                .toLowerCase()
-                .includes(filtroAlmacen.toLowerCase());
-
-            const coincideUbicacion = u.ubicacion
-                .toLowerCase()
-                .includes(filtroUbicacion.toLowerCase());
-
-            // Se cumple si ambos coinciden (AND)
-            return coincideProducto && coincideAlmacen && coincideUbicacion;
-        });
+        // Se cumple si ambos coinciden (AND)
+        return coincideProducto;
+    });
     return (
         <Card className="p-0 overflow-hidden">
             <CardHeader>
@@ -163,17 +159,17 @@ export default function InventarioPage() {
                     </div>
                     <div className="col-span-12 md:col-span-3">
                         <label className="block mb-1 font-medium">
-                            Almacenes
+                            Número de Serie
                         </label>
                         <Input
                             type="text"
-                            placeholder="Buscar almacenes..."
+                            placeholder="Buscar Número Serie..."
                             className="w-full border border-gray-300 rounded-md p-2"
-                            value={filtroAlmacen}
-                            onChange={(e) => setFiltroAlmacen(e.target.value)}
+                            value={filtroNumeroSerie}
+                            onChange={(e) => setFiltroNumeroSerie(e.target.value)}
                         />
                     </div>
-                    <div className="col-span-12 md:col-span-3">
+                    {/* <div className="col-span-12 md:col-span-3">
                         <label className="block mb-1 font-medium">
                             Ubicación
                         </label>
@@ -184,7 +180,7 @@ export default function InventarioPage() {
                             value={filtroUbicacion}
                             onChange={(e) => setFiltroUbicacion(e.target.value)}
                         />
-                    </div>
+                    </div> */}
                 </div>
             </CardHeader>
             <CardContent>
@@ -193,8 +189,8 @@ export default function InventarioPage() {
                     <DataTable columns={columnas} data={datosFiltrados} progressPending={false} pagination
                         paginationPerPage={5}
                         paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 50]}
-                        paginationComponentOptions={paginacionOpciones} 
-                        noDataComponent="No hay registros para mostrar"/>
+                        paginationComponentOptions={paginacionOpciones}
+                        noDataComponent="No hay registros para mostrar" />
 
                 </div>
             </CardContent>
