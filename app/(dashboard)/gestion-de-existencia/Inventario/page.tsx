@@ -28,8 +28,8 @@ interface Inventario {
     id: number;
     producto: string;
     cantidad: number;
-    numero_serie?: string;
-    estado?: string;
+    numero_serie: string;
+    estado: string;
 }
 
 const inventario: Inventario[] = [
@@ -52,22 +52,22 @@ const inventario: Inventario[] = [
 const columnas = [
     {
         name: 'Producto',
-        selector: (row: Inventario) => row.producto,
+        selector: (row: Inventario) => row.producto || '',
         sortable: true
     },
     {
         name: 'Numero Serie',
-        selector: (row: Inventario) => row.numero_serie,
+        selector: (row: Inventario) => row.numero_serie || '',
         sortable: true
     },
     {
         name: 'Cantidad',
-        selector: (row: Inventario) => row.cantidad,
+        selector: (row: Inventario) => row.cantidad || 0,
         sortable: true
     },
     {
         name: 'Estado',
-        selector: (row: Inventario) => row.estado,
+        selector: (row: Inventario) => row.estado || '',
         sortable: true
     },
     {
