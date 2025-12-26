@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import {
   Home,
@@ -27,6 +28,7 @@ import { VercelLogo } from '@/components/icons';
 import Providers from './providers';
 import { NavItem } from './nav-item';
 import DashboardBreadcrumb from './breadcrumb';
+import { useState } from 'react';
 
 export default function DashboardLayout({
   children
@@ -103,6 +105,7 @@ function DesktopNav() {
 }
 
 function MobileNav() {
+    const [open, setOpen] = useState(false);
   const nav:any[] = [
     { href: '/', label: 'Inicio', icon: Home },
     { href: '/Administracion', label: 'Administrativo', icon: ShieldPlus },
@@ -113,7 +116,7 @@ function MobileNav() {
     // { href: '#', label: 'Control', icon: SlidersVertical },
   ];
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button size="icon" variant="outline" className="sm:hidden">
           <PanelLeft className="h-5 w-5" />
@@ -123,7 +126,8 @@ function MobileNav() {
       <SheetContent side="left" className="sm:max-w-xs">
         <nav className="grid gap-6 text-lg font-medium">
           <Link
-            href="#"
+            href="/"
+            onClick={() => setOpen(false)}
             className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
           >
             <VercelLogo className="h-10 w-10 transition-all group-hover:scale-110" />
@@ -133,6 +137,7 @@ function MobileNav() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={() => setOpen(false)}
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
               <item.icon className="h-5 w-5" />
