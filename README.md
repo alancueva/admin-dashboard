@@ -1,77 +1,68 @@
-# Next.js 15 — Plantilla Admin Dashboard
+# Stokontrol - Dashboard de Gestión de Inventario
 
-Plantilla de inicio para aplicaciones admin construida con Next.js (App Router) y TypeScript. Pensada para despliegue en Vercel y uso con Postgres.
+Este es un panel de administración (dashboard) construido con Next.js 15 (App Router) y TypeScript, diseñado como una solución completa para la gestión de inventario y operaciones comerciales.
 
-Demo: https://next-admin-dash.vercel.app/
+<!-- Aquí puedes añadir una captura de pantalla de tu dashboard -->
+<!-- ![Stokontrol Dashboard](https://i.imgur.com/link-a-tu-imagen.png) -->
 
-## Stack principal
+## Características Clave
 
-- Framework: Next.js (App Router)
-- Lenguaje: TypeScript
-- Autenticación: Auth.js
-- Base de datos: Postgres (Vercel Postgres)
-- Estilos: Tailwind CSS + Shadcn UI
-- Despliegue: Vercel
-- Formato: Prettier
+- **Autenticación Segura**: Sistema de inicio de sesión con email/contraseña y protección de rutas mediante Middleware (basado en cookies).
+- **Dashboard Intuitivo**: Interfaz principal con navegación lateral responsive, breadcrumbs para una fácil ubicación y un menú de usuario funcional.
+- **Módulos de Gestión**:
+  - **Administración**: Configuración de parámetros clave del sistema (ej. Tipos de Negocio).
+  - **Catálogo**: Gestión de productos y servicios.
+  - **Gestión de Existencia**: Control de inventario y stock.
+  - **Operaciones Comerciales**: Manejo de transacciones de entrada y salida.
+- **UI Moderna y Adaptable**: Construido con [Shadcn UI](https://ui.shadcn.com/) sobre [Tailwind CSS](https://tailwindcss.com/) para una experiencia de usuario limpia y consistente en cualquier dispositivo.
+- **Despliegue Optimizado**: Configurado para un despliegue sencillo y eficiente en [Vercel](https://vercel.com).
 
-## Contenido del repositorio
+## Stack Tecnológico
 
-- Código de la app: `app/`  
-- Componentes: `components/`  
-- Archivos públicos: `public/`  
-- Configuración: [next.config.ts](next.config.ts), [tailwind.config.ts](tailwind.config.ts)  
-- Scripts y dependencias: [package.json](package.json)
+- **Framework**: Next.js 15 (con App Router)
+- **Lenguaje**: TypeScript
+- **Estilos**: Tailwind CSS y Shadcn UI
+- **Autenticación**: Middleware propio con cookies (simulado, listo para conectar a un backend con JWT).
+- **Base de Datos**: Preparado para Vercel Postgres o cualquier otra base de datos SQL.
+- **Despliegue**: Vercel
+- **Formato de Código**: Prettier
 
 ## Requisitos previos
 
-- Node.js (v18+ recomendado)
-- pnpm (o npm/yarn)
-- Cuenta y proyecto en Vercel (para Postgres integrado)
+- Node.js (v18 o superior)
+- `pnpm` como gestor de paquetes (aunque puedes usar `npm` o `yarn`)
 
 ## Configuración local
 
-1. Copia el ejemplo de variables de entorno:
-   - [.env.example](.env.example) -> `.env.local` y completa los valores (incluye credenciales de GitHub OAuth).
+1.  **Clonar el repositorio:**
+    ```bash
+    git clone https://github.com/tu-usuario/stokontrol.git
+    cd stokontrol
+    ```
 
-2. Instala dependencias y ejecuta en desarrollo:
-```bash
-pnpm install
-pnpm dev
-```
+2.  **Instalar dependencias:**
+    ```bash
+    pnpm install
+    ```
 
-La app estará en: http://localhost:3000
+3.  **Configurar variables de entorno:**
+    Crea un archivo `.env.local` en la raíz del proyecto. Por ahora, no se necesitan variables para el login simulado, pero aquí irían las credenciales de tu base de datos y backend.
+    ```bash
+    # .env.local
+    # DATABASE_URL="postgresql://..."
+    # JWT_SECRET="tu_secreto"
+    ```
+
+4.  **Ejecutar el proyecto en modo desarrollo:**
+    ```bash
+    pnpm dev
+    ```
+
+La aplicación estará disponible en http://localhost:3000.
 
 ## Scripts útiles
 
 - Desarrollo: `pnpm dev`
 - Build: `pnpm build`
 - Start (producción local): `pnpm start`
-(Ver [package.json](package.json) para detalles)
-
-## Despliegue en Vercel
-
-1. Conecta el repositorio en Vercel.
-2. Durante la creación del proyecto, añade una instancia de Vercel Postgres.
-3. Añade las variables de entorno desde Vercel o usa `vercel env pull` localmente.
-
-Comandos útiles:
-```bash
-npm i -g vercel
-vercel link
-vercel env pull
-```
-
-## Solución de problemas rápida
-
-- Error de OAuth: revisa que `GITHUB_ID` y `GITHUB_SECRET` estén correctos en `.env.local`.
-- Conexión a Postgres: verifica la URL en `DATABASE_URL` y permisos en Vercel Postgres.
-- Problemas de CSS: corre `pnpm dev` y revisa la consola por errores de PostCSS/Tailwind.
-
-## Contribuir
-
-- Abrir PRs con descripciones claras.
-- Ejecutar linters y formateadores antes de commitear.
-
-## Licencia
-
-Proyecto abierto; añade tu licencia en el repositorio si corresponde.
+(Ver `package.json` para más detalles)
