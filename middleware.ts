@@ -28,7 +28,7 @@ export function middleware(request: NextRequest) {
   // Por defecto, si ninguna de las condiciones anteriores se cumple, permite que la solicitud continúe.
   return NextResponse.next()
 }
-// Don't invoke Middleware on some paths
+
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)']
 };

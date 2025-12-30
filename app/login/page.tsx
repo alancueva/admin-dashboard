@@ -78,13 +78,13 @@ export default function LoginPage() {
         <div className="w-full max-w-md">
           {/* Logo */}
           <div className="mb-8 flex items-center gap-2">
-            {/* <Image
+            <Image
               src="/stokontrol-logo.png"
               alt="Stokontrol Logo"
               width={40}
               height={40}
               priority
-            /> */}
+            />
             <span className="text-xl font-semibold">Stokontrol</span>
           </div>
 
