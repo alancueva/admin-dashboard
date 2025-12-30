@@ -58,7 +58,7 @@ export default function RegistroInventarioForm() {
                                 </span>
                             </Button>
 
-                            <Link href="/gestion-de-existencia/Inventario">
+                            <Link href="/dashboard/gestion-de-existencia/Inventario">
                                 <Button
                                     size="sm"
                                     className="h-8 gap-1"

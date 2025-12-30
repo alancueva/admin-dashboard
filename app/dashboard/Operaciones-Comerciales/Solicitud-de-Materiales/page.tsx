@@ -149,7 +149,7 @@ export default function SolicitudMaterialesPage() {
                         <CardDescription>Listado de Solicitudes de Materiales</CardDescription>
                     </div>
                     <div className="ml-auto flex items-center gap-2">
-                        <Link href="/Operaciones-Comerciales/Solicitud-de-Materiales/registrar-solicitud-de-materiales">
+                        <Link href="/dashboard/Operaciones-Comerciales/Solicitud-de-Materiales/registrar-solicitud-de-materiales">
                             <Button
                                 size="sm"
                                 className="h-8 gap-1"

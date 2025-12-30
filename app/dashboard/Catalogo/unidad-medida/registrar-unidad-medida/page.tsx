@@ -44,7 +44,7 @@ export default function RegistrarUnidadMedida() {
                                 </span>
                             </Button>
 
-                            <Link href="/Catalogo/unidad-medida">
+                            <Link href="/dashboard/Catalogo/unidad-medida">
                                 <Button
                                     size="sm"
                                     className="h-8 gap-1"

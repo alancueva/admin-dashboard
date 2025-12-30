@@ -39,7 +39,7 @@ export default function RegistrarCategoria() {
                 </span>
               </Button>
 
-              <Link href="/Catalogo/categoria">
+              <Link href="/dashboard/Catalogo/categoria">
                 <Button
                   size="sm"
                   className="h-8 gap-1"

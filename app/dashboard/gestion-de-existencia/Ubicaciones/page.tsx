@@ -75,7 +75,7 @@ const columnas = [
                 <DropdownMenuContent align="end">
                     <DropdownMenuLabel>Acción</DropdownMenuLabel>
 
-                    <Link href={`/gestion-de-existencia/Ubicaciones/modificar-ubicacion/${row.id}`}>
+                    <Link href={`/dashboard/gestion-de-existencia/Ubicaciones/modificar-ubicacion/${row.id}`}>
                         <DropdownMenuItem>Ver Detalles</DropdownMenuItem>
                     </Link>
 

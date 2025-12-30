@@ -59,7 +59,7 @@ export default function ModificaProductoForm() {
                 </span>
               </Button>
 
-              <Link href="/gestion-de-existencia/Productos">
+              <Link href="/dashboard/gestion-de-existencia/Productos">
                 <Button
                   size="sm"
                   className="h-8 gap-1"

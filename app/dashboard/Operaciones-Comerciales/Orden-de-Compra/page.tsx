@@ -138,7 +138,7 @@ const columnas = [
                 <DropdownMenuContent>
                     <DropdownMenuLabel>Acciones</DropdownMenuLabel>
                     <DropdownMenuItem>
-                        <Link href={`/Operaciones-Comerciales/Orden-de-Compra/modificar-orden-de-compra/${row.id}`}>
+                        <Link href={`/dashboard/Operaciones-Comerciales/Orden-de-Compra/modificar-orden-de-compra/${row.id}`}>
                             Ver Detalles
                         </Link>
                     </DropdownMenuItem>
@@ -184,7 +184,7 @@ export default function OrdenCompraPage() {
                         <CardDescription>Listado de Ordenes de Compra</CardDescription>
                     </div>
                     <div className="ml-auto flex items-center gap-2">
-                        <Link href="/Operaciones-Comerciales/Orden-de-Compra/registrar-orden-de-compra">
+                        <Link href="/dashboard/Operaciones-Comerciales/Orden-de-Compra/registrar-orden-de-compra">
                             <Button
                                 size="sm"
                                 className="h-8 gap-1"

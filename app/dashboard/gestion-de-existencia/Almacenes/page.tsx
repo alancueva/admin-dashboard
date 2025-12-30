@@ -72,7 +72,7 @@ const columnas = [
         <DropdownMenuContent>
           <DropdownMenuLabel>Acciones</DropdownMenuLabel>
           <DropdownMenuItem>
-            <Link href={`/gestion-de-existencia/Almacenes/modificar-almacenes/${row.id}`}>
+            <Link href={`/dashboard/gestion-de-existencia/Almacenes/modificar-almacenes/${row.id}`}>
               Ver Detalles
             </Link>
           </DropdownMenuItem>
@@ -103,7 +103,7 @@ export default function AlmacenesPage() {
             <CardDescription>Listado de Almacenes</CardDescription>
           </div>
           <div className="ml-auto flex items-center gap-2">
-            <Link href="/gestion-de-existencia/Almacenes/registrar-almacenes">
+            <Link href="/dashboard/gestion-de-existencia/Almacenes/registrar-almacenes">
               <Button
                 size="sm"
                 className="h-8 gap-1"

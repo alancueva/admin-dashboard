@@ -194,7 +194,7 @@ export default function RegistroOrdenCompraForm() {
                                 </span>
                             </Button>
 
-                            <Link href="/Operaciones-Comerciales/Orden-de-Compra">
+                            <Link href="/dashboard/Operaciones-Comerciales/Orden-de-Compra">
                                 <Button
                                     size="sm"
                                     className="h-8 gap-1"

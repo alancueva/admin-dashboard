@@ -174,7 +174,7 @@ export default function RegistroSolicitudMaterialesForm() {
                                 </span>
                             </Button>
 
-                            <Link href="/Operaciones-Comerciales/Solicitud-de-Materiales">
+                            <Link href="/dashboard/Operaciones-Comerciales/Solicitud-de-Materiales">
                                 <Button
                                     size="sm"
                                     className="h-8 gap-1"

@@ -46,7 +46,7 @@ export default function ModificarUnidadMedida() {
                                 </span>
                             </Button>
 
-                            <Link href="/Catalogo/unidad-medida">
+                            <Link href="/dashboard/Catalogo/unidad-medida">
                                 <Button
                                     size="sm"
                                     className="h-8 gap-1"

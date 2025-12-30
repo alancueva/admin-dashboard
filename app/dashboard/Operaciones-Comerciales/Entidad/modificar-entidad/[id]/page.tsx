@@ -69,7 +69,7 @@ export default function ModificarEntidadForm() {
                                 </span>
                             </Button>
 
-                            <Link href="/Operaciones-Comerciales/Entidad">
+                            <Link href="/dashboard/Operaciones-Comerciales/Entidad">
                                 <Button
                                     size="sm"
                                     className="h-8 gap-1"

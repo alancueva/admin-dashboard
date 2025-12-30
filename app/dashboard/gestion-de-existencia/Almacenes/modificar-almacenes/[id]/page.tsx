@@ -47,7 +47,7 @@ export default function RegistroAlmacenForm() {
                                 </span>
                             </Button>
 
-                            <Link href="/gestion-de-existencia/Almacenes">
+                            <Link href="/dashboard/gestion-de-existencia/Almacenes">
                                 <Button
                                     size="sm"
                                     className="h-8 gap-1"

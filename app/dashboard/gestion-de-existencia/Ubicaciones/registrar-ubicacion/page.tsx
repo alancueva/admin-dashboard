@@ -41,7 +41,7 @@ export default function RegistroUbicacionForm() {
                                 </span>
                             </Button>
 
-                            <Link href="/gestion-de-existencia/Ubicaciones">
+                            <Link href="/dashboard/gestion-de-existencia/Ubicaciones">
                                 <Button
                                     size="sm"
                                     className="h-8 gap-1"

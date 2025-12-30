@@ -72,7 +72,7 @@ const columnas = [
                 <DropdownMenuContent>
                     <DropdownMenuLabel>Acciones</DropdownMenuLabel>
                     <DropdownMenuItem>
-                        <Link href={`/Operaciones-Comerciales/Tipos-Movimientos/modificar-tipo-movimiento/${row.id}`}>
+                        <Link href={`/dashboard/Operaciones-Comerciales/Tipos-Movimientos/modificar-tipo-movimiento/${row.id}`}>
                             Ver Detalles
                         </Link>
                     </DropdownMenuItem>
@@ -103,7 +103,7 @@ export default function TiposMovimientoPage() {
                         <CardDescription>Listado de Tipos de Movimiento</CardDescription>
                     </div>
                     <div className="ml-auto flex items-center gap-2">
-                        <Link href="/Operaciones-Comerciales/Tipos-Movimientos/registrar-tipos-de-movimientos">
+                        <Link href="/dashboard/Operaciones-Comerciales/Tipos-Movimientos/registrar-tipos-de-movimientos">
                             <Button
                                 size="sm"
                                 className="h-8 gap-1"

@@ -119,7 +119,7 @@ const columnas = [
                 <DropdownMenuContent>
                     <DropdownMenuLabel>Acciones</DropdownMenuLabel>
                     <DropdownMenuItem>
-                        <Link href={`/Operaciones-Comerciales/Entidad/modificar-entidad/${row.id}`}>
+                        <Link href={`/dashboard/Operaciones-Comerciales/Entidad/modificar-entidad/${row.id}`}>
                             Ver Detalles
                         </Link>
                     </DropdownMenuItem>
@@ -166,7 +166,7 @@ export default function EntidadPage() {
                         <CardDescription>Listado de Entidades</CardDescription>
                     </div>
                     <div className="ml-auto flex items-center gap-2">
-                        <Link href="/Operaciones-Comerciales/Entidad/registrar-entidad">
+                        <Link href="/dashboard/Operaciones-Comerciales/Entidad/registrar-entidad">
                             <Button
                                 size="sm"
                                 className="h-8 gap-1"

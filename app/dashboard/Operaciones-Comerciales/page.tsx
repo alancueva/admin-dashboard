@@ -30,11 +30,21 @@ export default function OperacionComercialesPage() {
     const stats = {
         tipos_movimiento: 5,
         movimiento: 20,
-        entidad: 8,
-        orden_compra: 15,
-        solicitar_materiales: 12
+        entidad: 8
     };
 
+
+    const card_: any[] = [
+        { title: "Tipos de Movimiento", icon: <ClipboardList className="h-4 w-4 text-muted-foreground" />, value: stats.tipos_movimiento, description: "Tipos de Movimientos registrados en el sistema", link: "/dashboard/Operaciones-Comerciales/Tipos-Movimientos", link_text: "Gestionar Tipos de Movimiento" },
+        { title: "Movimientos", icon: <Orbit className="h-4 w-4 text-muted-foreground" />, value: stats.movimiento, description: "Movimientos registradas", link: "/dashboard/Operaciones-Comerciales/Movimientos", link_text: "Gestionar Movimientos" },
+        { title: "Entidad", icon: <BriefcaseBusiness className="h-4 w-4 text-muted-foreground" />, value: stats.entidad, description: "Entidad registradas", link: "/dashboard/Operaciones-Comerciales/Entidad", link_text: "Entidad registradas" },
+    ];
+
+    const AccesosRapidos: any[] = [
+        { name: "Crear Tipo de Movimientos", icon: <ClipboardList className="mr-2 h-4 w-4" />, link: "/dashboard/Operaciones-Comerciales/tipos-movimientos/registrar-tipos-de-movimientos" },
+        { name: "Crear Movimientos", icon: <Orbit className="mr-2 h-4 w-4" />, link: "/dashboard/Operaciones-Comerciales/Movimientos/registrar-movimientos" },
+        { name: "Nuevo Entidad", icon: <BriefcaseBusiness className="mr-2 h-4 w-4" />, link: "/dashboard/Operaciones-Comerciales/Entidad/registrar-entidad" },
+    ];
     return (
         <div className="space-y-6">
             {/* <Tabs defaultValue="all">
@@ -82,104 +92,24 @@ export default function OperacionComercialesPage() {
             </div>
 
             <div className="grid gap-4 md:grid-cols-3">
-                {/* Card Tipo Movimiento */}
-                <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Tipos de Movimiento</CardTitle>
-                        <ClipboardList className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.tipos_movimiento}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Tipos de Movimientos registrados en el sistema
-                        </p>
-                        <Link href="/Operaciones-Comerciales/Tipos-Movimientos">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar Tipos de Movimiento
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card>
-
-                {/* Card Movimientos */}
-                <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Movimientos</CardTitle>
-                        <Orbit className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.movimiento}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Movimientos registradas
-                        </p>
-                        <Link href="/Operaciones-Comerciales/Movimientos">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar Movimientos
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card>
-
-                {/* Card Entidad */}
-                <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Entidad</CardTitle>
-                        <BriefcaseBusiness className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.entidad}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Entidad registradas
-                        </p>
-                        <Link href="/Operaciones-Comerciales/Entidad">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar Entidad
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card>
-
-                {/* Card Orden De Compra */}
-                {/* <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Orden De Compra</CardTitle>
-                        <ClipboardCheck className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.orden_compra}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Orden De Compra registradas
-                        </p>
-                        <Link href="/Operaciones-Comerciales/Orden-de-Compra">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar Orden De Compra
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card> */}
-                {/* Card Solicitar Materiales */}
-                {/* <Card className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="flex flex-row items-center justify-between pb-2">
-                        <CardTitle className="text-sm font-medium">Solicitar Materiales</CardTitle>
-                        <ClipboardPenLine className="h-4 w-4 text-muted-foreground" />
-                    </CardHeader>
-                    <CardContent>
-                        <div className="text-2xl font-bold">{stats.solicitar_materiales}</div>
-                        <p className="text-xs text-muted-foreground mt-1">
-                            Solicitar Materiales registradas
-                        </p>
-                        <Link href="/Operaciones-Comerciales/Solicitud-de-Materiales">
-                            <Button variant="ghost" size="sm" className="mt-3 w-full">
-                                Gestionar Solicitar Materiales
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </Link>
-                    </CardContent>
-                </Card> */}
+                {card_.map((card) => (
+                    <Card key={card.title} className="hover:shadow-lg transition-shadow">
+                        <CardHeader className="flex flex-row items-center justify-between pb-2">
+                            <CardTitle className="text-sm font-medium">{card.title}</CardTitle>
+                            {card.icon}
+                        </CardHeader>
+                        <CardContent>
+                            <div className="text-2xl font-bold">{card.value}</div>
+                            <p className="text-xs text-muted-foreground mt-1">{card.description}</p>
+                            <Link href={card.link}>
+                                <Button variant="ghost" size="sm" className="mt-3 w-full">
+                                    {card.link_text}
+                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                </Button>
+                            </Link>
+                        </CardContent>
+                    </Card>
+                ))}
             </div>
 
             {/* Card Entidad */}
@@ -191,36 +121,14 @@ export default function OperacionComercialesPage() {
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="grid gap-2 md:grid-cols-3">
-                    <Link href="/Operaciones-Comerciales/tipos-movimientos/registrar-tipos-de-movimientos">
-                        <Button variant="outline" className="w-full justify-start">
-                            <ClipboardList className="mr-2 h-4 w-4" />
-                            Crear Tipo de Movimientos
-                        </Button>
-                    </Link>
-                    <Link href="/Operaciones-Comerciales/Movimientos/registrar-movimientos">
-                        <Button variant="outline" className="w-full justify-start">
-                            <Orbit className="mr-2 h-4 w-4" />
-                            crear Movimientos
-                        </Button>
-                    </Link>
-                    <Link href="/Operaciones-Comerciales/Entidad/registrar-entidad">
-                        <Button variant="outline" className="w-full justify-start">
-                            <BriefcaseBusiness className="mr-2 h-4 w-4" />
-                            Nuevo Entidad
-                        </Button>
-                    </Link>
-                    {/* <Link href="/Operaciones-Comerciales/Orden-de-Compra/registrar-orden-de-compra">
-                        <Button variant="outline" className="w-full justify-start">
-                            <ClipboardCheck className="mr-2 h-4 w-4" />
-                            Crear Orden de Compra
-                        </Button>
-                    </Link>
-                    <Link href="/Operaciones-Comerciales/Solicitud-de-Materiales/registrar-solicitud-de-materiales">
-                        <Button variant="outline" className="w-full justify-start">
-                            <ClipboardPenLine className="mr-2 h-4 w-4" />
-                            Crear Solicitar Materiales
-                        </Button>
-                    </Link> */}
+                     {AccesosRapidos.map((acceso) => (
+                        <Link key={acceso.name} href={acceso.link}>
+                            <Button variant="outline" className="w-full justify-start">
+                                {acceso.icon}
+                                {acceso.name}
+                            </Button>
+                        </Link>
+                    ))}
                 </CardContent>
             </Card>
         </div>

@@ -38,19 +38,19 @@ export default function AlmaceneInventarioPage() {
 
 
     const card_: any[] = [
-        { title: "Almacenes", icon: <Warehouse className="h-4 w-4 text-muted-foreground" />, value: stats.almacen, description: "Almacenes registrados", link: "/gestion-de-existencia/Almacenes", link_text: "Gestionar almacenes" },
-        { title: "Zonas", icon: <Map className="h-4 w-4 text-muted-foreground" />, value: stats.zona, description: "Zonas registradas", link: "/gestion-de-existencia/Zonas", link_text: "Gestionar zonas" },
-        { title: "Ubicaciones", icon: <HousePlus className="h-4 w-4 text-muted-foreground" />, value: stats.ubicacion, description: "Ubicaciones registradas", link: "/gestion-de-existencia/Ubicaciones", link_text: "Gestionar ubicaciones" },
-        { title: "Productos", icon: <Package2 className="h-4 w-4 text-muted-foreground" />, value: stats.producto, description: "Productos registrados", link: "/gestion-de-existencia/Productos", link_text: "Gestionar productos" },
-        { title: "Inventario", icon: <Package className="h-4 w-4 text-muted-foreground" />, value: stats.inventario, description: "Inventarios registrados", link: "/gestion-de-existencia/Inventario", link_text: "Gestionar inventario" },
+        { title: "Almacenes", icon: <Warehouse className="h-4 w-4 text-muted-foreground" />, value: stats.almacen, description: "Almacenes registrados", link: "/dashboard/gestion-de-existencia/Almacenes", link_text: "Gestionar almacenes" },
+        { title: "Zonas", icon: <Map className="h-4 w-4 text-muted-foreground" />, value: stats.zona, description: "Zonas registradas", link: "/dashboard/gestion-de-existencia/Zonas", link_text: "Gestionar zonas" },
+        { title: "Ubicaciones", icon: <HousePlus className="h-4 w-4 text-muted-foreground" />, value: stats.ubicacion, description: "Ubicaciones registradas", link: "/dashboard/gestion-de-existencia/Ubicaciones", link_text: "Gestionar ubicaciones" },
+        { title: "Productos", icon: <Package2 className="h-4 w-4 text-muted-foreground" />, value: stats.producto, description: "Productos registrados", link: "/dashboard/gestion-de-existencia/Productos", link_text: "Gestionar productos" },
+        { title: "Inventario", icon: <Package className="h-4 w-4 text-muted-foreground" />, value: stats.inventario, description: "Inventarios registrados", link: "/dashboard/gestion-de-existencia/Inventario", link_text: "Gestionar inventario" },
     ];
 
     const AccesosRapidos:any[]=[
-        {name:"crear Almacenes",icon:<Warehouse className="mr-2 h-4 w-4" />,link:"/gestion-de-existencia/Inventario/registrar-inventario"},
-        {name:"Crear Zonas",icon:<Map className="mr-2 h-4 w-4" />,link:"/gestion-de-existencia/Zonas/registrar-zonas"},
-        {name:"Crear Ubicaciones",icon:<HousePlus className="mr-2 h-4 w-4" />,link:"/gestion-de-existencia/Inventario/registrar-ubicacion"},
-        {name:"Crear Productos",icon:<Package2 className="mr-2 h-4 w-4" />,link:"/gestion-de-existencia/Productos/registrar-producto"},
-        {name:"Nuevo Inventario",icon:<Package className="mr-2 h-4 w-4" />,link:"/gestion-de-existencia/Inventario/registrar-inventario"},
+        {name:"Crear Almacenes",icon:<Warehouse className="mr-2 h-4 w-4" />,link:"/dashboard/gestion-de-existencia/Inventario/registrar-inventario"},
+        {name:"Crear Zonas",icon:<Map className="mr-2 h-4 w-4" />,link:"/dashboard/gestion-de-existencia/Zonas/registrar-zonas"},
+        {name:"Crear Ubicaciones",icon:<HousePlus className="mr-2 h-4 w-4" />,link:"/dashboard/gestion-de-existencia/Inventario/registrar-ubicacion"},
+        {name:"Crear Productos",icon:<Package2 className="mr-2 h-4 w-4" />,link:"/dashboard/dashboard/gestion-de-existencia/Productos/registrar-producto"},
+        {name:"Nuevo Inventario",icon:<Package className="mr-2 h-4 w-4" />,link:"/dashboard/gestion-de-existencia/Inventario/registrar-inventario"},
     ];
 
     return (

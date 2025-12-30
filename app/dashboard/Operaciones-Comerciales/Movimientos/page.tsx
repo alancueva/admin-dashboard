@@ -88,7 +88,7 @@ const columnas = [
                 <DropdownMenuContent>
                     <DropdownMenuLabel>Acciones</DropdownMenuLabel>
                     <DropdownMenuItem>
-                        <Link href={`/Operaciones-Comerciales/Movimientos/modificar-movimientos/${row.id}`}>
+                        <Link href={`/dashboard/Operaciones-Comerciales/Movimientos/modificar-movimientos/${row.id}`}>
                             Ver Detalles
                         </Link>
                     </DropdownMenuItem>
@@ -121,7 +121,7 @@ export default function MovimientosPage() {
                         <CardDescription>Listado de Movimientos</CardDescription>
                     </div>
                     <div className="ml-auto flex items-center gap-2">
-                        <Link href="/Operaciones-Comerciales/Movimientos/registrar-movimientos">
+                        <Link href="/dashboard/Operaciones-Comerciales/Movimientos/registrar-movimientos">
                             <Button
                                 size="sm"
                                 className="h-8 gap-1"

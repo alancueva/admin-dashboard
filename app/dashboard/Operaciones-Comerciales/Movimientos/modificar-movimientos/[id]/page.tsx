@@ -218,7 +218,7 @@ export default function ModificarMovimientoPage() {
                                 </span>
                             </Button>
 
-                            <Link href="/Operaciones-Comerciales/Movimientos">
+                            <Link href="/dashboard/Operaciones-Comerciales/Movimientos">
                                 <Button
                                     size="sm"
                                     className="h-8 gap-1"
