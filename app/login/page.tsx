@@ -63,7 +63,7 @@ export default function LoginPage() {
       {/* Panel Izquierdo - Ilustración */}
       <div className="hidden lg:block lg:w-1/2 relative">
         <Image
-          src="/void-paisaje.png"
+          src={"/void-paisaje.png"}
           alt="Ilustración"
           fill
           style={{
