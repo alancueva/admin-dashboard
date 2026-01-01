@@ -131,7 +131,7 @@ export default function ModificarUsuario() {
                             />
                         </div>
 
-                        <div className="col-span-12 md:col-span-3">
+                        {/* <div className="col-span-12 md:col-span-3">
                             <label className="block mb-1 font-medium">
                                 Rol
                             </label>
@@ -143,7 +143,7 @@ export default function ModificarUsuario() {
                                     </option>
                                 ))}
                             </select>
-                        </div>
+                        </div> */}
                     </form>
                 </CardContent>
             </Card>
