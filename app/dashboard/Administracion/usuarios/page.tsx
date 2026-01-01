@@ -110,7 +110,7 @@ const columnas = [
                 <DropdownMenuContent>
                     <DropdownMenuLabel>Acciones</DropdownMenuLabel>
                     <DropdownMenuItem>
-                        <Link href={`/dashboard/Administracion/tipos-negocio/modificar-negocio/${row.id}`}>
+                        <Link href={`/dashboard/Administracion/usuarios/modificar-usuarios/${row.id}`}>
                             Ver Detalles
                         </Link>
                     </DropdownMenuItem>
