@@ -150,7 +150,7 @@ export default function UnidadMedidaPage() {
                         <CardDescription>Listado de Unidades de Medidas</CardDescription>
                     </div>
                     <div className="ml-auto flex items-center gap-2">
-                        <Link href="/dashboard/Catalogo/unidad-medida/registrar-unidad">
+                        <Link href="/dashboard/Catalogo/unidad-medida/registrar-unidad-medida">
                             <Button
                                 size="sm"
                                 className="h-8 gap-1"

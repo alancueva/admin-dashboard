@@ -129,7 +129,7 @@ export default function UbicacionPage() {
                         <CardDescription>Listado de Ubicaciones</CardDescription>
                     </div>
                     <div className="ml-auto flex items-center gap-2">
-                        <Link href="/gestion-de-existencia/Ubicaciones/registrar-ubicacion">
+                        <Link href="/dashboard/gestion-de-existencia/Ubicaciones/registrar-ubicacion">
                             <Button
                                 size="sm"
                                 className="h-8 gap-1"

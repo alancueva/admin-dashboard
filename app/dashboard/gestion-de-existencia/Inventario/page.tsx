@@ -131,7 +131,7 @@ export default function InventarioPage() {
                         <CardDescription>Listado de Inventario</CardDescription>
                     </div>
                     <div className="ml-auto flex items-center gap-2">
-                        <Link href="/gestion-de-existencia/Inventario/registrar-inventario">
+                        <Link href="/dashboard/gestion-de-existencia/Inventario/registrar-inventario">
                             <Button
                                 size="sm"
                                 className="h-8 gap-1"

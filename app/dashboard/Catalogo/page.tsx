@@ -37,7 +37,7 @@ export default function CatalogoPage() {
 
     const AccesosRapidos: any[] = [
         { name: "Crear Categoria", icon: <SwatchBook className="mr-2 h-4 w-4" />, link: "/dashboard/Catalogo/categoria/registrar-categoria" },
-        { name: "Crear Unidad de Medidas", icon: <Ruler className="mr-2 h-4 w-4" />, link: "/dashboard/Catalogo/unidad-medida/registrar-unidad" },
+        { name: "Crear Unidad de Medidas", icon: <Ruler className="mr-2 h-4 w-4" />, link: "/dashboard/Catalogo/unidad-medida/registrar-unidad-medida" },
     ];
     return (
         <div className="space-y-6">

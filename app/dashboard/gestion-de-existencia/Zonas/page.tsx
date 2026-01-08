@@ -136,7 +136,7 @@ export default function ZonaPage() {
                         <CardDescription>Listado de Zonas</CardDescription>
                     </div>
                     <div className="ml-auto flex items-center gap-2">
-                        <Link href="/gestion-de-existencia/Zonas/registrar-zonas">
+                        <Link href="/dashboard/gestion-de-existencia/Zonas/registrar-zonas">
                             <Button
                                 size="sm"
                                 className="h-8 gap-1"
