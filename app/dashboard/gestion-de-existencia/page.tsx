@@ -46,9 +46,9 @@ export default function AlmaceneInventarioPage() {
     ];
 
     const AccesosRapidos:any[]=[
-        {name:"Crear Almacenes",icon:<Warehouse className="mr-2 h-4 w-4" />,link:"/dashboard/gestion-de-existencia/Inventario/registrar-inventario"},
+        {name:"Crear Almacenes",icon:<Warehouse className="mr-2 h-4 w-4" />,link:"/dashboard/gestion-de-existencia/Almacenes/registrar-almacenes"},
         {name:"Crear Zonas",icon:<Map className="mr-2 h-4 w-4" />,link:"/dashboard/gestion-de-existencia/Zonas/registrar-zonas"},
-        {name:"Crear Ubicaciones",icon:<HousePlus className="mr-2 h-4 w-4" />,link:"/dashboard/gestion-de-existencia/Inventario/registrar-ubicacion"},
+        {name:"Crear Ubicaciones",icon:<HousePlus className="mr-2 h-4 w-4" />,link:"/dashboard/gestion-de-existencia/Ubicaciones/registrar-ubicacion"},
         {name:"Crear Productos",icon:<Package2 className="mr-2 h-4 w-4" />,link:"/dashboard/dashboard/gestion-de-existencia/Productos/registrar-producto"},
         {name:"Nuevo Inventario",icon:<Package className="mr-2 h-4 w-4" />,link:"/dashboard/gestion-de-existencia/Inventario/registrar-inventario"},
     ];
