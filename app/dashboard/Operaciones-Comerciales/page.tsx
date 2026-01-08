@@ -41,7 +41,7 @@ export default function OperacionComercialesPage() {
     ];
 
     const AccesosRapidos: any[] = [
-        { name: "Crear Tipo de Movimientos", icon: <ClipboardList className="mr-2 h-4 w-4" />, link: "/dashboard/Operaciones-Comerciales/tipos-movimientos/registrar-tipos-de-movimientos" },
+        { name: "Crear Tipo de Movimientos", icon: <ClipboardList className="mr-2 h-4 w-4" />, link: "/dashboard/Operaciones-Comerciales/Tipos-Movimientos/registrar-tipos-de-movimientos" },
         { name: "Crear Movimientos", icon: <Orbit className="mr-2 h-4 w-4" />, link: "/dashboard/Operaciones-Comerciales/Movimientos/registrar-movimientos" },
         { name: "Nuevo Entidad", icon: <BriefcaseBusiness className="mr-2 h-4 w-4" />, link: "/dashboard/Operaciones-Comerciales/Entidad/registrar-entidad" },
     ];

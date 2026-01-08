@@ -40,7 +40,7 @@ export default function AdministracionPage() {
     ];
 
     const AccesosRapidos:any[]=[
-        {name:"Crear usuario",icon:<User className="mr-2 h-4 w-4" />,link:"/dashboard/Administracion/usuarios/nuevo"},
+        {name:"Crear usuario",icon:<User className="mr-2 h-4 w-4" />,link:"/dashboard/Administracion/usuarios/registrar-usuarios"},
         // {name:"Nueva organización",icon:<Building2 className="mr-2 h-4 w-4" />,link:"/Administracion/organizaciones/registrar-organizacion"},
         // {name:"Nuevo tipo de negocio",icon:<BriefcaseBusiness className="mr-2 h-4 w-4" />,link:"/Administracion/tipos-negocio/nuevo"},
     ];
