@@ -8,6 +8,17 @@ import {
     DropdownMenuLabel,
     DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
+
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+} from '@/components/ui/dialog';
+
+
 import Link from 'next/link';
 import {
     Home,
@@ -176,8 +187,11 @@ export default function RegistrarMovimientoPage() {
     const [tipoMovimiento, setTipoMovimiento] = useState(null);
     const [almacenDestino, setAlmacenDestino] = useState(null);
     const [almacenOrigen, setAlmacenOrigen] = useState(null);
+    const [ubicacionDestino, setUbicacionDestino] = useState(null);
+    const [ubicacionOrigen, setUbicacionOrigen] = useState(null);
     const [entidad, setEntidad] = useState(null);
     const [estado, setEstado] = useState(null);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
 
 
     const estadoChange = (value: any) => {
@@ -197,6 +211,10 @@ export default function RegistrarMovimientoPage() {
         console.log("value:", value);
         setAlmacenDestino(value);
     };
+
+    const UbicacionChange = (value: any) => {
+        setUbicacionDestino(value);
+    }
 
     return (
         <div>
@@ -356,6 +374,7 @@ export default function RegistrarMovimientoPage() {
                             <Button
                                 size="sm"
                                 className="h-8 gap-1"
+                                onClick={() => setIsDialogOpen(true)}
                             >
                                 <Plus className="h-3.5 w-3.5" />
                                 <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
@@ -379,6 +398,73 @@ export default function RegistrarMovimientoPage() {
                     </div>
                 </CardContent>
             </Card>
+
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogContent className="sm:max-w-[900px]">
+                    <DialogHeader>
+                        <DialogTitle>Agregar Detalle de Movimiento</DialogTitle>
+                        <DialogDescription>
+                            Ingrese los detalles del producto a agregar al movimiento.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="grid grid-cols-12 gap-4 py-4">
+                        <div className="col-span-12 md:col-span-6">
+                            <label className="block mb-1 text-sm font-medium">Producto</label>
+                            <Input placeholder="Buscar producto..." />
+                        </div>
+                        <div className="col-span-6 md:col-span-3">
+                            <label className="block mb-1 text-sm font-medium">Cantidad</label>
+                            <Input type="number" placeholder="0" />
+                        </div>
+                        <div className="col-span-6 md:col-span-3">
+                            <label className="block mb-1 text-sm font-medium">Precio Unit.</label>
+                            <Input type="number" placeholder="0.00" />
+                        </div>
+
+                        <div className="col-span-12 md:col-span-6">
+                            <label className="block mb-1 text-sm font-medium">Ubicación Origen</label>
+                            <Selected
+                                value={ubicacionDestino}
+                                onChange={UbicacionChange}
+                                options={Almacen}
+                                placeholder="Seleccione Origen"
+                            />
+                        </div>
+                        <div className="col-span-12 md:col-span-6">
+                            <label className="block mb-1 text-sm font-medium">Ubicación Destino</label>
+                            <Selected
+                                value={ubicacionDestino}
+                                onChange={UbicacionChange}
+                                options={Almacen}
+                                placeholder="Seleccione Destino"
+                            />
+                        </div>
+
+                        <div className="col-span-12 md:col-span-4">
+                            <label className="block mb-1 text-sm font-medium">Lote</label>
+                            <Input placeholder="Lote" />
+                        </div>
+                        <div className="col-span-12 md:col-span-4">
+                            <label className="block mb-1 text-sm font-medium">N° Serie</label>
+                            <Input placeholder="Número de Serie" />
+                        </div>
+                        <div className="col-span-12 md:col-span-4">
+                            <label className="block mb-1 text-sm font-medium">Fecha Vencimiento</label>
+                            <div className="relative">
+                                <Input
+                                    type="date"
+                                    className="w-full px-4 py-2.5 pr-12 text-sm text-gray-900 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 hover:border-gray-300 [&::-webkit-calendar-picker-indicator]:opacity-0 [&::-webkit-calendar-picker-indicator]:absolute [&::-webkit-calendar-picker-indicator]:w-full [&::-webkit-calendar-picker-indicator]:h-full [&::-webkit-calendar-picker-indicator]:cursor-pointer"
+                                />
+                                <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+                            </div>
+                        </div>
+                    </div>
+                    <DialogFooter>
+                        <Button variant="outline" onClick={() => setIsDialogOpen(false)}>Cancelar</Button>
+                        <Button type="submit" onClick={() => setIsDialogOpen(false)}>Guardar</Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }
