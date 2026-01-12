@@ -1,23 +1,20 @@
 "use client";
-// import React, { useState } from 'react';
 import { useState } from 'react';
-import { 
-  Package, 
-  TrendingUp, 
-  AlertTriangle, 
-  ShoppingCart, 
+import {
+  Package,
+  TrendingUp,
   Warehouse,
   Calendar,
   Users,
+  AlertTriangle,
   Activity,
-  ArrowUpRight,
-  ArrowDownRight,
-  Clock,
-  FileText,
-  ChevronRight
+  ArrowRight,
+  PlusCircle
 } from 'lucide-react';
+import Link from 'next/link';
 
-const Dashboard = () => {
+
+export default function Dashboard() {
   const datos_usuario = {
     nombre: 'Alan Cueva',
     organizacion: 'SIstema Inventario'
@@ -68,30 +65,22 @@ const Dashboard = () => {
     }
   ];
 
-  const stockAlerts = [
-    { product: 'Cuaderno Universitario 100h', stock: 5, min: 20, status: 'critical' },
-    { product: 'Lapicero Faber Castell Azul', stock: 15, min: 30, status: 'warning' },
-    { product: 'Borrador Blanco StaedtLER', stock: 25, min: 50, status: 'warning' }
+
+  // Datos simulados para Actividad Reciente
+  const recentActivity = [
+    { id: 1, action: 'Venta #1023', product: 'Laptop Gamer HP', amount: '+ S/. 3,500', time: 'Hace 2 min', type: 'sale' },
+    { id: 2, action: 'Reabastecimiento', product: 'Mouse Logitec G203', amount: '+ 50 un.', time: 'Hace 1 hora', type: 'restock' },
+    { id: 3, action: 'Venta #1022', product: 'Monitor Samsung 24"', amount: '+ S/. 650', time: 'Hace 3 horas', type: 'sale' },
+    { id: 4, action: 'Ajuste de Inventario', product: 'Teclado Mecánico', amount: '- 2 un.', time: 'Ayer', type: 'adjustment' },
   ];
 
-  const expiringProducts = [
-    { product: 'Pegamento Líquido 250ml', lote: 'L2024-089', days: 15, qty: 24 },
-    { product: 'Corrector Líquido', lote: 'L2024-056', days: 22, qty: 18 },
-    { product: 'Marcador Permanente Negro', lote: 'L2024-103', days: 28, qty: 35 }
+  // Datos simulados para Stock Bajo
+  const lowStock = [
+    { name: 'Silla Ergonómica', stock: 3, min: 5 },
+    { name: 'Auriculares Bluetooth', stock: 2, min: 10 },
+    { name: 'Webcam HD', stock: 0, min: 4 },
   ];
 
-  const recentMovements = [
-    { type: 'Ingreso', doc: 'COM-2024-1234', items: 15, time: 'Hace 2 horas', status: 'completed' },
-    { type: 'Salida', doc: 'VEN-2024-5678', items: 8, time: 'Hace 4 horas', status: 'completed' },
-    { type: 'Transferencia', doc: 'TRA-2024-0089', items: 12, time: 'Hace 6 horas', status: 'pending' }
-  ];
-
-  const topProducts = [
-    { name: 'Cuaderno Anillado A4', sales: 145, revenue: 'S/. 2,320' },
-    { name: 'Lapiceros Pack x12', sales: 98, revenue: 'S/. 1,470' },
-    { name: 'Folder Manila A4', sales: 87, revenue: 'S/. 870' },
-    { name: 'Tijera Escolar', sales: 76, revenue: 'S/. 1,140' }
-  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
@@ -145,140 +134,96 @@ const Dashboard = () => {
         </div>
 
         {/* Two Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          {/* Stock Alerts */}
-          {/* <div className="lg:col-span-2 bg-white rounded-xl shadow-sm p-6">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-bold text-gray-900 flex items-center">
-                <AlertTriangle className="w-5 h-5 mr-2 text-orange-500" />
-                Alertas de Stock Bajo
-              </h2>
-              <button className="text-sm text-blue-600 hover:text-blue-700 font-medium flex items-center">
-                Ver todas <ChevronRight className="w-4 h-4 ml-1" />
-              </button>
-            </div>
-            <div className="space-y-4">
-              {stockAlerts.map((alert, index) => (
-                <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                  <div className="flex-1">
-                    <h3 className="font-medium text-gray-900">{alert.product}</h3>
-                    <p className="text-sm text-gray-600 mt-1">
-                      Stock actual: <span className="font-semibold">{alert.stock}</span> | Mínimo: {alert.min}
-                    </p>
-                  </div>
-                  <div className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    alert.status === 'critical' ? 'bg-red-100 text-red-700' : 'bg-orange-100 text-orange-700'
-                  }`}>
-                    {alert.status === 'critical' ? 'Crítico' : 'Advertencia'}
-                  </div>
-                </div>
-              ))}
-            </div> */}
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-          {/* Quick Actions */}
-          {/* <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-lg font-bold text-gray-900 mb-6">Acciones Rapidas</h2>
-            <div className="space-y-3">
-              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center">
-                <Package className="w-5 h-5 mr-2" />
-                Nuevo Ingreso
-              </button>
-              <button className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center">
-                <TrendingUp className="w-5 h-5 mr-2" />
-                Registrar Salida
-              </button>
-              <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center">
-                <Warehouse className="w-5 h-5 mr-2" />
-                Transferencia
-              </button>
-              <button className="w-full bg-orange-600 hover:bg-orange-700 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center">
-                <FileText className="w-5 h-5 mr-2" />
-                Auditoría
-              </button>
-            </div>
-          </div>
-        </div> */}
-
-        {/* Bottom Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Recent Movements */}
-          {/* <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center">
-              <Activity className="w-5 h-5 mr-2 text-purple-500" />
-              Movimientos Recientes
-            </h2>
-            <div className="space-y-4">
-              {recentMovements.map((mov, index) => (
-                <div key={index} className="border-l-4 border-blue-500 pl-4 py-2">
-                  <div className="flex items-center justify-between mb-1">
-                    <h3 className="font-medium text-gray-900 text-sm">{mov.type}</h3>
-                    <span className={`text-xs px-2 py-1 rounded-full ${
-                      mov.status === 'completed' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
-                    }`}>
-                      {mov.status === 'completed' ? 'Completado' : 'Pendiente'}
-                    </span>
-                  </div>
-                  <p className="text-xs text-gray-600">{mov.doc}</p>
-                  <div className="flex items-center justify-between mt-2">
-                    <span className="text-xs text-gray-500">{mov.items} items</span>
-                    <span className="text-xs text-gray-500 flex items-center">
-                      <Clock className="w-3 h-3 mr-1" />
-                      {mov.time}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div> */}
-
-          {/* Expiring Products */}
-          {/* <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center">
-              <Clock className="w-5 h-5 mr-2 text-red-500" />
-              Próximos a Vencer
-            </h2>
-            <div className="space-y-4">
-              {expiringProducts.map((prod, index) => (
-                <div key={index} className="p-3 bg-red-50 rounded-lg border border-red-100">
-                  <h3 className="font-medium text-gray-900 text-sm mb-1">{prod.product}</h3>
-                  <p className="text-xs text-gray-600 mb-2">Lote: {prod.lote}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium text-red-700">{prod.days} dÃ­as</span>
-                    <span className="text-xs text-gray-600">{prod.qty} unidades</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div> */}
-
-          {/* Top Products */}
-          {/* <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-lg font-bold text-gray-900 mb-6 flex items-center">
-              <TrendingUp className="w-5 h-5 mr-2 text-green-500" />
-              Productos Más Vendidos
-            </h2>
-            <div className="space-y-4">
-              {topProducts.map((prod, index) => (
-                <div key={index} className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-sm">
-                      {index + 1}
+          {/* Columna Izquierda: Actividad Reciente */}
+          <div className="lg:col-span-2 space-y-6">
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-lg font-semibold text-gray-900">Movimientos Reciente</h2>
+                <Link href={'/dashboard/Operaciones-Comerciales/Movimientos'}>
+                  <button className="text-sm text-blue-600 hover:text-blue-700 font-medium">Ver todo</button>
+                </Link>
+              </div>
+              <div className="space-y-4">
+                {recentActivity.map((item) => (
+                  <div key={item.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                    <div className="flex items-center space-x-4">
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center ${item.type === 'sale' ? 'bg-green-100 text-green-600' :
+                        item.type === 'restock' ? 'bg-blue-100 text-blue-600' : 'bg-orange-100 text-orange-600'
+                        }`}>
+                        {item.type === 'sale' ? <TrendingUp className="w-5 h-5" /> :
+                          item.type === 'restock' ? <Package className="w-5 h-5" /> : <Activity className="w-5 h-5" />}
+                      </div>
+                      <div>
+                        <p className="text-sm font-medium text-gray-900">{item.action}</p>
+                        <p className="text-xs text-gray-500">{item.product}</p>
+                      </div>
                     </div>
+                    <div className="text-right">
+                      <p className={`text-sm font-medium ${item.type === 'adjustment' ? 'text-red-600' : 'text-gray-900'}`}>
+                        {item.amount}
+                      </p>
+                      <p className="text-xs text-gray-500">{item.time}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Columna Derecha: Alertas y Acciones Rápidas */}
+          <div className="space-y-6">
+
+            {/* Alertas de Stock Bajo */}
+            <div className="bg-white rounded-xl shadow-sm p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-lg font-semibold text-gray-900">Alertas de Stock</h2>
+                <AlertTriangle className="w-5 h-5 text-orange-500" />
+              </div>
+              <div className="space-y-4">
+                {lowStock.map((item, index) => (
+                  <div key={index} className="flex items-center justify-between border-b border-gray-100 last:border-0 pb-4 last:pb-0">
                     <div>
-                      <h3 className="font-medium text-gray-900 text-sm">{prod.name}</h3>
-                      <p className="text-xs text-gray-600">{prod.sales} ventas</p>
+                      <p className="text-sm font-medium text-gray-900">{item.name}</p>
+                      <p className="text-xs text-gray-500">Mínimo requerido: {item.min}</p>
+                    </div>
+                    <div className="px-3 py-1 bg-red-100 text-red-700 text-xs font-medium rounded-full">
+                      {item.stock} un.
                     </div>
                   </div>
-                  <span className="font-bold text-green-600 text-sm">{prod.revenue}</span>
-                </div>
-              ))}
+                ))}
+              </div>
+              <Link href={'/dashboard/gestion-de-existencia/Inventario'}>
+                <button className="w-full mt-6 py-2 text-sm text-center text-gray-600 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+                  Ver reporte de inventario
+                </button>
+              </Link>
             </div>
-          </div> */}
+
+            {/* Acciones Rápidas */}
+            <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl shadow-sm p-6 text-white">
+              <h2 className="text-lg font-semibold mb-4">Acciones Rápidas</h2>
+              <div className="space-y-3">
+                <Link href={'/dashboard/Operaciones-Comerciales/Movimientos/registrar-movimientos'}>
+                  <button className="w-full flex items-center justify-between p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors backdrop-blur-sm">
+                    <span className="text-sm font-medium">Registrar Nuevo Movimiento</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </Link>
+                <Link href={'/dashboard/gestion-de-existencia/Productos/registrar-producto'}>
+                  <button className="w-full flex items-center justify-between p-3 bg-white/10 rounded-lg hover:bg-white/20 transition-colors backdrop-blur-sm">
+                    <span className="text-sm font-medium">Agregar Producto</span>
+                    <PlusCircle className="w-4 h-4" />
+                  </button>
+                </Link>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </main>
     </div>
   );
 };
-
-export default Dashboard;
