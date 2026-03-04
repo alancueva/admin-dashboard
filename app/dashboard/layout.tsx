@@ -14,7 +14,8 @@ import {
   BookText,
   ShieldPlus,
   File,
-  SlidersVertical
+  SlidersVertical,
+  HandPlatter
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -70,13 +71,29 @@ export default function DashboardLayout({
 }
 
 function DesktopNav() {
-   const navItems:any[] = [
+  const navItems: any[] = [
     { href: '/dashboard', label: 'Inicio', icon: Home },
-    { href: '/dashboard/Administracion', label: 'Administrativo', icon: ShieldPlus },
+    {
+      href: '/dashboard/Administracion',
+      label: 'Administrativo',
+      icon: ShieldPlus
+    },
     { href: '/dashboard/Catalogo', label: 'Catálogo', icon: BookText },
-    { href: '/dashboard/gestion-de-existencia', label: 'Gestión de Existenia', icon: Package },
-    { href: '/dashboard/Operaciones-Comerciales', label: 'Operaciones Comerciales', icon: ArrowLeftRight },
-    // { href: '#', label: 'Reporte', icon: File },
+    {
+      href: '/dashboard/gestion-de-existencia',
+      label: 'Gestión de Existenia',
+      icon: Package
+    },
+    {
+      href: '/dashboard/Operaciones-Comerciales',
+      label: 'Operaciones Comerciales',
+      icon: ArrowLeftRight
+    },
+    {
+      href: '/dashboard/operaciones-de-servicio',
+      label: 'Operaciones de Servicio',
+      icon: HandPlatter
+    }
     // { href: '#', label: 'Control', icon: SlidersVertical },
   ];
 
@@ -95,7 +112,6 @@ function DesktopNav() {
             <item.icon className="h-5 w-5" />
           </NavItem>
         ))}
-
       </nav>
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
         <Tooltip>
@@ -116,13 +132,30 @@ function DesktopNav() {
 }
 
 function MobileNav() {
-    const [open, setOpen] = useState(false);
-  const nav:any[] = [
+  const [open, setOpen] = useState(false);
+  const nav: any[] = [
     { href: '/dashboard', label: 'Inicio', icon: Home },
-    { href: '/dashboard/Administracion', label: 'Administrativo', icon: ShieldPlus },
+    {
+      href: '/dashboard/Administracion',
+      label: 'Administrativo',
+      icon: ShieldPlus
+    },
     { href: '/dashboard/Catalogo', label: 'Catálogo', icon: Package },
-    { href: '/dashboard/gestion-de-existencia', label: 'Gestión de Existenia', icon: Package },
-    { href: '/dashboard/Operaciones-Comerciales', label: 'Operaciones Comerciales', icon: ArrowLeftRight },
+    {
+      href: '/dashboard/gestion-de-existencia',
+      label: 'Gestión de Existenia',
+      icon: Package
+    },
+    {
+      href: '/dashboard/Operaciones-Comerciales',
+      label: 'Operaciones Comerciales',
+      icon: ArrowLeftRight
+    },
+    {
+      href: '/dashboard/operaciones-de-servicio',
+      label: 'Operaciones de Servicio',
+      icon: HandPlatter
+    }
     // { href: '#', label: 'Reporte', icon: File },
     // { href: '#', label: 'Control', icon: SlidersVertical },
   ];
@@ -142,7 +175,7 @@ function MobileNav() {
             className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
           >
             <VercelLogo className="h-10 w-10 transition-all group-hover:scale-110" />
-          <span className="sr-only">Stokontrol</span>
+            <span className="sr-only">Stokontrol</span>
           </Link>
           {nav.map((item) => (
             <Link
@@ -152,10 +185,9 @@ function MobileNav() {
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
               <item.icon className="h-5 w-5" />
-            {item.label}
+              {item.label}
             </Link>
           ))}
-          
         </nav>
       </SheetContent>
     </Sheet>
