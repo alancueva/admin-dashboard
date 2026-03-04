@@ -1,0 +1,151 @@
+'use client';
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  CardFooter
+} from '@/components/ui/card';
+import { File, PlusCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger
+} from '@/components/ui/dropdown-menu';
+import { MoreHorizontal } from 'lucide-react';
+import DataTable, { createTheme } from 'react-data-table-component';
+import Link from 'next/link';
+import { useState } from 'react';
+
+interface mesas_ {
+  id: number;
+  n_mesas: string;
+  capacidad: number;
+}
+
+const mesas: mesas_[] = [
+  {
+    id: 1,
+    n_mesas: '1',
+    capacidad: 4
+  },
+  {
+    id: 2,
+    n_mesas: '2',
+    capacidad: 4
+  },
+  {
+    id: 3,
+    n_mesas: '3',
+    capacidad: 4
+  }
+];
+
+const columnas = [
+  {
+    name: 'Nº',
+    selector: (row: mesas_) => row.id,
+    sortable: true
+  },
+  {
+    name: 'Número de Mesa',
+    selector: (row: mesas_) => row.n_mesas,
+    sortable: true
+  },
+  {
+    name: 'Capacidad',
+    selector: (row: mesas_) => row.capacidad,
+    sortable: true
+  },
+  {
+    name: 'Acciones',
+    cell: (row: mesas_) => (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button aria-haspopup="true" size="icon" variant="ghost">
+            <MoreHorizontal className="h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <DropdownMenuLabel>Acciones</DropdownMenuLabel>
+          <DropdownMenuItem>
+            <Link
+              href={`/dashboard/operaciones-de-servicio/mesa/modificar-mesas/${row.id}`}
+            >
+              Ver Detalles
+            </Link>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    )
+  }
+];
+const paginacionOpciones = {
+  rowsPerPageText: 'Filas por página',
+  rangeSeparatorText: 'de',
+  selectAllRowsItem: true,
+  selectAllRowsItemText: 'Todos'
+};
+export default function MesaPage() {
+  const [filtro, setFiltro] = useState('');
+  const datosFiltrados = mesas.filter((u) =>
+    u.n_mesas.toLowerCase().includes(filtro.toLowerCase())
+  );
+  return (
+    <Card className="p-0 overflow-hidden">
+      <CardHeader>
+        <div className="flex items-center gap-2">
+          <div>
+            <CardTitle>Mesa</CardTitle>
+            <CardDescription>Listado de Mesas</CardDescription>
+          </div>
+          <div className="ml-auto flex items-center gap-2">
+            <Link href="/dashboard/operaciones-de-servicio/mesa/registrar-mesas">
+              <Button size="sm" className="h-8 gap-1">
+                <PlusCircle className="h-3.5 w-3.5" />
+                <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+                  Agregar
+                </span>
+              </Button>
+            </Link>
+          </div>
+        </div>
+        {/*<div className='grid grid-cols-12 gap-4 mt-2'>
+          <div className="col-span-12 md:col-span-4">
+            <label className="block mb-1 font-medium">
+              Almacenes
+            </label>
+            <Input
+              type="text"
+              placeholder="Buscar almacenes..."
+              className="w-full border border-gray-300 rounded-md p-2"
+              value={filtro}
+              onChange={(e) => setFiltro(e.target.value)}
+            />
+          </div>
+
+        </div>*/}
+      </CardHeader>
+      <CardContent>
+        <div className="w-full overflow-x-auto">
+          <DataTable
+            columns={columnas}
+            data={datosFiltrados}
+            progressPending={false}
+            pagination
+            paginationPerPage={5}
+            paginationRowsPerPageOptions={[5, 10, 15, 20, 25, 50]}
+            paginationComponentOptions={paginacionOpciones}
+            noDataComponent="No hay registros para mostrar"
+          />
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
