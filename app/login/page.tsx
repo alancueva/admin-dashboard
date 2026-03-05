@@ -37,8 +37,8 @@ export default function LoginPage() {
       // const token = data.token;
 
       // SIMULACIÓN (Eliminar cuando tengas el backend conectado)
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      const token = "token-simulado-123456"; 
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const token = 'token-simulado-123456';
 
       // 1. Guardar en LocalStorage (para uso en cliente si es necesario)
       localStorage.setItem('token', token);
@@ -49,7 +49,6 @@ export default function LoginPage() {
       // 3. Redirigir al Dashboard
       router.push('/dashboard');
       router.refresh(); // Actualiza para que el middleware detecte la cookie
-
     } catch (err) {
       console.error(err);
       setError('Error al iniciar sesión');
@@ -63,7 +62,7 @@ export default function LoginPage() {
       {/* Panel Izquierdo - Ilustración */}
       <div className="hidden lg:block lg:w-1/2 relative">
         <Image
-          src={"/void-paisaje.png"}
+          src={'/void-paisaje.png'}
           alt="Ilustración"
           fill
           style={{
@@ -149,16 +148,15 @@ export default function LoginPage() {
           </form>
 
           {/* Social Login */}
-          <div className="space-y-3">
-          </div>
+          <div className="space-y-3"></div>
 
           {/* Footer */}
-          <p className="mt-8 text-center text-sm text-gray-400">
+          {/*<p className="mt-8 text-center text-sm text-gray-400">
             ¿No tienes una cuenta?{' '}
             <Link href="/registrarse" className="text-white hover:underline">
               <button className="text-white hover:underline">Regístrate</button>
             </Link>
-          </p>
+          </p>*/}
         </div>
       </div>
     </div>
