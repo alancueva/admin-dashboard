@@ -111,7 +111,7 @@ export default function RegistroForm() {
                 className="w-full border border-gray-300 rounded-md p-2"
               />
             </div>
-            {/*<div className="col-span-12 md:col-span-2">
+            <div className="col-span-12 md:col-span-2">
               <label className="block mb-1 font-medium">Vigencia</label>
               <select
                 className="w-full border border-gray-300 rounded-md p-2"
@@ -121,7 +121,7 @@ export default function RegistroForm() {
                 <option value="SI">SI</option>
                 <option value="NO">NO</option>
               </select>
-            </div>*/}
+            </div>
           </form>
         </CardContent>
       </Card>
