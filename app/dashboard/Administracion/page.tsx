@@ -18,7 +18,7 @@ import {
   CardTitle,
   CardFooter
 } from '@/components/ui/card';
-import { getAdministracion } from '../../service/administracion/administracion.service';
+// import { getAdministracion } from '../../service/administracion/administracion.service';
 
 interface defaultStats {
   usuarios: number;
@@ -40,7 +40,8 @@ export default async function AdministracionPage() {
   let stats = defaultStats;
 
   try {
-    const data = await getAdministracion();
+    // const data = await getAdministracion();
+    const data: any[] = [];
 
     if (data?.length) {
       const admin = data[0];
