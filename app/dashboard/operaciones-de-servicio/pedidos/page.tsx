@@ -321,7 +321,7 @@ export default function App() {
             <div className="flex items-center gap-2">
               <LayoutGrid size={18} className="text-slate-400" />
               <h3 className="text-xs font-black uppercase tracking-tighter text-slate-400">
-                Mesas Salón
+                Mesas
               </h3>
             </div>
             {notifications.length > 0 && (
