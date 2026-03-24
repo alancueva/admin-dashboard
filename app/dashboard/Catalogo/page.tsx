@@ -9,7 +9,9 @@ import {
   Briefcase,
   SwatchBook,
   Ruler,
-  Captions
+  Captions,
+  Grid3X3,
+  Salad
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -26,7 +28,9 @@ export default function CatalogoPage() {
   const stats = {
     categoria: 5,
     unidad_medida: 20,
-    tipo_documento: 5
+    tipo_documento: 5,
+    mesas: 12,
+    menu: 50
   };
 
   const card_: any[] = [
@@ -38,21 +42,37 @@ export default function CatalogoPage() {
       link: '/dashboard/Catalogo/categoria',
       link_text: 'Gestionar Categorias'
     },
+    // {
+    //   title: 'Unidad De Medidas',
+    //   icon: <Ruler className="h-4 w-4 text-muted-foreground" />,
+    //   value: stats.unidad_medida,
+    //   description: 'Unidades de Medida registradas',
+    //   link: '/dashboard/Catalogo/unidad-medida',
+    //   link_text: 'Gestionar Unidades de Medida'
+    // },
+    // {
+    //   title: 'Tipos de Documentos',
+    //   icon: <Captions className="h-4 w-4 text-muted-foreground" />,
+    //   value: stats.tipo_documento,
+    //   description: 'Tipos de Documentos registradas',
+    //   link: '/dashboard/Catalogo/tipo-documento',
+    //   link_text: 'Gestionar Tipos de Documentos'
+    // }
     {
-      title: 'Unidad De Medidas',
-      icon: <Ruler className="h-4 w-4 text-muted-foreground" />,
-      value: stats.unidad_medida,
-      description: 'Unidades de Medida registradas',
-      link: '/dashboard/Catalogo/unidad-medida',
-      link_text: 'Gestionar Unidades de Medida'
+      title: 'Mesas',
+      icon: <Grid3X3 className="h-4 w-4 text-muted-foreground" />,
+      value: stats.mesas,
+      description: 'Mesas Registradas',
+      link: '/dashboard/Catalogo/mesa',
+      link_text: 'Gestionar Mesas'
     },
     {
-      title: 'Tipos de Documentos',
-      icon: <Captions className="h-4 w-4 text-muted-foreground" />,
-      value: stats.tipo_documento,
-      description: 'Tipos de Documentos registradas',
-      link: '/dashboard/Catalogo/tipo-documento',
-      link_text: 'Gestionar Tipos de Documentos'
+      title: 'Menú',
+      icon: <Salad className="h-4 w-4 text-muted-foreground" />,
+      value: stats.menu,
+      description: 'Menú Registradas',
+      link: '/dashboard/Catalogo/menu',
+      link_text: 'Gestionar Menú'
     }
   ];
 
@@ -62,15 +82,25 @@ export default function CatalogoPage() {
       icon: <SwatchBook className="mr-2 h-4 w-4" />,
       link: '/dashboard/Catalogo/categoria/registrar-categoria'
     },
+    // {
+    //   name: 'Registrar Unidad de Medidas',
+    //   icon: <Ruler className="mr-2 h-4 w-4" />,
+    //   link: '/dashboard/Catalogo/unidad-medida/registrar-unidad-medida'
+    // },
+    // {
+    //   name: 'Registrar Tipos de Documentos',
+    //   icon: <Captions className="mr-2 h-4 w-4" />,
+    //   link: '/dashboard/Catalogo/tipos-documentos/registrar-tipo-documento'
+    // }
     {
-      name: 'Registrar Unidad de Medidas',
-      icon: <Ruler className="mr-2 h-4 w-4" />,
-      link: '/dashboard/Catalogo/unidad-medida/registrar-unidad-medida'
+      name: 'Registrar mesas',
+      icon: <Grid3X3 className="mr-2 h-4 w-4" />,
+      link: '/dashboard/Catalogo/mesa/registrar-mesas'
     },
     {
-      name: 'Registrar Tipos de Documentos',
-      icon: <Captions className="mr-2 h-4 w-4" />,
-      link: '/dashboard/Catalogo/tipos-documentos/registrar-tipo-documento'
+      name: 'Registrar Menú',
+      icon: <Salad className="mr-2 h-4 w-4" />,
+      link: '/dashboard/Catalogo/menu/registrar-menu'
     }
   ];
   return (
