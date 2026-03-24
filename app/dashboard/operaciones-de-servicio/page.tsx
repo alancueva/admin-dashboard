@@ -15,7 +15,8 @@ import {
   HousePlus,
   Map,
   Salad,
-  Grid3X3
+  Grid3X3,
+  ClipboardList
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -30,40 +31,40 @@ import {
 
 export default function AlmaceneInventarioPage() {
   const stats = {
-    mesas: 12,
+    historial_pedido: 200,
     menu: 50
   };
 
   const card_: any[] = [
     {
-      title: 'Mesas',
-      icon: <Grid3X3 className="h-4 w-4 text-muted-foreground" />,
-      value: stats.mesas,
-      description: 'Mesas Registradas',
-      link: '/dashboard/operaciones-de-servicio/mesa',
-      link_text: 'Gestionar Mesas'
+      title: 'Historial de Pedidos',
+      icon: <ClipboardList className="h-4 w-4 text-muted-foreground" />,
+      value: stats.historial_pedido,
+      description: 'Pedidos',
+      link: '/dashboard/operaciones-de-servicio/historial-pedido',
+      link_text: 'Ver Historial de Pedidos'
     },
     {
-      title: 'Menú',
-      icon: <Salad className="h-4 w-4 text-muted-foreground" />,
-      value: stats.menu,
-      description: 'Menú Registradas',
-      link: '/dashboard/operaciones-de-servicio/menu',
-      link_text: 'Gestionar Menú'
+      title: 'Pedidos',
+      icon: <ClipboardList className="h-4 w-4 text-muted-foreground" />,
+      // value: 0,
+      description: 'Toma de Pedidos',
+      link: '/dashboard/operaciones-de-servicio/pedidos',
+      link_text: 'Toma de Pedidos'
     }
   ];
 
   const AccesosRapidos: any[] = [
-    {
-      name: 'Registrar mesas',
-      icon: <Grid3X3 className="mr-2 h-4 w-4" />,
-      link: '/dashboard/gestion-de-existencia/Almacenes/registrar-almacenes'
-    },
-    {
-      name: 'Registrar Menú',
-      icon: <Salad className="mr-2 h-4 w-4" />,
-      link: '/dashboard/gestion-de-existencia/Almacenes/registrar-almacenes'
-    }
+    // {
+    //   name: 'Registrar mesas',
+    //   icon: <Grid3X3 className="mr-2 h-4 w-4" />,
+    //   link: '/dashboard/gestion-de-existencia/Almacenes/registrar-almacenes'
+    // },
+    // {
+    //   name: 'Registrar Menú',
+    //   icon: <Salad className="mr-2 h-4 w-4" />,
+    //   link: '/dashboard/gestion-de-existencia/Almacenes/registrar-almacenes'
+    // }
   ];
 
   return (
@@ -71,7 +72,7 @@ export default function AlmaceneInventarioPage() {
       <div>
         <h1 className="text-3xl font-bold">Operaciones de Servicio</h1>
         <p className="text-muted-foreground mt-1">
-          Gestión para Restaurante, Mesa, Menu, Pedido, Venta
+          Gestión para Restaurante, Historial Pedido
         </p>
       </div>
 
@@ -101,7 +102,7 @@ export default function AlmaceneInventarioPage() {
       </div>
 
       {/* Card de acceso rápido */}
-      <Card>
+      {/*<Card>
         <CardHeader>
           <CardTitle>Accesos Rápidos</CardTitle>
           <CardDescription>
@@ -118,7 +119,7 @@ export default function AlmaceneInventarioPage() {
             </Link>
           ))}
         </CardContent>
-      </Card>
+      </Card>*/}
     </div>
   );
 }
