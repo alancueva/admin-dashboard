@@ -3,7 +3,8 @@ import {
   ArrowRight,
   ClipboardList,
   Orbit,
-  ReceiptText
+  ReceiptText,
+  ListOrdered
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -21,10 +22,19 @@ export default function OperacionComercialesPage() {
     tipos_movimiento: 5,
     movimiento: 20,
     entidad: 8,
-    ventas: 200
+    ventas: 200,
+    series: 10
   };
 
   const card_: any[] = [
+    {
+      title: 'Series',
+      icon: <ListOrdered className="h-4 w-4 text-muted-foreground" />,
+      value: stats.series,
+      description: 'Series registrados en el sistema',
+      link: '/dashboard/Operaciones-Comerciales/comprobantes/series-comprobantes',
+      link_text: 'Gestionar Series'
+    },
     {
       title: 'Ventas',
       icon: <ReceiptText className="h-4 w-4 text-muted-foreground" />,
@@ -39,7 +49,11 @@ export default function OperacionComercialesPage() {
   ];
 
   const AccesosRapidos: any[] = [
-    //{ name: "Crear Tipo de Movimientos", icon: <ClipboardList className="mr-2 h-4 w-4" />, link: "/dashboard/Operaciones-Comerciales/ventas/" },
+    {
+      name: 'Crear Series',
+      icon: <ListOrdered className="mr-2 h-4 w-4" />,
+      link: '/dashboard/Operaciones-Comerciales/comprobantes/series-comprobantes/registrar-series'
+    }
     // { name: "Crear Tipo de Movimientos", icon: <ClipboardList className="mr-2 h-4 w-4" />, link: "/dashboard/Operaciones-Comerciales/Tipos-Movimientos/registrar-tipos-de-movimientos" },
     // { name: "Crear Movimientos", icon: <Orbit className="mr-2 h-4 w-4" />, link: "/dashboard/Operaciones-Comerciales/Movimientos/registrar-movimientos" },
     // { name: "Nuevo Entidad", icon: <BriefcaseBusiness className="mr-2 h-4 w-4" />, link: "/dashboard/Operaciones-Comerciales/Entidad/registrar-entidad" },
