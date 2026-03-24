@@ -160,7 +160,12 @@ export default function App() {
   const [tempPaymentMethod, setTempPaymentMethod] =
     useState<PaymentMethod>('efectivo');
 
-  const selectedTable = tables.find((t) => t.id === selectedTableId);
+  // const selectedTable = tables.find((t) => t.id === selectedTableId);
+
+  const selectedTable = useMemo(
+    () => tables.find((t) => t.id === selectedTableId),
+    [tables, selectedTableId]
+  );
 
   /**
    * --- FUNCIONES DE LÓGICA DE NEGOCIO ---
@@ -462,7 +467,7 @@ export default function App() {
               <LayoutGrid size={48} className="mb-4" />
               <p className="font-bold text-sm">Selecciona una mesa</p>
             </div>
-          ) : selectedTable.currentOrder.length === 0 ? (
+          ) : selectedTable?.currentOrder.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-slate-300">
               <Utensils size={40} className="mb-4 opacity-20" />
               <p className="text-xs font-bold uppercase tracking-widest text-center">
@@ -478,11 +483,11 @@ export default function App() {
                 'Abierto',
                 'Entregado'
               ].map((statusGroup) => {
-                const itemsWithIdx = selectedTable.currentOrder
+                const itemsWithIdx = selectedTable?.currentOrder
                   .map((item, idx) => ({ ...item, originalIdx: idx }))
                   .filter((i) => i.status === statusGroup);
 
-                if (itemsWithIdx.length === 0) return null;
+                if (itemsWithIdx?.length === 0) return null;
 
                 return (
                   <div key={statusGroup} className="space-y-3">
@@ -502,7 +507,7 @@ export default function App() {
                     >
                       {statusGroup}
                     </h4>
-                    {itemsWithIdx.map((item) => (
+                    {itemsWithIdx?.map((item) => (
                       <div
                         key={`${item.id}-${item.originalIdx}`}
                         className="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm transition-all overflow-hidden"
@@ -714,15 +719,15 @@ export default function App() {
           className="lg:hidden fixed bottom-6 right-6 bg-slate-900 text-white p-5 rounded-full shadow-2xl z-40 flex items-center gap-2"
         >
           <ShoppingCart size={24} />
-          {selectedTable.currentOrder.filter((i) => i.status === 'Abierto')
-            .length > 0 && (
+          {selectedTable?.currentOrder.filter((i) => i.status === 'Abierto')
+            .length ? (
             <span className="absolute -top-1 -right-1 bg-orange-600 text-white text-[10px] w-6 h-6 rounded-full flex items-center justify-center border-2 border-white font-bold">
               {
                 selectedTable.currentOrder.filter((i) => i.status === 'Abierto')
                   .length
               }
             </span>
-          )}
+          ) : null}
         </button>
       )}
 
