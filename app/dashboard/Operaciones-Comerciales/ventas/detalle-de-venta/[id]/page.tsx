@@ -239,7 +239,7 @@ export default function VentaPage() {
                 Imprimir
               </Button>
 
-              <Link href="/dashboard/ventas">
+              <Link href="/dashboard/Operaciones-Comerciales/ventas">
                 <Button size="sm">
                   <ArrowLeftRight className="h-3.5 w-3.5" />
                   Volver

@@ -30,6 +30,7 @@ interface Venta {
   id: number;
   pedido_id: number;
   usuario_id: number;
+  serie: string;
   metodo_pago_principal: string;
   total_final: number;
   cambio: number;
@@ -45,6 +46,7 @@ const ventas: Venta[] = [
     id: 1,
     pedido_id: 101,
     usuario_id: 1,
+    serie: 'B001-0001',
     metodo_pago_principal: 'efectivo',
     total_final: 50,
     cambio: 5,
@@ -55,6 +57,7 @@ const ventas: Venta[] = [
     id: 2,
     pedido_id: 102,
     usuario_id: 2,
+    serie: 'B001-0002',
     metodo_pago_principal: 'tarjeta',
     total_final: 80,
     cambio: 0,
@@ -108,7 +111,12 @@ const handlePrint = (venta: Venta) => {
 const columnas = [
   {
     name: 'Venta',
-    selector: (row: Venta) => `#${row.id}`,
+    selector: (row: Venta) => row.id,
+    sortable: true
+  },
+  {
+    name: 'Serie',
+    selector: (row: Venta) => row.serie,
     sortable: true
   },
   {
@@ -224,12 +232,12 @@ export default function VentasPage() {
           </div>
 
           <div className="ml-auto flex items-center gap-2">
-            <Link href="/dashboard/ventas/registrar">
+            {/*<Link href="/dashboard/ventas/registrar">
               <Button size="sm" className="h-8 gap-1">
                 <PlusCircle className="h-3.5 w-3.5" />
                 Agregar
               </Button>
-            </Link>
+            </Link>*/}
           </div>
         </div>
 
