@@ -75,7 +75,7 @@ export default function RegistrarPedido() {
     0
   );
   return (
-    <div>
+    <div className="p-0 overflow-hidden">
       {/* HEADER */}
       <Card className="sticky top-0 z-50 mb-4">
         <CardHeader>
@@ -90,7 +90,7 @@ export default function RegistrarPedido() {
                 </span>
               </Button>*/}
 
-              <Link href="/dashboard/historial-pedido">
+              <Link href="/dashboard/operaciones-de-servicio/historial-pedido">
                 <Button size="sm" className="h-8 gap-1">
                   <ArrowLeftRight className="h-3.5 w-3.5" />
                   Volver

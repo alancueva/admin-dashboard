@@ -222,7 +222,7 @@ export default function VentaPage() {
     { value: 2, label: 'F001 - Factura' }
   ];
   return (
-    <div>
+    <div className="p-0 overflow-hidden">
       {/* HEADER */}
       <Card className="sticky top-0 z-50 mb-4">
         <CardHeader>
