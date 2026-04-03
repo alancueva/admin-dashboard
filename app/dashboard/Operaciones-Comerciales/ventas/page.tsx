@@ -29,7 +29,6 @@ import { useState } from 'react';
 interface Venta {
   id: number;
   pedido_id: number;
-  usuario_id: number;
   serie: string;
   metodo_pago_principal: string;
   total_final: number;
@@ -45,7 +44,6 @@ const ventas: Venta[] = [
   {
     id: 1,
     pedido_id: 101,
-    usuario_id: 1,
     serie: 'B001-0001',
     metodo_pago_principal: 'efectivo',
     total_final: 50,
@@ -56,7 +54,6 @@ const ventas: Venta[] = [
   {
     id: 2,
     pedido_id: 102,
-    usuario_id: 2,
     serie: 'B001-0002',
     metodo_pago_principal: 'tarjeta',
     total_final: 80,
@@ -122,11 +119,6 @@ const columnas = [
   {
     name: 'Pedido',
     selector: (row: Venta) => row.pedido_id,
-    sortable: true
-  },
-  {
-    name: 'Usuario',
-    selector: (row: Venta) => row.usuario_id,
     sortable: true
   },
   {

@@ -30,7 +30,6 @@ interface Pedido {
   id: number;
   numero_pedido: string;
   mesa_id?: number | null;
-  usuario_id: number;
   estado: string;
   total: number;
   fecha_apertura: string;
@@ -44,7 +43,6 @@ const pedidos: Pedido[] = [
     id: 1,
     numero_pedido: '000123',
     mesa_id: 5,
-    usuario_id: 1,
     estado: 'abierto',
     total: 45.5,
     fecha_apertura: '2026-03-20 12:30'
@@ -53,7 +51,6 @@ const pedidos: Pedido[] = [
     id: 2,
     numero_pedido: '000124',
     mesa_id: 2,
-    usuario_id: 2,
     estado: 'en_preparacion',
     total: 30.0,
     fecha_apertura: '2026-03-20 13:00'
@@ -62,7 +59,6 @@ const pedidos: Pedido[] = [
     id: 3,
     numero_pedido: '000125',
     mesa_id: null,
-    usuario_id: 1,
     estado: 'pagado',
     total: 60.0,
     fecha_apertura: '2026-03-20 14:10'
@@ -103,11 +99,6 @@ const columnas = [
   {
     name: 'Mesa',
     selector: (row: Pedido) => row.mesa_id ?? '—',
-    sortable: true
-  },
-  {
-    name: 'Usuario',
-    selector: (row: Pedido) => row.usuario_id,
     sortable: true
   },
   {
