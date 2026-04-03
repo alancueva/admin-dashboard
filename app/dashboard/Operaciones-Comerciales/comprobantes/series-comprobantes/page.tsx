@@ -31,8 +31,7 @@ interface Serie {
   id_tipo_comprobante: number;
   serie: string;
   descripcion: string;
-  ultimo_numero: number;
-  proximo_numero: number;
+  numero: string;
   vigencia: string;
   fecha_creacion: string;
 }
@@ -46,8 +45,7 @@ const series: Serie[] = [
     id_tipo_comprobante: 1,
     serie: 'B001',
     descripcion: 'Boletas mostrador',
-    ultimo_numero: 120,
-    proximo_numero: 121,
+    numero: '00000001',
     vigencia: 'SI',
     fecha_creacion: '2024-01-01'
   },
@@ -56,8 +54,7 @@ const series: Serie[] = [
     id_tipo_comprobante: 2,
     serie: 'F001',
     descripcion: 'Facturas RUC',
-    ultimo_numero: 80,
-    proximo_numero: 81,
+    numero: '00000001',
     vigencia: 'NO',
     fecha_creacion: '2024-01-02'
   }
@@ -78,13 +75,8 @@ const columnas = [
     sortable: true
   },
   {
-    name: 'Último Número',
-    selector: (row: Serie) => row.ultimo_numero,
-    sortable: true
-  },
-  {
-    name: 'Próximo Número',
-    selector: (row: Serie) => row.proximo_numero,
+    name: 'Número',
+    selector: (row: Serie) => row.numero,
     sortable: true
   },
   {

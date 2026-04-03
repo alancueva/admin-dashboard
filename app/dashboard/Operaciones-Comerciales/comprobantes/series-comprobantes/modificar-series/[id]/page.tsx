@@ -95,16 +95,10 @@ export default function RegistrarSeriePage() {
               <Input type="text" placeholder="Ej: Boletas mostrador" />
             </div>
 
-            {/* CORRELATIVO INICIAL */}
-            <div className="col-span-12 md:col-span-4">
-              <label className="block mb-1 font-medium">Último Número</label>
-              <Input type="number" placeholder="Ej: 0" />
-            </div>
-
             {/* PROXIMO (SOLO VISUAL) */}
             <div className="col-span-12 md:col-span-4">
-              <label className="block mb-1 font-medium">Próximo Número</label>
-              <Input type="number" value="Auto generado" disabled />
+              <label className="block mb-1 font-medium">Número</label>
+              <Input type="text" value="Auto generado" disabled />
             </div>
 
             {/* VIGENCIA */}
