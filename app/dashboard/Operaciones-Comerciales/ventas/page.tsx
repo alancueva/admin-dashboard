@@ -28,7 +28,7 @@ import { useState } from 'react';
 ======================= */
 interface Venta {
   id: number;
-  pedido_id: number;
+  pedido: string;
   serie: string;
   metodo_pago_principal: string;
   total_final: number;
@@ -43,7 +43,7 @@ interface Venta {
 const ventas: Venta[] = [
   {
     id: 1,
-    pedido_id: 101,
+    pedido: '000010',
     serie: 'B001-0001',
     metodo_pago_principal: 'efectivo',
     total_final: 50,
@@ -53,7 +53,7 @@ const ventas: Venta[] = [
   },
   {
     id: 2,
-    pedido_id: 102,
+    pedido: '000011',
     serie: 'B001-0002',
     metodo_pago_principal: 'tarjeta',
     total_final: 80,
@@ -84,7 +84,7 @@ const handlePrint = (venta: Venta) => {
     <div style="font-family: monospace; width: 250px;">
       <h3 style="text-align:center;">MI NEGOCIO</h3>
       <p>Venta: #${venta.id}</p>
-      <p>Pedido: ${venta.pedido_id}</p>
+      <p>Pedido: ${venta.pedido}</p>
       <p>Fecha: ${venta.fecha_venta}</p>
       <hr/>
       <p>Total: S/ ${venta.total_final.toFixed(2)}</p>
@@ -118,7 +118,7 @@ const columnas = [
   },
   {
     name: 'Pedido',
-    selector: (row: Venta) => row.pedido_id,
+    selector: (row: Venta) => row.pedido,
     sortable: true
   },
   {
@@ -137,26 +137,26 @@ const columnas = [
     selector: (row: Venta) => `S/ ${row.total_final.toFixed(2)}`,
     sortable: true
   },
-  {
-    name: 'Cambio',
-    selector: (row: Venta) => `S/ ${row.cambio.toFixed(2)}`,
-    sortable: true
-  },
+  // {
+  //   name: 'Cambio',
+  //   selector: (row: Venta) => `S/ ${row.cambio.toFixed(2)}`,
+  //   sortable: true
+  // },
   {
     name: 'Fecha',
     selector: (row: Venta) => row.fecha_venta,
     sortable: true
   },
-  {
-    name: 'Ticket',
-    cell: (row: Venta) => (
-      <span
-        className={`text-xs font-medium ${row.impreso ? 'text-green-600' : 'text-red-600'}`}
-      >
-        {row.impreso ? 'Impreso' : 'Pendiente'}
-      </span>
-    )
-  },
+  // {
+  //   name: 'Ticket',
+  //   cell: (row: Venta) => (
+  //     <span
+  //       className={`text-xs font-medium ${row.impreso ? 'text-green-600' : 'text-red-600'}`}
+  //     >
+  //       {row.impreso ? 'Impreso' : 'Pendiente'}
+  //     </span>
+  //   )
+  // },
   {
     name: 'Acciones',
     cell: (row: Venta) => (
@@ -210,7 +210,7 @@ export default function VentasPage() {
   const datosFiltrados = ventas.filter(
     (v) =>
       v.id.toString().includes(filtro) ||
-      v.pedido_id.toString().includes(filtro) ||
+      v.pedido.toString().includes(filtro) ||
       v.metodo_pago_principal.toLowerCase().includes(filtro.toLowerCase())
   );
 

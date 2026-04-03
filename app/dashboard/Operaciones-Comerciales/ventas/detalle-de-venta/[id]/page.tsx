@@ -298,13 +298,13 @@ export default function VentaPage() {
               <Input type="number" />
             </div>
 
-            <div className="col-span-12 md:col-span-3">
+            {/*<div className="col-span-12 md:col-span-3">
               <label>Caja Diaria ID</label>
               <Input type="number" />
-            </div>
+            </div>*/}
 
             <div className="col-span-12 md:col-span-3">
-              <label>Usuario ID</label>
+              <label>Usuario</label>
               <Input type="number" />
             </div>
 
