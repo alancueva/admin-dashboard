@@ -218,8 +218,8 @@ export default function VentaPage() {
   ];
 
   const series_comprobante = [
-    { value: 1, label: 'B001 - Boleta' },
-    { value: 2, label: 'F001 - Factura' }
+    { value: 1, label: 'Boleta' },
+    { value: 2, label: 'Factura' }
   ];
   return (
     <div className="p-0 overflow-hidden">
@@ -279,11 +279,14 @@ export default function VentaPage() {
                 placeholder="Seleccione"
               />
             </div>
-
+            <div className="col-span-12 md:col-span-3">
+              <label>Serie</label>
+              <Input type="number" placeholder="ejm: B001" />
+            </div>
             <div className="col-span-12 md:col-span-3">
               <label>Número</label>
               <Input
-                type="number"
+                type="text"
                 value={numero}
                 onChange={(e) => setNumero(e.target.value)}
                 placeholder="000001"
