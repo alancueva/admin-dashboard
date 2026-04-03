@@ -18,7 +18,7 @@ import {
   CardTitle,
   CardFooter
 } from '@/components/ui/card';
-// import { getAdministracion } from '../../service/administracion/administracion.service';
+//import { getAdministracion } from '../../service/administracion/administracion.service';
 
 interface defaultStats {
   usuarios: number;
@@ -40,11 +40,13 @@ export default async function AdministracionPage() {
   let stats = defaultStats;
 
   try {
-    // const data = await getAdministracion();
-    const data: any[] = [];
+    //const response: any = await getAdministracion();
+    const response: any = {};
+    // console.log(response);
+    // console.log(response.data);
 
-    if (data?.length) {
-      const admin = data[0];
+    if (response?.length) {
+      const admin = response.data;
 
       stats = {
         usuarios: admin.numero_usuario,
@@ -98,14 +100,14 @@ export default async function AdministracionPage() {
       link: '/dashboard/Administracion/organizaciones',
       link_text: 'Gestionar organizaciones'
     },
-    {
-      title: 'Rol',
-      icon: <Users className="h-4 w-4 text-muted-foreground" />,
-      value: stats.roles,
-      description: 'Roles del sistema',
-      link: '/dashboard/Administracion/roles',
-      link_text: 'Gestionar roles'
-    },
+    // {
+    //   title: 'Rol',
+    //   icon: <Users className="h-4 w-4 text-muted-foreground" />,
+    //   value: stats.roles,
+    //   description: 'Roles del sistema',
+    //   link: '/dashboard/Administracion/roles',
+    //   link_text: 'Gestionar roles'
+    // },
     {
       title: 'Usuarios',
       icon: <Users className="h-4 w-4 text-muted-foreground" />,
