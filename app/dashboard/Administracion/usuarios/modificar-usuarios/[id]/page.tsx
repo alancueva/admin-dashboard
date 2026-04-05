@@ -2,30 +2,13 @@
 
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import {
-  Home,
-  PlusCircle,
-  Package,
-  Package2,
-  PanelLeft,
-  Settings,
-  ShoppingCart,
-  Users2,
-  ArrowLeftRight,
-  Check,
-  ShieldPlus,
-  SlidersVertical,
-  AlertCircle
-} from 'lucide-react';
+import { ArrowLeftRight, Check, AlertCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useParams, useRouter } from 'next/navigation';
 import { AdminUsuarioService } from 'app/service/administracion/adminUsuario.service';
 import { useState } from 'react';
-import {
-  usuarioInsert,
-  usuarioUpdate
-} from 'app/types/administracion/adminUsuario';
+import { usuarioUpdate } from 'app/types/administracion/adminUsuario';
 
 export default function ModificarUsuario() {
   const router = useRouter();
@@ -57,16 +40,17 @@ export default function ModificarUsuario() {
   };
 
   const [formData, setFormData] = useState<usuarioUpdate>({
-    id_usuarios: 0,
-    id_rol: 0,
+    id_usuarios: 1,
+    id_rol: 1,
     id_organizaciones: 1,
-    dni: '',
-    nombre: '',
-    apellido_paterno: '',
-    apellido_materno: '',
-    email: '',
-    contrasenia: '',
-    // vigencia: 'SI',
+    usu_dni: '',
+    usu_nombre: '',
+    usu_apellido_materno: '',
+    usu_apellido_paterno: '',
+    usu_contrasenia: '',
+    usu_numero_tel: '',
+    usu_correo: '',
+    usu_vigencia: 'SI',
     usuarioCreacion: 'ADMIN' // Valor por defecto o tomar del contexto de auth
   });
 
@@ -189,13 +173,13 @@ export default function ModificarUsuario() {
               </label>
               <Input
                 name="dni"
-                value={formData.dni}
+                value={formData.usu_dni}
                 onChange={handleChange}
                 type="text"
                 placeholder="DNI"
-                className={errors.dni ? 'border-red-500' : ''}
+                className={errors.usu_dni ? 'border-red-500' : ''}
               />
-              <InputError message={errors.dni} />
+              <InputError message={errors.usu_dni} />
             </div>
 
             {/* Vigencia (Opcional en form, default SI)
@@ -221,13 +205,13 @@ export default function ModificarUsuario() {
               </label>
               <Input
                 name="nombre"
-                value={formData.nombre}
+                value={formData.usu_nombre}
                 onChange={handleChange}
                 type="text"
                 placeholder="Nombre del usuario"
-                className={errors.nombre ? 'border-red-500' : ''}
+                className={errors.usu_nombre ? 'border-red-500' : ''}
               />
-              <InputError message={errors.nombre} />
+              <InputError message={errors.usu_nombre} />
             </div>
 
             {/* Apellido Paterno */}
@@ -237,13 +221,13 @@ export default function ModificarUsuario() {
               </label>
               <Input
                 name="apellido_paterno"
-                value={formData.apellido_paterno}
+                value={formData.usu_apellido_paterno}
                 onChange={handleChange}
                 type="text"
                 placeholder="Apellido Paterno"
-                className={errors.apellido_paterno ? 'border-red-500' : ''}
+                className={errors.usu_apellido_paterno ? 'border-red-500' : ''}
               />
-              <InputError message={errors.apellido_paterno} />
+              <InputError message={errors.usu_apellido_paterno} />
             </div>
 
             {/* Apellido Materno */}
@@ -251,7 +235,7 @@ export default function ModificarUsuario() {
               <label className="block mb-1 font-medium">Apellido Materno</label>
               <Input
                 name="apellido_materno"
-                value={formData.apellido_materno}
+                value={formData.usu_apellido_materno}
                 onChange={handleChange}
                 type="text"
                 placeholder="Apellido Materno"
@@ -265,13 +249,13 @@ export default function ModificarUsuario() {
               </label>
               <Input
                 name="email"
-                value={formData.email}
+                value={formData.usu_correo}
                 onChange={handleChange}
                 type="text"
                 placeholder="Ej. usuario@ejemplo.com"
-                className={errors.email ? 'border-red-500' : ''}
+                className={errors.usu_correo ? 'border-red-500' : ''}
               />
-              <InputError message={errors.email} />
+              <InputError message={errors.usu_correo} />
             </div>
 
             {/* Contraseña */}
@@ -281,13 +265,13 @@ export default function ModificarUsuario() {
               </label>
               <Input
                 name="contrasenia"
-                value={formData.contrasenia}
+                value={formData.usu_contrasenia}
                 onChange={handleChange}
                 type="password"
                 placeholder="Contraseña"
-                className={errors.contrasenia ? 'border-red-500' : ''}
+                className={errors.usu_contrasenia ? 'border-red-500' : ''}
               />
-              <InputError message={errors.contrasenia} />
+              <InputError message={errors.usu_contrasenia} />
             </div>
           </form>
         </CardContent>

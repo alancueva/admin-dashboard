@@ -29,13 +29,14 @@ export default function RegistrarUsuario() {
   const [formData, setFormData] = useState<usuarioInsert>({
     id_rol: 1,
     id_organizaciones: 1,
-    dni: '',
-    nombre: '',
-    apellido_paterno: '',
-    apellido_materno: '',
-    email: '',
-    contrasenia: '',
-    // vigencia: 'SI',
+    usu_dni: '',
+    usu_nombre: '',
+    usu_apellido_materno: '',
+    usu_apellido_paterno: '',
+    usu_contrasenia: '',
+    usu_numero_tel: '',
+    usu_correo: '',
+    usu_vigencia: 'SI',
     usuarioCreacion: 'ADMIN' // Valor por defecto o tomar del contexto de auth
   });
 
@@ -82,22 +83,22 @@ export default function RegistrarUsuario() {
     if (!formData.id_organizaciones)
       newErrors.id_organizaciones = 'La organización es obligatoria';
 
-    if (!formData.dni) {
-      newErrors.dni = 'El DNI es obligatorio';
-    } else if (formData.dni.length !== 8) {
-      newErrors.dni = 'El DNI debe tener 8 dígitos';
+    if (!formData.usu_dni) {
+      newErrors.usu_dni = 'El DNI es obligatorio';
+    } else if (formData.usu_dni.length !== 8) {
+      newErrors.usu_dni = 'El DNI debe tener 8 dígitos';
     }
 
-    if (!formData.nombre) newErrors.nombre = 'El nombre es obligatorio';
-    if (!formData.apellido_paterno)
-      newErrors.apellido_paterno = 'El apellido paterno es obligatorio';
-    if (!formData.email) {
-      newErrors.email = 'El email es obligatorio';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'El formato del email no es válido';
+    if (!formData.usu_nombre) newErrors.usu_nombre = 'El nombre es obligatorio';
+    if (!formData.usu_apellido_paterno)
+      newErrors.usu_apellido_paterno = 'El apellido paterno es obligatorio';
+    if (!formData.usu_correo) {
+      newErrors.usu_correo = 'El email es obligatorio';
+    } else if (!/\S+@\S+\.\S+/.test(formData.usu_correo)) {
+      newErrors.usu_correo = 'El formato del email no es válido';
     }
-    if (!formData.contrasenia)
-      newErrors.contrasenia = 'La contraseña es obligatoria';
+    if (!formData.usu_contrasenia)
+      newErrors.usu_contrasenia = 'La contraseña es obligatoria';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -124,12 +125,14 @@ export default function RegistrarUsuario() {
     const hasData =
       formData.id_rol !== 0 ||
       formData.id_organizaciones !== 1 ||
-      formData.dni !== '' ||
-      formData.nombre !== '' ||
-      formData.apellido_paterno !== '' ||
-      formData.apellido_materno !== '' ||
-      formData.email !== '' ||
-      formData.contrasenia !== '';
+      formData.usu_dni !== '' ||
+      formData.usu_nombre !== '' ||
+      formData.usu_apellido_materno !== '' ||
+      formData.usu_apellido_paterno !== '' ||
+      formData.usu_contrasenia !== '' ||
+      formData.usu_numero_tel !== '';
+    formData.usu_correo !== '';
+    formData.usu_vigencia !== '';
 
     if (hasData) {
       setShowExitDialog(true);
@@ -239,7 +242,7 @@ export default function RegistrarUsuario() {
               </label>
               <Input
                 name="dni"
-                value={formData.dni}
+                value={formData.usu_dni}
                 onChange={handleChange}
                 type="text"
                 placeholder="DNI"
@@ -270,13 +273,13 @@ export default function RegistrarUsuario() {
               </label>
               <Input
                 name="nombre"
-                value={formData.nombre}
+                value={formData.usu_nombre}
                 onChange={handleChange}
                 type="text"
                 placeholder="Nombre del usuario"
-                className={errors.nombre ? 'border-red-500' : ''}
+                className={errors.usu_nombre ? 'border-red-500' : ''}
               />
-              <InputError message={errors.nombre} />
+              <InputError message={errors.usu_nombre} />
             </div>
 
             {/* Apellido Paterno */}
@@ -286,13 +289,13 @@ export default function RegistrarUsuario() {
               </label>
               <Input
                 name="apellido_paterno"
-                value={formData.apellido_paterno}
+                value={formData.usu_apellido_paterno}
                 onChange={handleChange}
                 type="text"
                 placeholder="Apellido Paterno"
-                className={errors.apellido_paterno ? 'border-red-500' : ''}
+                className={errors.usu_apellido_paterno ? 'border-red-500' : ''}
               />
-              <InputError message={errors.apellido_paterno} />
+              <InputError message={errors.usu_apellido_paterno} />
             </div>
 
             {/* Apellido Materno */}
@@ -300,7 +303,7 @@ export default function RegistrarUsuario() {
               <label className="block mb-1 font-medium">Apellido Materno</label>
               <Input
                 name="apellido_materno"
-                value={formData.apellido_materno}
+                value={formData.usu_apellido_materno}
                 onChange={handleChange}
                 type="text"
                 placeholder="Apellido Materno"
@@ -314,13 +317,13 @@ export default function RegistrarUsuario() {
               </label>
               <Input
                 name="email"
-                value={formData.email}
+                value={formData.usu_correo}
                 onChange={handleChange}
                 type="text"
                 placeholder="Ej. usuario@ejemplo.com"
-                className={errors.email ? 'border-red-500' : ''}
+                className={errors.usu_correo ? 'border-red-500' : ''}
               />
-              <InputError message={errors.email} />
+              <InputError message={errors.usu_correo} />
             </div>
 
             {/* Contraseña */}
@@ -330,13 +333,13 @@ export default function RegistrarUsuario() {
               </label>
               <Input
                 name="contrasenia"
-                value={formData.contrasenia}
+                value={formData.usu_contrasenia}
                 onChange={handleChange}
                 type="password"
                 placeholder="Contraseña"
-                className={errors.contrasenia ? 'border-red-500' : ''}
+                className={errors.usu_contrasenia ? 'border-red-500' : ''}
               />
-              <InputError message={errors.contrasenia} />
+              <InputError message={errors.usu_contrasenia} />
             </div>
           </form>
         </CardContent>
