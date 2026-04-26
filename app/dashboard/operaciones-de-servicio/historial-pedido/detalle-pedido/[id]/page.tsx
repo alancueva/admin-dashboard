@@ -151,10 +151,10 @@ export default function RegistrarPedido() {
             </div>
 
             {/* DESCUENTO */}
-            <div className="col-span-12 md:col-span-2">
+            {/*<div className="col-span-12 md:col-span-2">
               <label className="block mb-1 font-medium">Descuento</label>
               <Input type="number" step="0.01" placeholder="0.00" />
-            </div>
+            </div>*/}
 
             {/* TOTAL */}
             <div className="col-span-12 md:col-span-2">
@@ -171,17 +171,17 @@ export default function RegistrarPedido() {
             {/* FECHA CIERRE */}
             <div className="col-span-12 md:col-span-3">
               <label className="block mb-1 font-medium">Fecha Cierre</label>
-              <Input type="datetime-local" />
+              <Input type="datetime-local" readOnly />
             </div>
 
             {/* NOTAS */}
-            <div className="col-span-12">
+            {/*<div className="col-span-12">
               <label className="block mb-1 font-medium">Notas</label>
               <textarea
                 className="w-full border rounded-md p-2"
                 placeholder="Ej: sin cebolla, rápido..."
               />
-            </div>
+            </div>*/}
           </form>
         </CardContent>
       </Card>
