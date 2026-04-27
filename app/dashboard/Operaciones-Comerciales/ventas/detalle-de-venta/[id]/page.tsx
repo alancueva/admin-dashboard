@@ -22,8 +22,9 @@ import Link from 'next/link';
 const metodo_pago_options = [
   { value: 'efectivo', label: 'Efectivo' },
   { value: 'tarjeta', label: 'Tarjeta' },
-  { value: 'transferencia', label: 'Transferencia' },
-  { value: 'otro', label: 'Otro' }
+  { value: 'yape', label: 'Yape' },
+  { value: 'plin', label: 'Plin' },
+  { value: 'mixto', label: 'Mixto' }
 ];
 
 /**
@@ -33,6 +34,7 @@ const metodo_pago_options = [
 interface DetalleVenta {
   id: number;
   menu_id: number;
+  menu: string;
   cantidad: number;
   precio_unitario: number;
   subtotal: number;
@@ -44,6 +46,7 @@ const detalle_mock: DetalleVenta[] = [
   {
     id: 1,
     menu_id: 1,
+    menu: 'lomo',
     cantidad: 2,
     precio_unitario: 10,
     subtotal: 20,
@@ -57,8 +60,8 @@ const detalle_mock: DetalleVenta[] = [
  */
 const columnas = [
   {
-    name: 'Menu ID',
-    selector: (row: DetalleVenta) => row.menu_id
+    name: 'Menu',
+    selector: (row: DetalleVenta) => row.menu
   },
   {
     name: 'Cantidad',
@@ -254,13 +257,13 @@ export default function VentaPage() {
       <Card>
         <CardContent>
           <form className="grid grid-cols-12 gap-4 mt-2">
-            <div className="col-span-12 md:col-span-2">
-              <label className="mb-1 font-medium">Código de Ventas</label>
-              <Input
-                type="number"
-                placeholder="0"
-                className="w-full border border-gray-300 rounded-md p-2"
-              />
+            {/* FECHA */}
+            <div className="col-span-12 md:col-span-3">
+              <label>Fecha Venta</label>
+              <div className="relative">
+                <Input type="datetime-local" />
+                <Calendar className="absolute right-3 top-3 w-4 h-4 text-gray-400" />
+              </div>
             </div>
             {/*<div className="col-span-12 md:col-span-3">
               <label>Método de Pago Principal</label>
@@ -294,7 +297,7 @@ export default function VentaPage() {
             </div>
             {/* RELACIONES */}
             <div className="col-span-12 md:col-span-3">
-              <label className="mb-1">Pedido ID</label>
+              <label className="mb-1">Nº Pedido</label>
               <Input type="number" />
             </div>
 
@@ -303,11 +306,11 @@ export default function VentaPage() {
               <Input type="number" />
             </div>*/}
 
-            <div className="col-span-12 md:col-span-3">
-              <label>Usuario</label>
-              <Input type="number" />
+            <div className="col-span-12 md:col-span-5">
+              <label>Usuario Registrado</label>
+              <Input type="text" />
             </div>
-
+            <div className="col-span-12 md:col-span-3"></div>
             {/* TOTALES */}
             <div className="col-span-12 md:col-span-3">
               <label>Total Pedido</label>
@@ -346,12 +349,12 @@ export default function VentaPage() {
             </div>
 
             <div className="col-span-12 md:col-span-3">
-              <label>Monto Transferencia</label>
+              <label>Monto Yape</label>
               <Input type="number" />
             </div>
 
             <div className="col-span-12 md:col-span-3">
-              <label>Monto Otro</label>
+              <label>Monto Plin</label>
               <Input type="number" />
             </div>
 
@@ -365,28 +368,20 @@ export default function VentaPage() {
               <Input type="number" />
             </div>
 
-            {/* FECHA */}
-            <div className="col-span-12 md:col-span-3">
-              <label>Fecha Venta</label>
-              <div className="relative">
-                <Input type="datetime-local" />
-                <Calendar className="absolute right-3 top-3 w-4 h-4 text-gray-400" />
-              </div>
-            </div>
-
             {/* OTROS */}
-            <div className="col-span-12 md:col-span-6">
-              <label>Notas</label>
-              <Input type="text" />
-            </div>
 
-            <div className="col-span-12 md:col-span-3">
+            {/*<div className="col-span-12 md:col-span-3">
               <label>Impreso</label>
               <Selected
                 value={impreso}
                 onChange={ImpresoChange}
                 options={impresoo}
               />
+            </div>*/}
+
+            <div className="col-span-12 md:col-span-12">
+              <label>Notas</label>
+              <Input type="text" />
             </div>
           </form>
         </CardContent>
