@@ -6,7 +6,8 @@ import {
   Users,
   Building,
   Briefcase,
-  FileSearch
+  FileSearch,
+  KeyRound
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -60,54 +61,15 @@ export default async function AdministracionPage() {
     console.error('Error:', error);
   }
 
-  const listado_tabs: any[] = [
-    // {
-    //   name: 'Tipo de Negocio',
-    //   icon: <BriefcaseBusiness className="h-4 w-4 mr-2" />,
-    //   link: '/dashboard/Administracion/tipos-negocio'
-    // },
-    {
-      name: 'Organizacion',
-      icon: <Building2 className="h-4 w-4 mr-2" />,
-      link: '/dashboard/Administracion/organizaciones'
-    },
-    {
-      name: 'Usuarios',
-      icon: <User className="h-4 w-4 mr-2" />,
-      link: '/dashboard/Administracion/usuarios'
-    },
-    {
-      name: 'Auditoria',
-      icon: <FileSearch className="h-4 w-4 mr-2" />,
-      link: '/dashboard/Administracion/auditoria'
-    }
-  ];
-
   const card_: any[] = [
-    // {
-    //   title: 'Tipos de Negocio',
-    //   icon: <Briefcase className="h-4 w-4 text-muted-foreground" />,
-    //   value: stats.tiposNegocio,
-    //   description: 'Tipos de Negocios',
-    //   link: '/dashboard/Administracion/tipos-negocio',
-    //   link_text: 'Gestionar tipos'
-    // },
     {
-      title: 'Organizaciones',
+      title: 'Organización',
       icon: <Building className="h-4 w-4 text-muted-foreground" />,
       value: stats.organizaciones,
-      description: 'Empresas registradas',
+      description: 'Organización registrada',
       link: '/dashboard/Administracion/organizaciones',
-      link_text: 'Gestionar organizaciones'
+      link_text: 'Organización'
     },
-    // {
-    //   title: 'Rol',
-    //   icon: <Users className="h-4 w-4 text-muted-foreground" />,
-    //   value: stats.roles,
-    //   description: 'Roles del sistema',
-    //   link: '/dashboard/Administracion/roles',
-    //   link_text: 'Gestionar roles'
-    // },
     {
       title: 'Usuarios',
       icon: <Users className="h-4 w-4 text-muted-foreground" />,
@@ -115,6 +77,14 @@ export default async function AdministracionPage() {
       description: 'Usuarios registrados en el sistema',
       link: '/dashboard/Administracion/usuarios',
       link_text: 'Gestionar usuarios'
+    },
+    {
+      title: 'Permisos',
+      icon: <KeyRound className="h-4 w-4 text-muted-foreground" />,
+      value: stats.roles,
+      description: 'Permisos de Usuarios',
+      link: '/dashboard/Administracion/permisos',
+      link_text: 'Gestionar Permisos'
     },
     {
       title: 'Auditorias',
@@ -131,6 +101,11 @@ export default async function AdministracionPage() {
       name: 'Crear usuario',
       icon: <User className="mr-2 h-4 w-4" />,
       link: '/dashboard/Administracion/usuarios/registrar-usuarios'
+    },
+    {
+      name: 'Registrar Permisos',
+      icon: <KeyRound className="mr-2 h-4 w-4" />,
+      link: '/dashboard/Administracion/permisos/registrar-permisos'
     }
     // {name:"Nueva organización",icon:<Building2 className="mr-2 h-4 w-4" />,link:"/Administracion/organizaciones/registrar-organizacion"},
     // {name:"Nuevo tipo de negocio",icon:<BriefcaseBusiness className="mr-2 h-4 w-4" />,link:"/Administracion/tipos-negocio/nuevo"},
@@ -138,25 +113,10 @@ export default async function AdministracionPage() {
 
   return (
     <div className="space-y-6">
-      {/* <Tabs defaultValue="all">
-                <div className="flex items-center">
-                    <TabsList>
-                        {listado_tabs.map((tab)=>(
-                            <Link key={tab.name} href={tab.link}>
-                                <TabsTrigger value={tab.name}>
-                                    {tab.icon}
-                                    {tab.name}
-                                </TabsTrigger>
-                            </Link>
-                        ))}
-                    </TabsList>
-                </div>
-            </Tabs> */}
-
       <div>
         <h1 className="text-3xl font-bold">Administración</h1>
         <p className="text-muted-foreground mt-1">
-          Gestiona usuarios, organizaciones y tipos de negocio del sistema
+          Gestiona usuarios y permisos
         </p>
       </div>
 
