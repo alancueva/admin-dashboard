@@ -337,7 +337,7 @@ export default function App() {
             <div className="flex items-center gap-2">
               <LayoutGrid size={18} className="text-slate-400" />
               <h3 className="text-xs font-black uppercase tracking-widest text-slate-400">
-                Mesas Salón
+                Mesas
               </h3>
             </div>
           </div>
@@ -499,7 +499,7 @@ export default function App() {
                         </span>
                       </div>
                       {item.status === 'Abierto' ? (
-                        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="flex items-center gap-1 ">
                           <button
                             onClick={() => updateItemQuantity(idx, -1)}
                             className="p-1 hover:text-orange-600"
