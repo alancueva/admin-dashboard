@@ -1,18 +1,4 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import {
-  User,
-  Building2,
-  BriefcaseBusiness,
-  ArrowRight,
-  Users,
-  Building,
-  Briefcase,
-  SwatchBook,
-  Ruler,
-  Captions,
-  Grid3X3,
-  Salad
-} from 'lucide-react';
+import { ArrowRight, SwatchBook, Grid3X3, Ruler } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import {
@@ -42,14 +28,14 @@ export default function CatalogoPage() {
       link: '/dashboard/Catalogo/categoria',
       link_text: 'Gestionar Categorias'
     },
-    // {
-    //   title: 'Unidad De Medidas',
-    //   icon: <Ruler className="h-4 w-4 text-muted-foreground" />,
-    //   value: stats.unidad_medida,
-    //   description: 'Unidades de Medida registradas',
-    //   link: '/dashboard/Catalogo/unidad-medida',
-    //   link_text: 'Gestionar Unidades de Medida'
-    // },
+    {
+      title: 'Unidad De Medidas',
+      icon: <Ruler className="h-4 w-4 text-muted-foreground" />,
+      value: stats.unidad_medida,
+      description: 'Unidades de Medida registradas',
+      link: '/dashboard/Catalogo/unidad-medida',
+      link_text: 'Gestionar Unidades de Medida'
+    },
     // {
     //   title: 'Tipos de Documentos',
     //   icon: <Captions className="h-4 w-4 text-muted-foreground" />,
@@ -65,14 +51,6 @@ export default function CatalogoPage() {
       description: 'Mesas Registradas',
       link: '/dashboard/Catalogo/mesa',
       link_text: 'Gestionar Mesas'
-    },
-    {
-      title: 'Menú',
-      icon: <Salad className="h-4 w-4 text-muted-foreground" />,
-      value: stats.menu,
-      description: 'Menú Registradas',
-      link: '/dashboard/Catalogo/menu',
-      link_text: 'Gestionar Menú'
     }
   ];
 
@@ -82,11 +60,11 @@ export default function CatalogoPage() {
       icon: <SwatchBook className="mr-2 h-4 w-4" />,
       link: '/dashboard/Catalogo/categoria/registrar-categoria'
     },
-    // {
-    //   name: 'Registrar Unidad de Medidas',
-    //   icon: <Ruler className="mr-2 h-4 w-4" />,
-    //   link: '/dashboard/Catalogo/unidad-medida/registrar-unidad-medida'
-    // },
+    {
+      name: 'Registrar Unidad de Medidas',
+      icon: <Ruler className="mr-2 h-4 w-4" />,
+      link: '/dashboard/Catalogo/unidad-medida/registrar-unidad-medida'
+    },
     // {
     //   name: 'Registrar Tipos de Documentos',
     //   icon: <Captions className="mr-2 h-4 w-4" />,
@@ -96,11 +74,6 @@ export default function CatalogoPage() {
       name: 'Registrar mesas',
       icon: <Grid3X3 className="mr-2 h-4 w-4" />,
       link: '/dashboard/Catalogo/mesa/registrar-mesas'
-    },
-    {
-      name: 'Registrar Menú',
-      icon: <Salad className="mr-2 h-4 w-4" />,
-      link: '/dashboard/Catalogo/menu/registrar-menu'
     }
   ];
   return (
