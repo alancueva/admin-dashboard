@@ -154,13 +154,15 @@ export default function LoginPage() {
           {/* Formulario */}
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* <div className="space-y-6"> */}
-            {/* Email */}
+            {/* nom_usuario */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
+              <label
+                htmlFor="nom_usuario"
+                className="block text-sm font-medium mb-2"
+              >
                 Nombre de Usuario
               </label>
               <input
-                id="nom_usuario"
                 name="nom_usuario"
                 type="text"
                 value={LogeoForm.nom_usuario}
@@ -184,7 +186,6 @@ export default function LoginPage() {
               </label>
               <div className="relative">
                 <input
-                  id="contrasenia"
                   name="contrasenia"
                   type={showPassword ? 'text' : 'password'}
                   value={LogeoForm.contrasenia}
