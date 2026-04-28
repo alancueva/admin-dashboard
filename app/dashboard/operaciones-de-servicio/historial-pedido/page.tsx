@@ -28,11 +28,11 @@ import { Input } from '@/components/ui/input';
 ======================= */
 interface Pedido {
   id: number;
+  fecha_pedido: string;
   numero_pedido: string;
   mesa_id?: number | null;
   estado: string;
   total: number;
-  fecha_apertura: string;
 }
 
 /* =======================
@@ -45,23 +45,23 @@ const pedidos: Pedido[] = [
     mesa_id: 5,
     estado: 'abierto',
     total: 45.5,
-    fecha_apertura: '2026-03-20 12:30'
+    fecha_pedido: '2026-03-20 12:30'
   },
   {
     id: 2,
     numero_pedido: '000124',
     mesa_id: 2,
-    estado: 'en_preparacion',
+    estado: 'entregado',
     total: 30.0,
-    fecha_apertura: '2026-03-20 13:00'
+    fecha_pedido: '2026-03-20 13:00'
   },
   {
     id: 3,
     numero_pedido: '000125',
-    mesa_id: null,
+    mesa_id: 1,
     estado: 'pagado',
     total: 60.0,
-    fecha_apertura: '2026-03-20 14:10'
+    fecha_pedido: '2026-03-20 14:10'
   }
 ];
 
@@ -72,7 +72,7 @@ const getEstadoColor = (estado: string) => {
   switch (estado) {
     case 'abierto':
       return 'bg-gray-200 text-gray-800';
-    case 'en_preparacion':
+    case 'en preparacion':
       return 'bg-yellow-200 text-yellow-800';
     case 'listo':
       return 'bg-blue-200 text-blue-800';
@@ -91,6 +91,11 @@ const getEstadoColor = (estado: string) => {
    COLUMNAS
 ======================= */
 const columnas = [
+  {
+    name: 'Fecha pedido',
+    selector: (row: Pedido) => row.fecha_pedido,
+    sortable: true
+  },
   {
     name: 'N° Pedido',
     selector: (row: Pedido) => row.numero_pedido,
@@ -117,11 +122,7 @@ const columnas = [
     selector: (row: Pedido) => `S/ ${row.total.toFixed(2)}`,
     sortable: true
   },
-  {
-    name: 'Fecha',
-    selector: (row: Pedido) => row.fecha_apertura,
-    sortable: true
-  },
+
   {
     name: 'Acciones',
     cell: (row: Pedido) => (

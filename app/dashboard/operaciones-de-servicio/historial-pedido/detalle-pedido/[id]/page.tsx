@@ -105,13 +105,18 @@ export default function RegistrarPedido() {
       <Card>
         <CardContent>
           <form className="grid grid-cols-12 gap-4 mt-2">
-            <div className="col-span-12 md:col-span-2">
+            {/*<div className="col-span-12 md:col-span-2">
               <label className="block mb-1 font-medium">Código de Pedido</label>
               <Input
                 type="number"
                 placeholder="0"
                 className="w-full border border-gray-300 rounded-md p-2"
               />
+            </div>*/}
+            {/* FECHA APERTURA */}
+            <div className="col-span-12 md:col-span-3">
+              <label className="block mb-1 font-medium">Fecha Pedido</label>
+              <Input type="datetime-local" />
             </div>
             {/* NUMERO PEDIDO */}
             <div className="col-span-12 md:col-span-3">
@@ -122,21 +127,22 @@ export default function RegistrarPedido() {
             {/* MESA */}
             <div className="col-span-12 md:col-span-3">
               <label className="block mb-1 font-medium">Mesa</label>
-              <Input type="number" placeholder="Mesa (opcional)" />
+              <Input type="number" placeholder="Mesa" />
             </div>
 
             {/* USUARIO */}
             <div className="col-span-12 md:col-span-3">
-              <label className="block mb-1 font-medium">Usuario</label>
-              <Input type="number" placeholder="ID Usuario" />
+              <label className="block mb-1 font-medium">
+                Usuario Registrado
+              </label>
+              <Input type="text" placeholder="Usuario" />
             </div>
 
             {/* ESTADO */}
             <div className="col-span-12 md:col-span-3">
               <label className="block mb-1 font-medium">Estado</label>
               <select className="w-full border rounded-md p-2">
-                <option value="abierto">Abierto</option>
-                <option value="en_preparacion">En preparación</option>
+                <option value="abierto">Pendiente</option>
                 <option value="listo">Listo</option>
                 <option value="entregado">Entregado</option>
                 <option value="pagado">Pagado</option>
@@ -144,11 +150,11 @@ export default function RegistrarPedido() {
               </select>
             </div>
 
-            {/* SUBTOTAL */}
-            <div className="col-span-12 md:col-span-2">
+            {/*{/* SUBTOTAL */}
+            {/*<div className="col-span-12 md:col-span-2">
               <label className="block mb-1 font-medium">Subtotal</label>
               <Input type="number" step="0.01" placeholder="0.00" />
-            </div>
+            </div>*/}
 
             {/* DESCUENTO */}
             {/*<div className="col-span-12 md:col-span-2">
@@ -160,18 +166,6 @@ export default function RegistrarPedido() {
             <div className="col-span-12 md:col-span-2">
               <label className="block mb-1 font-medium">Total</label>
               <Input type="number" step="0.01" placeholder="0.00" />
-            </div>
-
-            {/* FECHA APERTURA */}
-            <div className="col-span-12 md:col-span-3">
-              <label className="block mb-1 font-medium">Fecha Apertura</label>
-              <Input type="datetime-local" />
-            </div>
-
-            {/* FECHA CIERRE */}
-            <div className="col-span-12 md:col-span-3">
-              <label className="block mb-1 font-medium">Fecha Cierre</label>
-              <Input type="datetime-local" readOnly />
             </div>
 
             {/* NOTAS */}
