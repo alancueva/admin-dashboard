@@ -9,81 +9,116 @@ import { useParams, useRouter } from 'next/navigation';
 import { AdminUsuarioService } from 'app/service/administracion/adminUsuario.service';
 import { useState } from 'react';
 import { usuarioUpdate } from 'app/types/administracion/adminUsuario';
+import { Label } from '@/components/ui/label';
 
 export default function ModificarUsuario() {
+  const { id } = useParams();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [showExitDialog, setShowExitDialog] = useState(false);
-  const { id } = useParams();
 
-  const rolOptions = [
-    { value: '1', label: 'Administrador' },
-    { value: '2', label: 'Usuario' }
-  ];
-
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-
-  const handleSubmit = async () => {
-    // if (!validate()) return;
-
-    // setIsSubmitting(true);
-    try {
-      await AdminUsuarioService.modificar(formData);
-      // setShowSuccessDialog(true);
-    } catch (error) {
-      console.error('Error al registrar usuario:', error);
-      // Aquí podrías mostrar un toast de error si tuvieras uno configurado
-    } finally {
-      // setIsSubmitting(false);
-    }
-  };
-
-  const [formData, setFormData] = useState<usuarioUpdate>({
-    id_usuarios: 1,
-    id_rol: 1,
-    id_organizaciones: 1,
+  const [formData, setFormData] = useState({
+    id_rol: '',
+    id_organizaciones: '',
     usu_dni: '',
     usu_nombre: '',
-    usu_apellido_materno: '',
     usu_apellido_paterno: '',
+    usu_apellido_materno: '',
     usu_contrasenia: '',
     usu_numero_tel: '',
     usu_correo: '',
-    usu_vigencia: 'SI',
-    usuarioCreacion: 'ADMIN' // Valor por defecto o tomar del contexto de auth
+    usu_vigencia: 'SI'
   });
 
-  const InputError = ({ message }: { message?: string }) => {
-    if (!message) return null;
-    return (
-      <div className="text-red-500 text-xs mt-1 flex items-center gap-1">
-        <AlertCircle className="h-3 w-3" />
-        {message}
-      </div>
-    );
-  };
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+
+  const rolOptions = [
+    { value: '1', label: 'Administrador' },
+    { value: '2', label: 'Cajero' },
+    { value: '3', label: 'Mesero' },
+    { value: '4', label: 'Almacenero' }
+  ];
+
+  const orgOptions = [
+    { value: '1', label: 'Restaurante Principal' },
+    { value: '2', label: 'Sucursal Sur' },
+    { value: '3', label: 'Sucursal Norte' }
+  ];
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
 
-    // Validación específica para DNI: solo números y máximo 8 dígitos
-    if (name === 'dni') {
-      if (!/^\d*$/.test(value)) return; // Solo permite números
-      if (value.length > 8) return; // Máximo 8 caracteres
+    // Validación en tiempo real para DNI
+    if (name === 'usu_dni') {
+      if (!/^\d*$/.test(value) || value.length > 8) return;
     }
 
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Limpiar error al escribir
+    // Limpiar error del campo al escribir
     if (errors[name]) {
       setErrors((prev) => {
         const newErrors = { ...prev };
         delete newErrors[name];
         return newErrors;
       });
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors: { [key: string]: string } = {};
+
+    if (!formData.id_rol) newErrors.id_rol = 'Debe seleccionar un rol';
+    if (!formData.id_organizaciones)
+      newErrors.id_organizaciones = 'Debe seleccionar una organización';
+    if (!formData.usu_dni || formData.usu_dni.length !== 8) {
+      newErrors.usu_dni = 'El DNI debe tener 8 dígitos';
+    }
+    if (!formData.usu_nombre?.trim())
+      newErrors.usu_nombre = 'El nombre es obligatorio';
+    if (!formData.usu_apellido_paterno?.trim())
+      newErrors.usu_apellido_paterno = 'El apellido paterno es obligatorio';
+    if (!formData.usu_correo?.trim()) {
+      newErrors.usu_correo = 'El correo es obligatorio';
+    } else if (!/\S+@\S+\.\S+/.test(formData.usu_correo)) {
+      newErrors.usu_correo = 'El correo no tiene un formato válido';
+    }
+    if (!formData.usu_contrasenia)
+      newErrors.usu_contrasenia = 'La contraseña es obligatoria';
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+    try {
+      console.log('Datos a guardar:', formData);
+      // await AdminUsuarioService.insertar(formData);
+      setShowSuccessDialog(true);
+    } catch (error) {
+      console.error('Error al registrar usuario:', error);
+      alert('Ocurrió un error al registrar el usuario');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleBack = () => {
+    const hasChanges = Object.values(formData).some(
+      (value) => value !== '' && value !== 'SI' && value !== '1'
+    );
+
+    if (hasChanges) {
+      setShowExitDialog(true);
+    } else {
+      router.push('/dashboard/Administracion/usuarios');
     }
   };
 
@@ -117,161 +152,187 @@ export default function ModificarUsuario() {
       </Card>
       <Card>
         <CardContent>
-          <form className="grid grid-cols-12 gap-4 mt-2">
+          <form onSubmit={handleSubmit} className="grid grid-cols-12 gap-6">
             {/* Rol */}
-            <div className="col-span-12 md:col-span-6 lg:col-span-3">
-              <label className="block mb-1 font-medium">
+            <div className="col-span-12 md:col-span-6 lg:col-span-4">
+              <Label htmlFor="id_rol">
                 Rol <span className="text-red-500">*</span>
-              </label>
+              </Label>
               <select
+                id="id_rol"
                 name="id_rol"
                 value={formData.id_rol}
                 onChange={handleChange}
-                className={`w-full border rounded-md p-2 ${
-                  errors.id_rol ? 'border-red-500' : 'border-gray-300'
-                }`}
+                className={`mt-1 w-full border rounded-md p-2 ${errors.id_rol ? 'border-red-500' : 'border-gray-300'}`}
               >
-                <option value="">Seleccione</option>
-                {rolOptions.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
+                <option value="">Seleccione un rol</option>
+                {rolOptions.map((rol) => (
+                  <option key={rol.value} value={rol.value}>
+                    {rol.label}
                   </option>
                 ))}
               </select>
-              <InputError message={errors.id_rol} />
+              {errors.id_rol && (
+                <p className="text-red-500 text-xs mt-1">{errors.id_rol}</p>
+              )}
             </div>
 
             {/* Organización */}
-            {/*<div className="col-span-12 md:col-span-6 lg:col-span-3">
-              <label className="block mb-1 font-medium">
+            {/*
+            <div className="col-span-12 md:col-span-6 lg:col-span-4">
+              <Label htmlFor="id_organizaciones">
                 Organización <span className="text-red-500">*</span>
-              </label>
+              </Label>
               <select
+                id="id_organizaciones"
                 name="id_organizaciones"
                 value={formData.id_organizaciones}
                 onChange={handleChange}
-                className={`w-full border rounded-md p-2 ${
-                  errors.id_organizaciones
-                    ? 'border-red-500'
-                    : 'border-gray-300'
-                }`}
+                className={`mt-1 w-full border rounded-md p-2 ${errors.id_organizaciones ? 'border-red-500' : 'border-gray-300'}`}
               >
-                <option value="">Seleccione</option>
-                {orgOptions.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
+                <option value="">Seleccione una organización</option>
+                {orgOptions.map((org) => (
+                  <option key={org.value} value={org.value}>
+                    {org.label}
                   </option>
                 ))}
               </select>
-              <InputError message={errors.id_organizaciones} />
+              {errors.id_organizaciones && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.id_organizaciones}
+                </p>
+              )}
             </div>*/}
-
             {/* DNI */}
-            <div className="col-span-12 md:col-span-6 lg:col-span-3">
-              <label className="block mb-1 font-medium">
+            <div className="col-span-12 md:col-span-4">
+              <Label htmlFor="usu_dni">
                 DNI <span className="text-red-500">*</span>
-              </label>
+              </Label>
               <Input
-                name="dni"
+                id="usu_dni"
+                name="usu_dni"
                 value={formData.usu_dni}
                 onChange={handleChange}
-                type="text"
-                placeholder="DNI"
-                className={errors.usu_dni ? 'border-red-500' : ''}
+                maxLength={8}
+                placeholder="12345678"
               />
-              <InputError message={errors.usu_dni} />
+              {errors.usu_dni && (
+                <p className="text-red-500 text-xs mt-1">{errors.usu_dni}</p>
+              )}
             </div>
+            <div className="col-span-12 md:col-span-6 lg:col-span-4"></div>
 
-            {/* Vigencia (Opcional en form, default SI)
-
-
-              value={formData.vigencia}*/}
-            <div className="col-span-12 md:col-span-6 lg:col-span-3">
-              <label className="block mb-1 font-medium">Vigencia</label>
-              <select
-                name="vigencia"
-                onChange={handleChange}
-                className="w-full border border-gray-300 rounded-md p-2"
-              >
-                <option value="SI">SI</option>
-                <option value="NO">NO</option>
-              </select>
-            </div>
-
-            {/* Nombre del Usuario */}
+            {/* Nombres */}
             <div className="col-span-12 md:col-span-4">
-              <label className="block mb-1 font-medium">
+              <Label htmlFor="usu_nombre">
                 Nombres <span className="text-red-500">*</span>
-              </label>
+              </Label>
               <Input
-                name="nombre"
+                id="usu_nombre"
+                name="usu_nombre"
                 value={formData.usu_nombre}
                 onChange={handleChange}
-                type="text"
-                placeholder="Nombre del usuario"
-                className={errors.usu_nombre ? 'border-red-500' : ''}
+                placeholder="Juan Carlos"
               />
-              <InputError message={errors.usu_nombre} />
+              {errors.usu_nombre && (
+                <p className="text-red-500 text-xs mt-1">{errors.usu_nombre}</p>
+              )}
             </div>
 
             {/* Apellido Paterno */}
             <div className="col-span-12 md:col-span-4">
-              <label className="block mb-1 font-medium">
+              <Label htmlFor="usu_apellido_paterno">
                 Apellido Paterno <span className="text-red-500">*</span>
-              </label>
+              </Label>
               <Input
-                name="apellido_paterno"
+                id="usu_apellido_paterno"
+                name="usu_apellido_paterno"
                 value={formData.usu_apellido_paterno}
                 onChange={handleChange}
-                type="text"
-                placeholder="Apellido Paterno"
-                className={errors.usu_apellido_paterno ? 'border-red-500' : ''}
+                placeholder="Pérez"
               />
-              <InputError message={errors.usu_apellido_paterno} />
+              {errors.usu_apellido_paterno && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.usu_apellido_paterno}
+                </p>
+              )}
             </div>
 
             {/* Apellido Materno */}
             <div className="col-span-12 md:col-span-4">
-              <label className="block mb-1 font-medium">Apellido Materno</label>
+              <Label htmlFor="usu_apellido_materno">Apellido Materno</Label>
               <Input
-                name="apellido_materno"
+                id="usu_apellido_materno"
+                name="usu_apellido_materno"
                 value={formData.usu_apellido_materno}
                 onChange={handleChange}
-                type="text"
-                placeholder="Apellido Materno"
+                placeholder="García"
               />
             </div>
 
-            {/* Email */}
-            <div className="col-span-12 md:col-span-6">
-              <label className="block mb-1 font-medium">
-                Email <span className="text-red-500">*</span>
-              </label>
+            {/* Teléfono */}
+            <div className="col-span-12 md:col-span-4">
+              <Label htmlFor="usu_numero_tel">Teléfono</Label>
               <Input
-                name="email"
+                id="usu_numero_tel"
+                name="usu_numero_tel"
+                value={formData.usu_numero_tel}
+                onChange={handleChange}
+                placeholder="987654321"
+              />
+            </div>
+
+            {/* Correo */}
+            <div className="col-span-12 md:col-span-6">
+              <Label htmlFor="usu_correo">
+                Correo Electrónico <span className="text-red-500">*</span>
+              </Label>
+              <Input
+                id="usu_correo"
+                name="usu_correo"
+                type="email"
                 value={formData.usu_correo}
                 onChange={handleChange}
-                type="text"
-                placeholder="Ej. usuario@ejemplo.com"
-                className={errors.usu_correo ? 'border-red-500' : ''}
+                placeholder="usuario@ejemplo.com"
               />
-              <InputError message={errors.usu_correo} />
+              {errors.usu_correo && (
+                <p className="text-red-500 text-xs mt-1">{errors.usu_correo}</p>
+              )}
             </div>
 
             {/* Contraseña */}
             <div className="col-span-12 md:col-span-6">
-              <label className="block mb-1 font-medium">
+              <Label htmlFor="usu_contrasenia">
                 Contraseña <span className="text-red-500">*</span>
-              </label>
+              </Label>
               <Input
-                name="contrasenia"
+                id="usu_contrasenia"
+                name="usu_contrasenia"
+                type="password"
                 value={formData.usu_contrasenia}
                 onChange={handleChange}
-                type="password"
-                placeholder="Contraseña"
-                className={errors.usu_contrasenia ? 'border-red-500' : ''}
+                placeholder="••••••••"
               />
-              <InputError message={errors.usu_contrasenia} />
+              {errors.usu_contrasenia && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.usu_contrasenia}
+                </p>
+              )}
+            </div>
+
+            {/* Vigencia */}
+            <div className="col-span-12 md:col-span-3">
+              <Label htmlFor="usu_vigencia">Vigencia</Label>
+              <select
+                id="usu_vigencia"
+                name="usu_vigencia"
+                value={formData.usu_vigencia}
+                onChange={handleChange}
+                className="mt-1 w-full border border-gray-300 rounded-md p-2"
+              >
+                <option value="SI">Activo (SI)</option>
+                <option value="NO">Inactivo (NO)</option>
+              </select>
             </div>
           </form>
         </CardContent>
