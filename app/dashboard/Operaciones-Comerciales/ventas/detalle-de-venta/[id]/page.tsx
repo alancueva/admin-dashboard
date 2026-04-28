@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Selected } from '@/components/ui/Select';
+import { Selected } from '@/components/ui/Selected';
 import { useState } from 'react';
 import DataTable from 'react-data-table-component';
 import {
@@ -60,7 +60,7 @@ const detalle_mock: DetalleVenta[] = [
  */
 const columnas = [
   {
-    name: 'Menu',
+    name: 'Producto',
     selector: (row: DetalleVenta) => row.menu
   },
   {
@@ -221,8 +221,9 @@ export default function VentaPage() {
   ];
 
   const series_comprobante = [
-    { value: 1, label: 'Boleta' },
-    { value: 2, label: 'Factura' }
+    // { value: 1, label: 'Boleta' },
+    // { value: 2, label: 'Factura' }
+    { value: 2, label: 'Nota de Venta' }
   ];
   return (
     <div className="p-0 overflow-hidden">
@@ -317,16 +318,16 @@ export default function VentaPage() {
               <Input type="number" />
             </div>
 
-            <div className="col-span-12 md:col-span-3">
+            {/*<div className="col-span-12 md:col-span-3">
               <label>Descuento</label>
               <Input type="number" />
-            </div>
+            </div>*/}
 
             <div className="col-span-12 md:col-span-3">
               <label>Total Final</label>
               <Input type="number" />
             </div>
-
+            <div className="col-span-12 md:col-span-3"></div>
             {/* PAGOS */}
             <div className="col-span-12 md:col-span-3">
               <label>Método de Pago Principal</label>
@@ -335,7 +336,6 @@ export default function VentaPage() {
                 onChange={metadoChange}
                 options={metodo_pago_options}
               />
-              {/* onChange={setMetodoPago}*/}
             </div>
 
             <div className="col-span-12 md:col-span-3">
