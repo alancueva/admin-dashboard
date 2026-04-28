@@ -80,28 +80,29 @@ export default function RegistrarSeriePage() {
               <label className="block mb-1 font-medium">Serie</label>
               <Input type="text" placeholder="Ej: B001" maxLength={6} />
             </div>
-
-            {/* DESCRIPCIÓN */}
-            <div className="col-span-12 md:col-span-4">
-              <label className="block mb-1 font-medium">Descripción</label>
-              <Input type="text" placeholder="Ej: Boletas mostrador" />
-            </div>
-
             {/* PROXIMO (SOLO VISUAL) */}
             <div className="col-span-12 md:col-span-4">
               <label className="block mb-1 font-medium">Número</label>
               <Input type="text" value="Auto generado" disabled />
             </div>
 
-            {/* VIGENCIA */}
-            <div className="col-span-12 md:col-span-4">
+            {/* DESCRIPCIÓN */}
+            <div className="col-span-12 md:col-span-12">
+              <label className="block mb-1 font-medium">Descripción</label>
+              <Input type="text" placeholder="Ej: Boletas mostrador" />
+            </div>
+
+            {/* Vigencia */}
+            <div className="col-span-12 md:col-span-2">
               <label className="block mb-1 font-medium">Vigencia</label>
-              <Selected
-                value={vigencia}
-                onChange={VigenciaChange}
-                options={vigencia_options}
-                placeholder="Seleccione"
-              />
+              <select
+                className="w-full border border-gray-300 rounded-md p-2"
+                disabled={true}
+                defaultValue="SI"
+              >
+                <option value="SI">SI</option>
+                <option value="NO">NO</option>
+              </select>
             </div>
           </form>
         </CardContent>
