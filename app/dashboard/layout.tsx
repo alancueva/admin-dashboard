@@ -85,6 +85,11 @@ function DesktopNav() {
       icon: Package
     },
     {
+      href: '/dashboard/inventario',
+      label: 'Inventario',
+      icon: ShoppingCart
+    },
+    {
       href: '/dashboard/Operaciones-Comerciales',
       label: 'Operaciones Comerciales',
       icon: ArrowLeftRight
@@ -145,6 +150,11 @@ function MobileNav() {
       href: '/dashboard/caja',
       label: 'Caja',
       icon: Package
+    },
+    {
+      href: '/dashboard/inventario',
+      label: 'Inventario',
+      icon: ShoppingCart
     },
     {
       href: '/dashboard/Operaciones-Comerciales',
