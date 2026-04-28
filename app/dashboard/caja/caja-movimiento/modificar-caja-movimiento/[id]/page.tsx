@@ -5,8 +5,10 @@ import Link from 'next/link';
 import { ArrowLeftRight, Calendar, Check } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useParams } from 'next/navigation';
 
 export default function ModificarCajaMovimiento() {
+  const { id } = useParams();
   return (
     <div>
       <Card className="sticky top-0 z-50 mb-4">
@@ -66,10 +68,10 @@ export default function ModificarCajaMovimiento() {
             </div>
             <div className="col-span-12 md:col-span-5"></div>
             <div className="col-span-12 md:col-span-12">
-              <label className="block mb-1 font-medium">Observación</label>
+              <label className="block mb-1 font-medium">Descripción</label>
               <Input
                 type="text"
-                placeholder="Observación"
+                placeholder="Descripción"
                 className="w-full border border-gray-300 rounded-md p-2"
               />
             </div>
