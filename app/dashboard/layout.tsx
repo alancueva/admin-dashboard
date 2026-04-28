@@ -79,11 +79,11 @@ function DesktopNav() {
       icon: ShieldPlus
     },
     { href: '/dashboard/Catalogo', label: 'Catálogo', icon: BookText },
-    // {
-    //   href: '/dashboard/gestion-de-existencia',
-    //   label: 'Gestión de Existenia',
-    //   icon: Package
-    // },
+    {
+      href: '/dashboard/caja',
+      label: 'Caja',
+      icon: Package
+    },
     {
       href: '/dashboard/Operaciones-Comerciales',
       label: 'Operaciones Comerciales',
@@ -141,11 +141,11 @@ function MobileNav() {
       icon: ShieldPlus
     },
     { href: '/dashboard/Catalogo', label: 'Catálogo', icon: Package },
-    // {
-    //   href: '/dashboard/gestion-de-existencia',
-    //   label: 'Gestión de Existenia',
-    //   icon: Package
-    // },
+    {
+      href: '/dashboard/caja',
+      label: 'Caja',
+      icon: Package
+    },
     {
       href: '/dashboard/Operaciones-Comerciales',
       label: 'Operaciones Comerciales',
