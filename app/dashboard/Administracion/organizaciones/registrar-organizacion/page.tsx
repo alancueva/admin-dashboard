@@ -1,23 +1,12 @@
 'Use client';
 
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import {
-  Home,
-  PlusCircle,
-  Package,
-  Package2,
-  PanelLeft,
-  Settings,
-  ShoppingCart,
-  Users2,
-  ArrowLeftRight,
-  Check,
-  ShieldPlus,
-  SlidersVertical
-} from 'lucide-react';
+import { Check } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import Select from 'react-select/dist/declarations/src/Select';
 
 export default function RegistrarOrganizacion() {
   const TipoNegocio: any[] = [
@@ -77,92 +66,179 @@ export default function RegistrarOrganizacion() {
 
       <Card>
         <CardContent>
-          <form className="grid grid-cols-12 gap-4 mt-2">
-            {/* Nombre del Usuario */}
-            <div className="col-span-12 md:col-span-3">
-              <label className="block mb-1 font-medium">Tipo de Negocio</label>
-              <select className="w-full border border-gray-300 rounded-md p-2">
-                <option value="">Seleccione</option>
-                {TipoNegocio.map((cat) => (
-                  <option key={cat.value} value={cat.value}>
-                    {cat.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="col-span-12 md:col-span-6">
-              <label className="block mb-1 font-medium">
-                Nombre de la Organización
-              </label>
-              <Input
-                type="text"
-                placeholder="Nombre de la Organización"
-                className="w-full border border-gray-300 rounded-md p-2"
-              />
-            </div>
-
-            <div className="col-span-12 md:col-span-3"></div>
-
-            <div className="col-span-12 md:col-span-3">
-              <label className="block mb-1 font-medium">
-                Tipo de Documento
-              </label>
-              <select className="w-full border border-gray-300 rounded-md p-2">
-                <option value="">Seleccione</option>
-                {TipoDocumento.map((cat) => (
-                  <option key={cat.value} value={cat.value}>
-                    {cat.label}
+          <form className="grid grid-cols-12 gap-6 mt-2">
+            {/* Tipo de Negocio */}
+            <div className="col-span-12 md:col-span-4">
+              <Label htmlFor="tipo_negocio">Tipo de Negocio *</Label>
+              <select
+                id="tipo_negocio"
+                className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                required
+              >
+                <option value="">Seleccione tipo de negocio</option>
+                {TipoNegocio.map((tipo) => (
+                  <option key={tipo.value} value={tipo.value}>
+                    {tipo.label}
                   </option>
                 ))}
               </select>
             </div>
 
-            <div className="col-span-12 md:col-span-3">
-              <label className="block mb-1 font-medium">Nº Documento</label>
+            {/* Nombre de la Organización */}
+            <div className="col-span-12 md:col-span-8">
+              <Label htmlFor="nombre">Nombre Comercial / Razón Social *</Label>
               <Input
-                type="text"
-                placeholder="Nº Documento"
-                className="w-full border border-gray-300 rounded-md p-2"
+                id="nombre"
+                placeholder="Ej: Sabores del Perú - Restaurante"
+                className="mt-1"
               />
             </div>
+
+            {/* Tipo y Número de Documento */}
+            <div className="col-span-12 md:col-span-3">
+              <Label htmlFor="tipo_doc">Tipo de Documento *</Label>
+              <select
+                id="tipo_doc"
+                className="mt-1 w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                required
+              >
+                <option value="">Seleccione</option>
+                {TipoDocumento.map((doc) => (
+                  <option key={doc.value} value={doc.value}>
+                    {doc.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="col-span-12 md:col-span-4">
+              <Label htmlFor="numero_doc">Número de Documento *</Label>
+              <Input
+                id="numero_doc"
+                placeholder="20601234567"
+                className="mt-1"
+              />
+            </div>
+
             <div className="col-span-12 md:col-span-5">
-              <label className="block mb-1 font-medium">Dirección</label>
+              <Label htmlFor="nombre_legal">Nombre Legal / Razón Social</Label>
               <Input
-                type="text"
-                placeholder="Dirección"
-                className="w-full border border-gray-300 rounded-md p-2"
+                id="nombre_legal"
+                placeholder="Restaurante Sabores del Perú SAC"
+                className="mt-1"
               />
+            </div>
+
+            {/* Dirección */}
+            <div className="col-span-12">
+              <Label htmlFor="direccion">Dirección Completa *</Label>
+              <Input
+                id="direccion"
+                placeholder="Av. Principal 123, Urb. Los Jardines"
+                className="mt-1"
+              />
+            </div>
+
+            {/* Ubicación */}
+            <div className="col-span-12 md:col-span-4">
+              <Label htmlFor="departamento">Departamento</Label>
+              <Input id="departamento" placeholder="Lima" className="mt-1" />
             </div>
             <div className="col-span-12 md:col-span-4">
-              <label className="block mb-1 font-medium">Email</label>
+              <Label htmlFor="provincia">Provincia</Label>
+              <Input id="provincia" placeholder="Lima" className="mt-1" />
+            </div>
+            <div className="col-span-12 md:col-span-4">
+              <Label htmlFor="distrito">Distrito</Label>
+              <Input id="distrito" placeholder="Miraflores" className="mt-1" />
+            </div>
+
+            {/* Contacto */}
+            <div className="col-span-12 md:col-span-4">
+              <Label htmlFor="telefono">Teléfono Principal *</Label>
+              <Input id="telefono" placeholder="01-2345678" className="mt-1" />
+            </div>
+            <div className="col-span-12 md:col-span-4">
+              <Label htmlFor="celular">Celular / WhatsApp</Label>
+              <Input id="celular" placeholder="987 654 321" className="mt-1" />
+            </div>
+            <div className="col-span-12 md:col-span-4">
+              <Label htmlFor="email">Correo Electrónico *</Label>
               <Input
-                type="text"
-                placeholder="Ej. organizacion@ejemplo.com"
-                className="w-full border border-gray-300 rounded-md p-2"
+                id="email"
+                type="email"
+                placeholder="info@saboresdelperu.com"
+                className="mt-1"
               />
             </div>
 
-            <div className="col-span-12 md:col-span-3">
-              <label className="block mb-1 font-medium">Teléfono</label>
-              <Input
-                type="text"
-                placeholder="Teléfono"
-                className="w-full border border-gray-300 rounded-md p-2"
+            {/* Información del Restaurante */}
+            <div className="col-span-12">
+              <Label htmlFor="descripcion">Descripción del Negocio</Label>
+              <Textarea
+                id="descripcion"
+                placeholder="Restaurante familiar especializado en comida peruana tradicional..."
+                rows={4}
+                className="mt-1"
               />
             </div>
-            {/*<div className="col-span-12 md:col-span-3">
-                            <label className="block mb-1 font-medium">
-                                Tiene Almacén
-                            </label>
-                            <select className="w-full border border-gray-300 rounded-md p-2">
-                                <option value="">Seleccione</option>
-                                {tiene_almacen.map((ta) => (
-                                    <option key={ta.value} value={ta.value}>
-                                        {ta.label}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>*/}
+
+            {/* Capacidad y Operación */}
+            <div className="col-span-12 md:col-span-3">
+              <Label htmlFor="capacidad">Capacidad (Personas)</Label>
+              <Input
+                id="capacidad"
+                type="number"
+                placeholder="80"
+                className="mt-1"
+              />
+            </div>
+            <div className="col-span-12 md:col-span-3">
+              <Label htmlFor="mesas">Número de Mesas</Label>
+              <Input
+                id="mesas"
+                type="number"
+                placeholder="25"
+                className="mt-1"
+              />
+            </div>
+            <div className="col-span-12 md:col-span-3">
+              <Label htmlFor="horario_apertura">Hora de Apertura</Label>
+              <Input id="horario_apertura" type="time" className="mt-1" />
+            </div>
+            <div className="col-span-12 md:col-span-3">
+              <Label htmlFor="horario_cierre">Hora de Cierre</Label>
+              <Input id="horario_cierre" type="time" className="mt-1" />
+            </div>
+
+            {/* Redes Sociales */}
+            <div className="col-span-12 md:col-span-6">
+              <Label htmlFor="instagram">Instagram</Label>
+              <Input
+                id="instagram"
+                placeholder="@saboresdelperu"
+                className="mt-1"
+              />
+            </div>
+            <div className="col-span-12 md:col-span-6">
+              <Label htmlFor="facebook">Facebook</Label>
+              <Input
+                id="facebook"
+                placeholder="facebook.com/saboresdelperu"
+                className="mt-1"
+              />
+            </div>
+
+            {/* Notas adicionales */}
+            <div className="col-span-12">
+              <Label htmlFor="notas">Notas / Observaciones</Label>
+              <Textarea
+                id="notas"
+                placeholder="Información adicional sobre el restaurante..."
+                rows={3}
+                className="mt-1"
+              />
+            </div>
           </form>
         </CardContent>
       </Card>
