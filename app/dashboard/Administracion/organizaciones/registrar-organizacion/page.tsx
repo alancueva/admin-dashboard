@@ -184,7 +184,7 @@ export default function RegistrarOrganizacion() {
             </div>
 
             {/* Capacidad y Operación */}
-            <div className="col-span-12 md:col-span-3">
+            {/*<div className="col-span-12 md:col-span-3">
               <Label htmlFor="capacidad">Capacidad (Personas)</Label>
               <Input
                 id="capacidad"
@@ -209,7 +209,7 @@ export default function RegistrarOrganizacion() {
             <div className="col-span-12 md:col-span-3">
               <Label htmlFor="horario_cierre">Hora de Cierre</Label>
               <Input id="horario_cierre" type="time" className="mt-1" />
-            </div>
+            </div>*/}
 
             {/* Redes Sociales */}
             {/*<div className="col-span-12 md:col-span-6">
