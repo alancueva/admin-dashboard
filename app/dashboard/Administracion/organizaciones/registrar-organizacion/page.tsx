@@ -212,7 +212,7 @@ export default function RegistrarOrganizacion() {
             </div>
 
             {/* Redes Sociales */}
-            <div className="col-span-12 md:col-span-6">
+            {/*<div className="col-span-12 md:col-span-6">
               <Label htmlFor="instagram">Instagram</Label>
               <Input
                 id="instagram"
@@ -227,7 +227,7 @@ export default function RegistrarOrganizacion() {
                 placeholder="facebook.com/saboresdelperu"
                 className="mt-1"
               />
-            </div>
+            </div>*/}
 
             {/* Notas adicionales */}
             <div className="col-span-12">
