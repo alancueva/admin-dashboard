@@ -43,7 +43,7 @@ export default function AlmaceneInventarioPage() {
     {
       name: 'Registrar Movimientos',
       icon: <Orbit className="mr-2 h-4 w-4" />,
-      link: '/dashboard/inventario/movimientos_inventario/registrar-movimiento-inventario'
+      link: '/dashboard/inventario/movimientos_inventario/registrar-movimientos-inventario'
     }
   ];
 
