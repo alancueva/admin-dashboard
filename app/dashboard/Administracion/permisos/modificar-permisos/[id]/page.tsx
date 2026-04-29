@@ -16,7 +16,7 @@ import { Selected } from '@/components/ui/Selected';
 import { useParams } from 'next/navigation';
 
 interface Option {
-  value: number;
+  value: string | number;
   label: string;
 }
 
@@ -236,7 +236,7 @@ export default function RegistrarPermisos() {
               </Label>
               <Selected
                 value={usuarioSeleccionado}
-                onChange={setUsuarioSeleccionado}
+                onChange={(value) => setUsuarioSeleccionado(value)}
                 options={usuariosEjemplo}
                 placeholder="Busca y selecciona un usuario..."
               />

@@ -11,7 +11,7 @@ import { Selected } from '@/components/ui/Selected';
 import { useParams } from 'next/navigation';
 
 interface Option {
-  value: number;
+  value: string | number;
   label: string;
 }
 
@@ -194,7 +194,7 @@ export default function ModificarMovimientoForm() {
               <Label htmlFor="producto">Producto *</Label>
               <Selected
                 value={selectedProducto}
-                onChange={setSelectedProducto}
+                onChange={(value) => setSelectedProducto(value as any)}
                 options={productosEjemplo.map((p) => ({
                   value: p.id,
                   label: `${p.numero_serie} - ${p.nombre}`

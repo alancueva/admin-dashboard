@@ -14,7 +14,7 @@ import { ArrowLeftRight, Check, User } from 'lucide-react';
 import { useState } from 'react';
 import { Selected } from '@/components/ui/Selected';
 
-interface Option {
+interface LocalOption {
   value: number;
   label: string;
 }
@@ -37,7 +37,7 @@ interface Modulo {
   submodulos: SubModulo[];
 }
 
-const usuariosEjemplo: Option[] = [
+const usuariosEjemplo: LocalOption[] = [
   { value: 1, label: 'Juan Pérez - Administrador' },
   { value: 2, label: 'María López - Cajera' },
   { value: 3, label: 'Carlos Ruiz - Mesero' },
@@ -157,7 +157,7 @@ const modulos: Modulo[] = [
 ];
 
 export default function RegistrarPermisos() {
-  const [usuarioSeleccionado, setUsuarioSeleccionado] = useState<Option | null>(
+  const [usuarioSeleccionado, setUsuarioSeleccionado] = useState<LocalOption | null>(
     null
   );
   const [permisos, setPermisos] = useState(modulos);
@@ -234,7 +234,7 @@ export default function RegistrarPermisos() {
               </Label>
               <Selected
                 value={usuarioSeleccionado}
-                onChange={setUsuarioSeleccionado}
+                onChange={(val) => setUsuarioSeleccionado(val as LocalOption | null)}
                 options={usuariosEjemplo}
                 placeholder="Busca y selecciona un usuario..."
               />

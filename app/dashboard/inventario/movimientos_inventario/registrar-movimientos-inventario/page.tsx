@@ -190,7 +190,7 @@ export default function RegistroMovimientoForm() {
               <Label htmlFor="producto">Producto *</Label>
               <Selected
                 value={selectedProducto}
-                onChange={setSelectedProducto}
+                onChange={(value) => setSelectedProducto(value as any)}
                 options={productosEjemplo.map((p) => ({
                   value: p.id,
                   label: `${p.numero_serie} - ${p.nombre}`
