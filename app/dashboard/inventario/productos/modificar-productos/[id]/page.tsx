@@ -15,6 +15,7 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog';
 import DataTable from 'react-data-table-component';
+import { Label } from '@/components/ui/label';
 
 const unidadesMedida = [
   { value: 'kg', label: 'Kilogramo (kg)' },
@@ -112,6 +113,68 @@ export default function ModificarProductoForm() {
     },
     { name: 'Descripción', selector: (row: any) => row.descripcion, wrap: true }
   ];
+
+  const [imagenPreview, setImagenPreview] = useState<string | null>(null);
+  const [imagenFile, setImagenFile] = useState<File | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  // Funciones para Drag & Drop
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(false);
+
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      processImageFile(file);
+    }
+  };
+  // Manejo de subida de imagen
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    validacion_tamaño_formato(file);
+    setImagenFile(file);
+    // Crear preview
+    cargar_previsualizado(file);
+  };
+
+  const processImageFile = (file: File) => {
+    validacion_tamaño_formato(file);
+    setImagenFile(file);
+    // Crear preview
+    cargar_previsualizado(file);
+  };
+
+  const cargar_previsualizado = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      setImagenPreview(event.target?.result as string);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const validacion_tamaño_formato = (file: File) => {
+    // Validaciones
+    if (file.size > 5 * 1024 * 1024) {
+      alert('La imagen no debe superar los 5MB');
+      return;
+    }
+
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+      alert('Solo se permiten imágenes PNG, JPG o WEBP');
+      return;
+    }
+  };
   return (
     <div>
       <Card className="sticky top-0 z-50 mb-4">
@@ -344,16 +407,45 @@ export default function ModificarProductoForm() {
               </>
             )}
 
-            {/* Imagen (futuro) */}
+            {/* IMAGEN FUNCIONAL */}
             <div className="col-span-12">
-              <label>Imagen del Producto</label>
-              <div className="mt-2 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                <p className="text-sm text-gray-500">
-                  Haz clic o arrastra una imagen aquí
-                </p>
-                <p className="text-xs text-gray-400 mt-1">
-                  PNG, JPG o WEBP (máx. 5MB)
-                </p>
+              <Label>Imagen del Producto</Label>
+              <div
+                className="mt-2 border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-gray-400 transition-colors"
+                onClick={() => document.getElementById('file-input')?.click()}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+              >
+                <input
+                  id="file-input"
+                  type="file"
+                  accept="image/png, image/jpeg, image/webp"
+                  className="hidden"
+                  onChange={handleImageChange}
+                />
+
+                {imagenPreview ? (
+                  <div className="flex flex-col items-center">
+                    <img
+                      src={imagenPreview}
+                      alt="Vista previa"
+                      className="mx-auto max-h-56 rounded-md shadow-sm object-contain"
+                    />
+                    <p className="text-xs text-gray-500 mt-3">
+                      Haz clic para cambiar la imagen
+                    </p>
+                  </div>
+                ) : (
+                  <div className="py-6">
+                    <p className="text-sm text-gray-600 font-medium mb-1">
+                      Haz clic o arrastra una imagen aquí
+                    </p>
+                    <p className="text-xs text-gray-400">
+                      PNG, JPG o WEBP (máximo 5MB)
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </form>
