@@ -37,12 +37,12 @@ export default function AlmaceneInventarioPage() {
 
   const card_: any[] = [
     {
-      title: 'Historial de Pedidos',
+      title: 'Pedidos',
       icon: <ClipboardList className="h-4 w-4 text-muted-foreground" />,
       value: stats.historial_pedido,
       description: 'Pedidos',
       link: '/dashboard/operaciones-de-servicio/historial-pedido',
-      link_text: 'Ver Historial de Pedidos'
+      link_text: 'Ver Pedidos'
     },
     {
       title: 'Pedidos',
@@ -51,6 +51,14 @@ export default function AlmaceneInventarioPage() {
       description: 'Toma de Pedidos',
       link: '/dashboard/operaciones-de-servicio/pedidos',
       link_text: 'Toma de Pedidos'
+    },
+    {
+      title: 'Monitor de Cocina',
+      icon: <ClipboardList className="h-4 w-4 text-muted-foreground" />,
+      // value: 0,
+      description: 'Monitor de Cocina',
+      link: '/dashboard/operaciones-de-servicio/monitor-de-cocina',
+      link_text: 'Monitor de Cocina'
     }
   ];
 
