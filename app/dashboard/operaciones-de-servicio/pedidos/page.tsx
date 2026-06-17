@@ -17,7 +17,8 @@ import {
   Coins,
   QrCode,
   Smartphone,
-  Calculator
+  Calculator,
+  User
 } from 'lucide-react';
 import { images } from './imagen';
 
@@ -141,6 +142,12 @@ export default function App() {
     }))
   );
 
+  const [showCustomerModal, setShowCustomerModal] = useState<boolean>(false);
+  const [customerInfo, setCustomerInfo] = useState({
+    dni: '',
+    nombre: '',
+    apellido: ''
+  });
   const [selectedTableId, setSelectedTableId] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -260,7 +267,24 @@ export default function App() {
     }, 800);
   };
 
-  const handleFinishTable = () => {
+  const cancelPaymentRequest = () => {
+    if (!selectedTableId || !selectedTable) return;
+
+    updateTable(selectedTableId, {
+      status: 'Ocupada'
+    });
+
+    // Resetear estados de pago
+    setPaymentMethod('efectivo');
+    setAmounts({
+      efectivo: '0',
+      tarjeta: '0',
+      yape: '0',
+      plin: '0'
+    });
+  };
+
+  const confirmPaymentWithCustomer = () => {
     if (!selectedTableId || !selectedTable || !paymentCalculations.isCovered)
       return;
 
@@ -269,6 +293,13 @@ export default function App() {
       id_transaccion: `TRX-${Date.now()}`,
       fecha_hora: new Date().toISOString(),
       mesa: selectedTable.id,
+      cliente: {
+        dni: customerInfo.dni.trim() || null,
+        nombre_completo:
+          `${customerInfo.nombre.trim()} ${customerInfo.apellido.trim()}`.trim() ||
+          null,
+        quiere_factura: !!(customerInfo.dni || customerInfo.nombre)
+      },
       resumen_economico: {
         total_pagar: subtotal,
         total_recibido: paymentCalculations.totalReceived,
@@ -310,6 +341,8 @@ export default function App() {
     });
     setSelectedTableId(null);
     setShowMobileCart(false);
+    setShowCustomerModal(false);
+    setCustomerInfo({ dni: '', nombre: '', apellido: '' });
     setAmounts({ efectivo: '0', tarjeta: '0', yape: '0', plin: '0' });
   };
 
@@ -322,6 +355,13 @@ export default function App() {
     return matchesCategory && matchesSearch;
   });
 
+  const handleFinishTable = () => {
+    if (!selectedTableId || !selectedTable || !paymentCalculations.isCovered)
+      return;
+
+    // En lugar de cerrar directamente, abrimos el modal
+    setShowCustomerModal(true);
+  };
   return (
     <div className="flex flex-col lg:flex-row h-screen w-full bg-slate-50 overflow-hidden font-sans">
       {/* SECCIÓN IZQUIERDA: MENÚ Y MESAS (OCUPA EL RESTO DEL ESPACIO) */}
@@ -603,8 +643,16 @@ export default function App() {
 
                 {/* Sección de Pago (Dentro del scroll para que no empuje el botón final) */}
                 {selectedTable?.status === 'Esperando Cuenta' && (
-                  <div className="mt-6 space-y-4 pt-4 border-t border-slate-200 animate-in slide-in-from-bottom-2">
+                  <div className="mt-6 space-y-4 pt-4 border-t border-slate-200 animate-in slide-in-from-bottom-2 relative">
                     <div>
+                      {/* Botón X para volver a "Ocupada" */}
+                      <button
+                        onClick={cancelPaymentRequest}
+                        className="absolute -top-2 -right-1 bg-white border border-slate-200 hover:bg-red-50 hover:border-red-200 text-slate-400 hover:text-red-500 p-2 rounded-full shadow-sm transition-all active:scale-90 z-10"
+                        title="Volver a agregar productos"
+                      >
+                        <X size={18} />
+                      </button>
                       <div className="flex items-center gap-2 mb-2">
                         <Wallet size={12} className="text-slate-400" />
                         <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">
@@ -795,6 +843,101 @@ export default function App() {
           className="lg:hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40"
           onClick={() => setShowMobileCart(false)}
         />
+      )}
+      {/* ===================== MODAL DATOS DEL CLIENTE ===================== */}
+      {showCustomerModal && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[100] p-4">
+          <div className="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl">
+            {/* Header */}
+            <div className="px-6 py-5 border-b flex items-center gap-3 bg-slate-50">
+              <div className="w-10 h-10 rounded-2xl bg-orange-100 flex items-center justify-center">
+                <User size={22} className="text-orange-600" />
+              </div>
+              <div>
+                <h3 className="font-black text-xl text-slate-900">
+                  Datos del Cliente
+                </h3>
+                <p className="text-sm text-slate-500">
+                  Opcional - para nota de venta
+                </p>
+              </div>
+            </div>
+
+            {/* Formulario */}
+            <div className="p-6 space-y-5">
+              <div>
+                <label className="block text-xs font-black uppercase tracking-widest text-slate-500 mb-1.5">
+                  DNI / RUC
+                </label>
+                <input
+                  type="text"
+                  value={customerInfo.dni}
+                  onChange={(e) =>
+                    setCustomerInfo({ ...customerInfo, dni: e.target.value })
+                  }
+                  placeholder="Ingrese DNI o RUC (opcional)"
+                  className="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none text-lg"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-black uppercase tracking-widest text-slate-500 mb-1.5">
+                    Nombre
+                  </label>
+                  <input
+                    type="text"
+                    value={customerInfo.nombre}
+                    onChange={(e) =>
+                      setCustomerInfo({
+                        ...customerInfo,
+                        nombre: e.target.value
+                      })
+                    }
+                    placeholder="Nombre"
+                    className="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-black uppercase tracking-widest text-slate-500 mb-1.5">
+                    Apellido
+                  </label>
+                  <input
+                    type="text"
+                    value={customerInfo.apellido}
+                    onChange={(e) =>
+                      setCustomerInfo({
+                        ...customerInfo,
+                        apellido: e.target.value
+                      })
+                    }
+                    placeholder="Apellido"
+                    className="w-full px-4 py-3 rounded-2xl border border-slate-200 focus:border-orange-500 focus:ring-2 focus:ring-orange-200 outline-none"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Botones */}
+            <div className="p-4 border-t flex gap-3">
+              <button
+                onClick={() => {
+                  setShowCustomerModal(false);
+                  setCustomerInfo({ dni: '', nombre: '', apellido: '' });
+                }}
+                className="flex-1 py-4 text-slate-600 font-bold rounded-2xl border border-slate-200 hover:bg-slate-50 transition-all"
+              >
+                Saltar
+              </button>
+              <button
+                onClick={confirmPaymentWithCustomer}
+                className="flex-1 py-4 bg-green-600 hover:bg-green-700 text-white font-black rounded-2xl transition-all active:scale-[0.97]"
+              >
+                CONFIRMAR PAGO
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Estilos para scrollbars limpios */}
