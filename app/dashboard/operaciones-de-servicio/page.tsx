@@ -45,7 +45,7 @@ export default function AlmaceneInventarioPage() {
       link_text: 'Ver Pedidos'
     },
     {
-      title: 'Pedidos',
+      title: 'Toma de Pedidos',
       icon: <ClipboardList className="h-4 w-4 text-muted-foreground" />,
       // value: 0,
       description: 'Toma de Pedidos',
