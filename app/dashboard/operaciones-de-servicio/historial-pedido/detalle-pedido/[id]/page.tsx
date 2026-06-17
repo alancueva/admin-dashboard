@@ -129,14 +129,17 @@ export default function RegistrarPedido() {
               <label className="block mb-1 font-medium">Mesa</label>
               <Input type="number" placeholder="Mesa" />
             </div>
-
+            <div className="col-span-12 md:col-span-3"></div>
             {/* USUARIO */}
             <div className="col-span-12 md:col-span-3">
-              <label className="block mb-1 font-medium">
-                Usuario Registrado
-              </label>
-              <Input type="text" placeholder="Usuario" />
+              <label className="block mb-1 font-medium">Cocinero</label>
+              <Input type="text" placeholder="Usuario(Cocinero)" />
             </div>
+            <div className="col-span-12 md:col-span-3">
+              <label className="block mb-1 font-medium">Mesero</label>
+              <Input type="text" placeholder="Usuario(Mesero)" />
+            </div>
+            <div className="col-span-12 md:col-span-6"></div>
 
             {/* ESTADO */}
             <div className="col-span-12 md:col-span-3">
