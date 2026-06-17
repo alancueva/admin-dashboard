@@ -14,7 +14,9 @@ import {
   TrendingUp,
   DollarSign,
   HandPlatter,
-  AlertTriangle
+  AlertTriangle,
+  Cookie,
+  ClipboardList
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -68,13 +70,21 @@ export default function DashboardRestaurante() {
             Bienvenido de nuevo, <span className="font-medium">{usuario}</span>
           </p>
         </div>
+        <div className="flex justify-between  gap-2">
+          <Link href="/dashboard/operaciones-de-servicio/pedidos">
+            <Button className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-xl">
+              <ClipboardList className="w-5 h-5" />
+              Pedido
+            </Button>
+          </Link>
 
-        <Link href="/dashboard/operaciones-de-servicio/pedidos">
-          <Button className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-xl">
-            <PlusCircle className="w-5 h-5" />
-            Nuevo Pedido
-          </Button>
-        </Link>
+          <Link href="/dashboard/operaciones-de-servicio/monitor-de-cocina">
+            <Button className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-5 py-2.5 rounded-xl">
+              <Cookie className="w-5 h-5" />
+              Cocina
+            </Button>
+          </Link>
+        </div>
       </div>
 
       {/* Estadísticas Principales */}
