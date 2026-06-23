@@ -162,6 +162,7 @@ export default function App() {
     yape: '0',
     plin: '0'
   });
+  const [showPrecuenta, setShowPrecuenta] = useState<boolean>(false);
 
   const selectedTable = useMemo(
     () => tables.find((t) => t.id === selectedTableId),
@@ -361,6 +362,11 @@ export default function App() {
 
     // En lugar de cerrar directamente, abrimos el modal
     setShowCustomerModal(true);
+  };
+
+  const showPreCuenta = () => {
+    if (!selectedTable || selectedTable.currentOrder.length === 0) return;
+    setShowPrecuenta(true);
   };
   return (
     <div className="flex flex-col lg:flex-row h-screen w-full bg-slate-50 overflow-hidden font-sans">
@@ -792,14 +798,26 @@ export default function App() {
                 ENVIAR A COCINA
               </button>
             ) : selectedTable?.status === 'Ocupada' ? (
-              <button
-                onClick={() =>
-                  updateTable(selectedTableId!, { status: 'Esperando Cuenta' })
-                }
-                className="w-full py-4 border-2 border-slate-900 text-slate-900 rounded-2xl font-black text-sm flex items-center justify-center gap-2 hover:bg-slate-900 hover:text-white transition-all active:scale-95 shadow-sm"
-              >
-                <CreditCard size={18} /> PEDIR CUENTA
-              </button>
+              <div className="grid grid-cols-2 gap-3">
+                {/* Botón Precuenta */}
+                <button
+                  onClick={showPreCuenta}
+                  className="py-4 border-2 border-slate-700 text-slate-700 rounded-2xl font-black text-sm flex items-center justify-center gap-2 hover:bg-slate-900 hover:text-white transition-all active:scale-95"
+                >
+                  <StickyNote size={18} />
+                  PRECUENTA
+                </button>
+                <button
+                  onClick={() =>
+                    updateTable(selectedTableId!, {
+                      status: 'Esperando Cuenta'
+                    })
+                  }
+                  className="w-full py-4 border-2 border-slate-900 text-slate-900 rounded-2xl font-black text-sm flex items-center justify-center gap-2 hover:bg-slate-900 hover:text-white transition-all active:scale-95 shadow-sm"
+                >
+                  <CreditCard size={18} /> PEDIR CUENTA
+                </button>
+              </div>
             ) : selectedTable?.status === 'Esperando Cuenta' ? (
               <button
                 onClick={handleFinishTable}
@@ -934,6 +952,193 @@ export default function App() {
                 className="flex-1 py-4 bg-green-600 hover:bg-green-700 text-white font-black rounded-2xl transition-all active:scale-[0.97]"
               >
                 CONFIRMAR PAGO
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* ===================== MODAL PRECUENTA (VERSIÓN MEJORADA) ===================== */}
+      {showPrecuenta && selectedTable && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[100] p-4">
+          <div className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl">
+            {/* Header */}
+            <div className="px-6 py-5 border-b flex items-center justify-between bg-slate-50">
+              <div className="flex items-center gap-3">
+                <StickyNote size={24} className="text-orange-600" />
+                <div>
+                  <h3 className="font-black text-xl text-slate-900">
+                    Precuenta
+                  </h3>
+                  <p className="text-sm text-slate-500">
+                    Mesa {selectedTable.id}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowPrecuenta(false)}
+                className="text-slate-400 hover:text-slate-600"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            {/* Contenido del Ticket - Más Estructurado */}
+            <div className="p-6 max-h-[65vh] overflow-y-auto custom-scrollbar">
+              <div className="text-center mb-6">
+                <p className="font-black text-2xl tracking-wider">
+                  RESTAURANTE
+                </p>
+                <p className="text-xs text-slate-500 mt-1">
+                  Precuenta • Mesa {selectedTable.id}
+                </p>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  {new Date().toLocaleDateString('es-PE')}{' '}
+                  {new Date().toLocaleTimeString('es-PE', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                  })}
+                </p>
+              </div>
+              <div id="precuenta-ticket">
+                {/* Lista de Productos */}
+                <div className="border border-slate-200 rounded-2xl p-4 bg-slate-50">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-slate-300 text-xs text-slate-500">
+                        <th className="text-left py-2 font-medium">CANT</th>
+                        <th className="text-left py-2 font-medium">
+                          DESCRIPCIÓN
+                        </th>
+                        <th className="text-right py-2 font-medium">PRECIO</th>
+                        <th className="text-right py-2 font-medium">
+                          SUBTOTAL
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {selectedTable.currentOrder.map((item, idx) => (
+                        <tr key={idx} className="text-slate-700">
+                          <td className="py-2.5 font-medium">
+                            {item.quantity}
+                          </td>
+                          <td className="py-2.5">
+                            {item.nombre}
+                            {item.note && (
+                              <p className="text-[10px] text-slate-500 italic">
+                                "{item.note}"
+                              </p>
+                            )}
+                          </td>
+                          <td className="py-2.5 text-right text-slate-500">
+                            S/ {item.precio_unitario.toFixed(2)}
+                          </td>
+                          <td className="py-2.5 text-right font-semibold">
+                            S/{' '}
+                            {(item.precio_unitario * item.quantity).toFixed(2)}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Totales */}
+                <div className="mt-6 bg-white border border-slate-200 rounded-2xl p-5">
+                  <div className="flex justify-between items-center text-lg">
+                    <span className="font-semibold text-slate-600">
+                      TOTAL A PAGAR
+                    </span>
+                    <span className="font-black text-3xl text-slate-900">
+                      S/ {subtotal.toFixed(2)}
+                    </span>
+                  </div>
+                  <div className="text-center text-[10px] text-slate-400 mt-4">
+                    Gracias por su preferencia
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="p-4 border-t bg-slate-50 flex gap-3">
+              <button
+                onClick={() => setShowPrecuenta(false)}
+                className="flex-1 py-4 text-slate-600 font-bold rounded-2xl border border-slate-200 hover:bg-slate-100 transition-all"
+              >
+                Cerrar
+              </button>
+
+              <button
+                onClick={() => {
+                  const ticketContent =
+                    document.getElementById('precuenta-ticket');
+                  if (!ticketContent) return;
+
+                  const printWindow = window.open('', '_blank');
+                  if (printWindow) {
+                    printWindow.document.write(`
+                      <html>
+                        <head>
+                          <title>Precuenta Mesa ${selectedTable.id}</title>
+                          <style>
+                            body {
+                              font-family: 'Courier New', monospace;
+                              padding: 20px;
+                              max-width: 380px;
+                              margin: 0 auto;
+                              font-size: 14px;
+                            }
+                            .ticket {
+                              border: 2px dashed #000;
+                              padding: 15px;
+                            }
+                            h1 { text-align: center; margin: 5px 0; font-size: 18px; }
+                            .info { text-align: center; font-size: 12px; margin-bottom: 15px; }
+                            table { width: 100%; border-collapse: collapse; }
+                            th, td { padding: 6px 4px; }
+                            th { border-bottom: 1px solid #000; text-align: left; font-size: 12px; }
+                            .right { text-align: right; }
+                            .total {
+                              font-size: 18px;
+                              font-weight: bold;
+                              border-top: 2px solid #000;
+                              padding-top: 10px;
+                              margin-top: 10px;
+                            }
+                            .thankyou { text-align: center; margin-top: 20px; font-size: 13px; }
+                          </style>
+                        </head>
+                        <body>
+                          <div class="ticket">
+                            <h1>RESTAURANTE</h1>
+                            <div class="info">
+                              Precuenta - Mesa ${selectedTable.id}<br>
+                              ${new Date().toLocaleString('es-PE')}
+                            </div>
+                            ${ticketContent.innerHTML}
+                            <div class="thankyou">¡Gracias por su visita!</div>
+                          </div>
+                        </body>
+                      </html>
+                    `);
+                    printWindow.document.close();
+                    printWindow.focus();
+                    setTimeout(() => printWindow.print(), 600);
+                  }
+                }}
+                className="flex-1 py-4 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl transition-all flex items-center justify-center gap-2"
+              >
+                IMPRIMIR TICKET
+              </button>
+
+              <button
+                onClick={() => {
+                  setShowPrecuenta(false);
+                  updateTable(selectedTableId!, { status: 'Esperando Cuenta' });
+                }}
+                className="flex-1 py-4 bg-orange-600 text-white font-black rounded-2xl hover:bg-orange-700 transition-all"
+              >
+                PASAR A COBRO
               </button>
             </div>
           </div>
